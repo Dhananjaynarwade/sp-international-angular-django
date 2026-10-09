@@ -1,0 +1,225 @@
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="#home">
+      <span class="brand-mark">SP</span>
+      <span>
+        <strong>S-P International</strong>
+        <small>Global Trade & Sourcing</small>
+      </span>
+    </a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#industries">Industries</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn btn-primary nav-btn" href="#contact">Request Quote</a>
+  </div>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy" data-aos="fade-right">
+        <div class="eyebrow">Trusted sourcing. Reliable delivery.</div>
+        <h1>Your Global Partner for <span>Import, Export & Distribution</span></h1>
+        <p>
+          We connect businesses with dependable products, competitive sourcing
+          and a supply chain built for speed, transparency and growth.
+        </p>
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary">Explore Products</a>
+          <a href="#contact" class="btn btn-outline">Get a Quote</a>
+        </div>
+
+        <div class="trust-row">
+          <div><strong>10+</strong><span>Years Experience</span></div>
+          <div><strong>500+</strong><span>Business Clients</span></div>
+          <div><strong>100+</strong><span>Products</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card card" data-aos="zoom-in">
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=80" alt="Global logistics">
+        </div>
+        <div class="floating-chip chip-a">Global Sourcing</div>
+        <div class="floating-chip chip-b">Quality Checked</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="container about-grid">
+      <div data-aos="fade-up">
+        <div class="eyebrow">About S-P International</div>
+        <h2 class="section-title">Building dependable supply chains for modern businesses.</h2>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="120">
+        <p class="section-copy">
+          S-P International is a professional sourcing, trading and distribution company.
+          Our focus is simple: reliable suppliers, consistent quality, transparent communication
+          and dependable delivery.
+        </p>
+        <div class="about-points">
+          <div>✓ Verified supplier network</div>
+          <div>✓ Quality-focused sourcing</div>
+          <div>✓ Pan-India distribution support</div>
+          <div>✓ Import & export coordination</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="section products">
+    <div class="container">
+      <div class="center-head" data-aos="fade-up">
+        <div class="eyebrow">Our Products</div>
+        <h2 class="section-title">Products for business, industry and growth.</h2>
+        <p class="section-copy">Manage these products later from Django Admin.</p>
+      </div>
+
+      <div class="grid product-grid">
+        <article class="product-card card" *ngFor="let product of products; let i=index"
+                 data-aos="fade-up" [attr.data-aos-delay]="i * 90">
+          <div class="product-image">
+            <img [src]="product.image_url" [alt]="product.name">
+            <span>{{ product.category }}</span>
+          </div>
+          <div class="product-body">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <a href="#contact">Request details →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries" class="section industries">
+    <div class="container">
+      <div data-aos="fade-up">
+        <div class="eyebrow">Industries We Serve</div>
+        <h2 class="section-title">One partner. Multiple industries.</h2>
+      </div>
+
+      <div class="grid industry-grid">
+        <div class="industry-card card" data-aos="fade-up">
+          <span>01</span><h3>Food & Beverage</h3><p>Ingredients and commercial supply solutions.</p>
+        </div>
+        <div class="industry-card card" data-aos="fade-up" data-aos-delay="80">
+          <span>02</span><h3>Manufacturing</h3><p>Industrial products for day-to-day operations.</p>
+        </div>
+        <div class="industry-card card" data-aos="fade-up" data-aos-delay="160">
+          <span>03</span><h3>Packaging</h3><p>Materials and sourcing support for product distribution.</p>
+        </div>
+        <div class="industry-card card" data-aos="fade-up" data-aos-delay="240">
+          <span>04</span><h3>Import / Export</h3><p>Global sourcing and cross-border trade coordination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process">
+    <div class="container">
+      <div class="center-head" data-aos="fade-up">
+        <div class="eyebrow">Our Process</div>
+        <h2 class="section-title">From requirement to delivery.</h2>
+      </div>
+      <div class="process-line">
+        <div class="process-step" data-aos="fade-right"><b>1</b><span>Requirement</span></div>
+        <div class="process-step" data-aos="fade-right" data-aos-delay="80"><b>2</b><span>Sourcing</span></div>
+        <div class="process-step" data-aos="fade-right" data-aos-delay="160"><b>3</b><span>Quality Check</span></div>
+        <div class="process-step" data-aos="fade-right" data-aos-delay="240"><b>4</b><span>Dispatch</span></div>
+        <div class="process-step" data-aos="fade-right" data-aos-delay="320"><b>5</b><span>Delivery</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why">
+    <div class="container why-grid">
+      <div data-aos="fade-right">
+        <div class="eyebrow">Why Choose Us</div>
+        <h2 class="section-title">Professional sourcing with practical business support.</h2>
+        <p class="section-copy">
+          We combine supplier relationships, responsive communication and quality checks
+          to reduce sourcing complexity for our customers.
+        </p>
+      </div>
+
+      <div class="grid why-cards">
+        <div class="card mini-card" data-aos="zoom-in"><b>01</b><h3>Quality First</h3><p>Products selected with consistency and standards in mind.</p></div>
+        <div class="card mini-card" data-aos="zoom-in" data-aos-delay="100"><b>02</b><h3>Reliable Supply</h3><p>Clear communication from order to delivery.</p></div>
+        <div class="card mini-card" data-aos="zoom-in" data-aos-delay="200"><b>03</b><h3>Competitive Sourcing</h3><p>Supplier comparison focused on long-term value.</p></div>
+        <div class="card mini-card" data-aos="zoom-in" data-aos-delay="300"><b>04</b><h3>Business Support</h3><p>Fast response for quotations and product requirements.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container contact-grid">
+      <div data-aos="fade-right">
+        <div class="eyebrow">Request a Quote</div>
+        <h2 class="section-title">Tell us what you need.</h2>
+        <p class="section-copy">
+          Share your requirement and our team can contact you with product availability,
+          pricing and sourcing information.
+        </p>
+        <div class="contact-info">
+          <div><small>Email</small><strong>sales&#64;spinternational.com</strong></div>
+          <div><small>Phone</small><strong>+91 98765 43210</strong></div>
+          <div><small>Location</small><strong>India</strong></div>
+        </div>
+      </div>
+
+      <form class="quote-form card" (ngSubmit)="submitQuote()" #quoteForm="ngForm" data-aos="fade-left">
+        <div class="form-row">
+          <input [(ngModel)]="quote.name" name="name" placeholder="Your name" required>
+          <input [(ngModel)]="quote.company" name="company" placeholder="Company name">
+        </div>
+        <div class="form-row">
+          <input [(ngModel)]="quote.email" name="email" type="email" placeholder="Email address" required>
+          <input [(ngModel)]="quote.phone" name="phone" placeholder="Phone number">
+        </div>
+        <input [(ngModel)]="quote.product" name="product" placeholder="Product / requirement">
+        <textarea [(ngModel)]="quote.message" name="message" rows="5" placeholder="Tell us about your requirement"></textarea>
+        <button class="btn btn-primary" type="submit" [disabled]="sending || quoteForm.invalid">
+          {{ sending ? 'Sending...' : 'Send Request' }}
+        </button>
+        <p class="form-message" *ngIf="sentMessage">{{ sentMessage }}</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="brand footer-brand">
+        <span class="brand-mark">SP</span>
+        <span><strong>S-P International</strong><small>Global Trade & Sourcing</small></span>
+      </div>
+      <p>Reliable sourcing. Quality products. Stronger business relationships.</p>
+    </div>
+    <div>
+      <strong>Quick Links</strong>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#industries">Industries</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <strong>Business</strong>
+      <span>Import</span>
+      <span>Export</span>
+      <span>Distribution</span>
+      <span>Global Sourcing</span>
+    </div>
+  </div>
+  <div class="container footer-bottom">© 2026 S-P International. All rights reserved.</div>
+</footer>

@@ -1,0 +1,60 @@
+@import "aos/dist/aos.css";
+
+:root{
+  --bg:#07111f;
+  --bg2:#0b1728;
+  --panel:#0f2136;
+  --text:#f6f8fb;
+  --muted:#a8b4c3;
+  --line:rgba(255,255,255,.10);
+  --accent:#19c37d;
+  --accent2:#6ee7b7;
+  --shadow:0 20px 60px rgba(0,0,0,.28);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+.container{width:min(1160px,92%);margin:auto}
+.section{padding:88px 0}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.76rem;
+  font-weight:800;
+  color:var(--accent2);
+}
+.section-title{
+  font-family:Manrope,Inter,sans-serif;
+  font-size:clamp(2rem,4vw,3.25rem);
+  margin:.45rem 0 1rem;
+  line-height:1.05;
+}
+.section-copy{color:var(--muted);max-width:720px;line-height:1.8}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 20px;border-radius:12px;border:1px solid transparent;
+  font-weight:800;cursor:pointer;transition:.25s ease;
+}
+.btn-primary{background:var(--accent);color:#052015}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(25,195,125,.22)}
+.btn-outline{border-color:var(--line);color:#fff;background:rgba(255,255,255,.04)}
+.btn-outline:hover{background:rgba(255,255,255,.08)}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+.grid{display:grid;gap:22px}
+
+@media(max-width:760px){
+  .section{padding:64px 0}
+}
