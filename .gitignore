@@ -19,7 +19,11 @@ env/
 
 # Local database
 db.sqlite3
-db.sqlite3-journal
+db.sqlite3-jour
+.idea/
+
+# Logs
+*.lognal
 
 # Uploaded files
 media/
@@ -28,7 +32,5 @@ media/
 .DS_Store
 Thumbs.db
 .vscode/
-.idea/
-
-# Logs
-*.log
+# Django collected static files
+staticfiles/
