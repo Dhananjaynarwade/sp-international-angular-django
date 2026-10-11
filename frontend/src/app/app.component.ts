@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 import * as AOS from 'aos';
 
 interface Product {
@@ -16,11 +18,11 @@ interface Product {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+imports: [CommonModule, FormsModule, RouterOutlet, RouterLink],  templateUrl: './app.component.html',
+styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  isProductDetailsPage = false;
 private api = window.location.hostname === 'localhost' ||
               window.location.hostname === '127.0.0.1'
   ? 'http://127.0.0.1:8000/api'
@@ -58,8 +60,20 @@ private api = window.location.hostname === 'localhost' ||
 
   sending = false;
   sentMessage = '';
+constructor(
+  private http: HttpClient,
+  private router: Router
+) {
+  this.isProductDetailsPage =
+    this.router.url.startsWith('/products/');
 
-  constructor(private http: HttpClient) {}
+  this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(event => {
+      this.isProductDetailsPage =
+        event.urlAfterRedirects.startsWith('/products/');
+    });
+}
 
   ngOnInit() {
     AOS.init({ duration: 850, once: true, offset: 80 });

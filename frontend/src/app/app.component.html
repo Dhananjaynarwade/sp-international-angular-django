@@ -1,3 +1,7 @@
+<router-outlet></router-outlet>
+
+<div *ngIf="!isProductDetailsPage">
+
 <header class="navbar">
   <div class="container nav-inner">
     <a class="brand" href="#home">
@@ -91,11 +95,40 @@
             <img [src]="product.image_url" [alt]="product.name">
             <span>{{ product.category }}</span>
           </div>
-          <div class="product-body">
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-            <a href="#contact">Request details →</a>
-          </div>
+         
+<div class="product-body">
+
+  <h3>{{ product.name }}</h3>
+
+  <p>{{ product.description }}</p>
+
+  <div class="product-actions">
+
+    <!-- Request details: All products -->
+    <a href="#contact">
+      Request details →
+    </a>
+
+    <!-- Industrial Chemicals only -->
+    <a
+      *ngIf="product.category === 'Chemicals'"
+      routerLink="/products/nutraceutical-ingredients"
+    >
+      Explore Products →
+    </a>
+
+    <!-- Food and Packaging: Coming later -->
+    <span
+      *ngIf="product.category === 'Food' || product.category === 'Packaging'"
+      class="explore-disabled"
+    >
+      Explore Products →
+    </span>
+
+  </div>
+
+</div>
+
         </article>
       </div>
     </div>
@@ -180,49 +213,207 @@
         </div>
       </div>
 
-      <form class="quote-form card" (ngSubmit)="submitQuote()" #quoteForm="ngForm" data-aos="fade-left">
-        <div class="form-row">
-          <input [(ngModel)]="quote.name" name="name" placeholder="Your name" required>
-          <input [(ngModel)]="quote.company" name="company" placeholder="Company name">
-        </div>
-        <div class="form-row">
-          <input [(ngModel)]="quote.email" name="email" type="email" placeholder="Email address" required>
-          <input [(ngModel)]="quote.phone" name="phone" placeholder="Phone number">
-        </div>
-        <input [(ngModel)]="quote.product" name="product" placeholder="Product / requirement">
-        <textarea [(ngModel)]="quote.message" name="message" rows="5" placeholder="Tell us about your requirement"></textarea>
-        <button class="btn btn-primary" type="submit" [disabled]="sending || quoteForm.invalid">
-          {{ sending ? 'Sending...' : 'Send Request' }}
-        </button>
-        <p class="form-message" *ngIf="sentMessage">{{ sentMessage }}</p>
-      </form>
+     <form
+  class="quote-form card"
+  (ngSubmit)="submitQuote()"
+  #quoteForm="ngForm"
+  data-aos="fade-left"
+>
+
+  <div class="form-row">
+
+    <!-- Customer Name -->
+    <div class="form-field">
+      <input
+        [(ngModel)]="quote.name"
+        name="name"
+        placeholder="Your name"
+        required
+        minlength="2"
+        maxlength="120"
+        pattern="[a-zA-Z]+([ .'-][a-zA-Z]+)*"
+        #nameInput="ngModel"
+      >
+
+      <small class="error-text"
+        *ngIf="nameInput.invalid && (nameInput.touched || nameInput.dirty)">
+        Enter a valid name using letters.
+      </small>
+    </div>
+
+    <!-- Company -->
+    <div class="form-field">
+      <input
+        [(ngModel)]="quote.company"
+        name="company"
+        placeholder="Company name"
+        maxlength="150"
+      >
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <!-- Email -->
+    <div class="form-field">
+      <input
+        [(ngModel)]="quote.email"
+        name="email"
+        type="email"
+        placeholder="Email address"
+        required
+        email
+        maxlength="254"
+        #emailInput="ngModel"
+      >
+
+      <small class="error-text"
+        *ngIf="emailInput.invalid && (emailInput.touched || emailInput.dirty)">
+        Enter a valid email address.
+      </small>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-field">
+      <input
+        [(ngModel)]="quote.phone"
+        name="phone"
+        type="tel"
+        placeholder="10-digit mobile number"
+        pattern="[6-9][0-9]{9}"
+        maxlength="10"
+        inputmode="numeric"
+        #phoneInput="ngModel"
+      >
+
+      <small class="error-text"
+        *ngIf="phoneInput.invalid && (phoneInput.touched || phoneInput.dirty)">
+        Enter a valid 10-digit Indian mobile number.
+      </small>
+    </div>
+
+  </div>
+
+  <!-- Product -->
+  <div class="form-field">
+    <input
+      [(ngModel)]="quote.product"
+      name="product"
+      placeholder="Product / requirement"
+      required
+      maxlength="180"
+      #productInput="ngModel"
+    >
+
+    <small class="error-text"
+      *ngIf="productInput.invalid && productInput.touched">
+      Please enter your product requirement.
+    </small>
+  </div>
+
+  <!-- Message -->
+  <div class="form-field">
+    <textarea
+      [(ngModel)]="quote.message"
+      name="message"
+      rows="5"
+      placeholder="Tell us about your requirement"
+      required
+      minlength="4"
+      #messageInput="ngModel"
+    ></textarea>
+
+    <small class="error-text"
+      *ngIf="messageInput.invalid && messageInput.touched">
+      Please enter at least 10 characters.
+    </small>
+  </div>
+
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="sending || quoteForm.invalid"
+  >
+    {{ sending ? 'Sending...' : 'Send Request' }}
+  </button>
+
+  <p class="form-message" *ngIf="sentMessage">
+    {{ sentMessage }}
+  </p>
+
+</form>
     </div>
   </section>
 </main>
 
-<footer>
+  <!-- </main> -->
+
+</div> <!-- END OF HOMEPAGE -->
+
+<!-- SHARED FOOTER - VISIBLE ON ALL PAGES -->
+<footer class="sp-footer">
+
   <div class="container footer-grid">
-    <div>
+
+    <!-- COMPANY -->
+    <div class="footer-company">
       <div class="brand footer-brand">
         <span class="brand-mark">SP</span>
-        <span><strong>SP INTERNATIONAL</strong><small>Global Trade & Sourcing</small></span>
+
+        <span class="footer-brand-text">
+          <strong>SP INTERNATIONAL</strong>
+          <small>Global Trade & Sourcing</small>
+        </span>
       </div>
-      <p>Reliable sourcing. Quality products. Stronger business relationships.</p>
+
+      <p>
+        <strong>Reliable sourcing.</strong>
+        Quality products.
+        <strong>Stronger business relationships.</strong>
+      </p>
     </div>
-    <div>
-      <strong>Quick Links</strong>
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#industries">Industries</a>
-      <a href="#contact">Contact</a>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+
+      <a routerLink="/" fragment="about">About Us</a>
+      <a routerLink="/" fragment="products">Products</a>
+      <a routerLink="/" fragment="industries">Industries</a>
+      <a routerLink="/" fragment="contact">Contact</a>
     </div>
-    <div>
-      <strong>Business</strong>
+
+    <!-- OUR BUSINESS -->
+    <div class="footer-business">
+      <h3>Our Business</h3>
+
       <span>Import</span>
       <span>Export</span>
       <span>Distribution</span>
       <span>Global Sourcing</span>
     </div>
+
+    <!-- CONTACT US -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+
+      <a href="mailto:SPINTERNATIONAL42@gmail.com">
+        SPINTERNATIONAL42&#64;gmail.com
+      </a>
+
+      <a href="tel:+919137724155">
+        +91 9137724155
+      </a>
+    </div>
+
   </div>
-  <div class="container footer-bottom">© 2026 SP INTERNATIONAL. All rights reserved.</div>
+
+  <!-- COPYRIGHT -->
+  <div class="container footer-bottom">
+    © 2026 <strong>SP INTERNATIONAL</strong>. All rights reserved.
+  </div>
+
 </footer>
+
+<!-- </div> -->

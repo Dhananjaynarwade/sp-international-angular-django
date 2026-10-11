@@ -1,0 +1,146 @@
+
+<div class="product-details-page">
+
+  <div class="page-container">
+
+    <!-- Back to homepage -->
+    <a routerLink="/" fragment="products" class="back-link">
+      ← Back to Products
+    </a>
+
+    <!-- PAGE HEADING -->
+    <div class="page-heading">
+      <span>SP INTERNATIONAL • PRODUCT PORTFOLIO</span>
+      <h1>Industrial Chemicals & Specialty Ingredients</h1>
+      <p>
+        Explore our product categories, botanical ingredients,
+        essential oils and custom sourcing solutions.
+      </p>
+    </div>
+
+    <!-- PRODUCT CATEGORIES -->
+    <section
+      class="details-card category-card"
+      *ngFor="let section of sections"
+    >
+
+      <div class="category-header">
+
+        <!-- Colored category box -->
+        <div
+          class="category-panel"
+          [style.background]="section.color"
+        >
+          <span class="category-label">
+            OUR PRODUCT RANGE
+          </span>
+
+          <h2>{{ section.title }}</h2>
+
+          <span class="category-decoration"></span>
+        </div>
+
+        <!-- Category description -->
+        <div class="category-info">
+          <span class="section-label">
+            S-P INTERNATIONAL
+          </span>
+
+          <h2>{{ section.title }}</h2>
+
+          <p>{{ section.description }}</p>
+        </div>
+
+      </div>
+
+      <!-- Product names -->
+      <div class="products-section">
+
+        <div class="products-heading">
+          <h3>Explore Our Products</h3>
+          <span>{{ section.products.length }} Products</span>
+        </div>
+
+        <div class="products-grid">
+
+          <div
+            class="product-item"
+            *ngFor="let product of section.products; let i = index"
+          >
+
+            <span class="product-number">
+              {{ (i + 1).toString().padStart(2, '0') }}
+            </span>
+
+            <span class="product-name">
+              {{ product }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CUSTOM SOURCING -->
+    <section class="details-card sourcing-card">
+
+      <div class="sourcing-content">
+
+        <span class="section-label">GLOBAL SOURCING</span>
+
+        <h2>Custom Sourcing & Exclusive Imports</h2>
+
+        <p>
+          At S-P International, we understand that every customer
+          has unique sourcing requirements. Our team supports
+          product identification, procurement coordination,
+          quality-focused sourcing and long-term business
+          relationships.
+        </p>
+
+        <h3>Our sourcing team ensures:</h3>
+
+        <div class="sourcing-grid">
+
+          <div
+            class="sourcing-item"
+            *ngFor="let service of sourcingServices"
+          >
+            <span>✓</span>
+            {{ service }}
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- REQUEST QUOTATION -->
+    <section class="details-card enquiry-section">
+
+      <div>
+        <h3>Looking for a specific product?</h3>
+
+        <p>
+          Contact our team for product information,
+          sourcing support and quotation enquiries.
+        </p>
+      </div>
+
+      <a
+        routerLink="/"
+        fragment="contact"
+        class="enquiry-button"
+      >
+        Request a Quote →
+      </a>
+
+    </section>
+
+  </div>
+
+</div>
