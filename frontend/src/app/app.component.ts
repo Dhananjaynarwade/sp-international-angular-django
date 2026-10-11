@@ -21,7 +21,10 @@ interface Product {
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  private api = 'http://127.0.0.1:8000/api';
+private api = window.location.hostname === 'localhost' ||
+              window.location.hostname === '127.0.0.1'
+  ? 'http://127.0.0.1:8000/api'
+  : 'https://spinternational-backend.onrender.com/api';
 
   products: Product[] = [
     {
