@@ -11,14 +11,42 @@
         <small>Global Trade & Sourcing</small>
       </span>
     </a>
+<!-- Mobile menu button -->
+<button
+  type="button"
+  class="mobile-menu-btn"
+  (click)="mobileMenuOpen = !mobileMenuOpen"
+  [attr.aria-expanded]="mobileMenuOpen"
+  aria-label="Toggle navigation menu"
+>
+  ☰
+</button>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#industries">Industries</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<nav [class.mobile-open]="mobileMenuOpen">
+
+  <a href="#home" (click)="navigateToSection($event, 'home')">
+    Home
+  </a>
+
+  <a href="#about" (click)="navigateToSection($event, 'about')">
+    About
+  </a>
+
+  <a href="#products" (click)="navigateToSection($event, 'products')">
+    Products
+  </a>
+
+  <a href="#industries" (click)="navigateToSection($event, 'industries')">
+    Industries
+  </a>
+
+  <a href="#contact" (click)="navigateToSection($event, 'contact')">
+    Contact
+  </a>
+
+</nav>
+
+
 
     <a class="btn btn-primary nav-btn" href="#contact">Request Quote</a>
   </div>
@@ -409,10 +437,15 @@
 
   </div>
 
-  <!-- COPYRIGHT -->
-  <div class="container footer-bottom">
-    © 2026 <strong>SP INTERNATIONAL</strong>. All rights reserved.
-  </div>
+<!-- ANIMATED COPYRIGHT -->
+<div class="container footer-bottom">
+  <p class="copyright-text">
+    © 2026
+    <strong>SP INTERNATIONAL</strong>.
+    All rights reserved.
+  </p>
+</div>
+
 
 </footer>
 

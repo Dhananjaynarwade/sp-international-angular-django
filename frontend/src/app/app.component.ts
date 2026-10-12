@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -6,7 +5,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
 import * as AOS from 'aos';
-
+import { Component, HostListener, OnInit } from '@angular/core';
 interface Product {
   id?: number;
   name: string;
@@ -22,6 +21,37 @@ imports: [CommonModule, FormsModule, RouterOutlet, RouterLink],  templateUrl: '.
 styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  @HostListener('document:click', ['$event'])
+closeMenuOutside(event: MouseEvent): void {
+  if (!this.mobileMenuOpen) {
+    return;
+  }
+
+  const target = event.target as Node;
+  const navbar = document.querySelector('.navbar');
+
+  if (navbar && !navbar.contains(target)) {
+    this.mobileMenuOpen = false;
+  }
+}
+  
+  
+navigateToSection(event: Event, sectionId: string): void {
+  event.preventDefault();
+
+  this.mobileMenuOpen = false;
+
+  const section = document.getElementById(sectionId);
+
+  if (section) {
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+}
+
+  mobileMenuOpen = false;
   isProductDetailsPage = false;
 private api = window.location.hostname === 'localhost' ||
               window.location.hostname === '127.0.0.1'
