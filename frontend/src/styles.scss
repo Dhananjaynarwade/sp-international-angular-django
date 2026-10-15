@@ -58,3 +58,219 @@ button,input,textarea,select{font:inherit}
 @media(max-width:760px){
   .section{padding:64px 0}
 }
+/* =========================================
+   SP INTERNATIONAL - GLOBAL PRODUCT STYLING
+========================================= */
+
+/* PRODUCT CARDS */
+
+.products .product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+/* PRODUCT CONTENT */
+
+.products .product-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* PRODUCT DESCRIPTION */
+
+.products .product-body p {
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+/* PRODUCT ACTION LINKS */
+
+.products .product-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+
+  width: 100%;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+/* REQUEST DETAILS + EXPLORE PRODUCTS */
+
+.products .product-actions > a,
+.products .product-actions > .explore-disabled {
+  display: inline-flex;
+  align-items: center;
+
+  max-width: 100%;
+  min-width: 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+
+  text-decoration: none;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .products .product-actions {
+    gap: 10px;
+  }
+
+  .products .product-actions > a,
+  .products .product-actions > .explore-disabled {
+    font-size: 12px;
+  }
+
+}
+/* =========================================
+   SP INTERNATIONAL - PRODUCT CARD ALIGNMENT
+========================================= */
+
+/* PRODUCT GRID */
+
+.products .product-grid {
+  align-items: stretch;
+}
+
+/* EQUAL HEIGHT CARDS */
+
+.products .product-grid .product-card {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* PRODUCT BODY */
+
+.products .product-grid .product-card .product-body {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+/* PRODUCT DESCRIPTION */
+
+.products .product-card .product-body > p {
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+/* =========================================
+   ACTION BUTTONS - ALWAYS AT BOTTOM
+========================================= */
+
+.products .product-card .product-body .product-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  align-items: stretch;
+  gap: 8px;
+
+  width: 100%;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+/* BOTH ACTION LINKS */
+
+.products .product-card .product-actions > a,
+.products .product-card .product-actions > .explore-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+
+  margin: 0;
+  padding: 9px 5px;
+
+  box-sizing: border-box;
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.35;
+
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* REQUEST DETAILS */
+
+.products .product-card .product-actions > a:first-child {
+  background: transparent;
+  border: 1px solid #10b981;
+  color: #6ee7b7;
+}
+
+/* EXPLORE PRODUCTS */
+
+.products .product-card .product-actions > a:not(:first-child) {
+  background: #10b981;
+  border: 1px solid #10b981;
+  color: #062016;
+}
+
+/* PACKAGING DISABLED LINK */
+
+.products .product-card .product-actions > .explore-disabled {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}
+
+/* HOVER EFFECT */
+
+@media (hover: hover) {
+
+  .products .product-card .product-actions > a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 16px rgba(16, 185, 129, 0.15);
+  }
+
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .products .product-card .product-body .product-actions {
+    gap: 10px;
+    padding-top: 16px;
+  }
+
+  .products .product-card .product-actions > a,
+  .products .product-card .product-actions > .explore-disabled {
+    min-height: 42px;
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+}
+

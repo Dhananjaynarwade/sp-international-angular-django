@@ -5368,3 +5368,338 @@ img, video, svg { max-width: 100%; }
   .hero-card, .hero-image, .quote-form { max-width: 100%; min-width: 0; }
   .floating-chip { max-width: 70%; overflow-wrap: anywhere; }
 }
+/* =========================================
+   PRODUCTS - FOUR CARDS RESPONSIVE
+========================================= */
+
+/* Laptop / Desktop */
+
+@media (min-width: 981px) {
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .product-card {
+    min-width: 0;
+  }
+
+}
+
+/* Tablet */
+
+@media (min-width: 601px) and (max-width: 980px) {
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* Phone */
+
+@media (max-width: 600px) {
+
+  .product-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+}
+// here we give 
+
+/* =========================================
+   SP INTERNATIONAL - PRODUCT CARDS
+   FINAL BUTTON ALIGNMENT
+========================================= */
+
+/* PRODUCT GRID */
+
+.products .product-grid {
+  align-items: stretch;
+}
+
+/* EQUAL HEIGHT CARDS */
+
+.products .product-grid .product-card {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  min-width: 0;
+}
+
+/* PRODUCT INFORMATION */
+
+.products .product-grid .product-body {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+/* PRODUCT DESCRIPTION */
+
+.products .product-grid .product-body > p {
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+/* =========================================
+   ACTION BUTTONS - SAME BOTTOM POSITION
+========================================= */
+
+.products .product-grid .product-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 10px;
+  width: 100%;
+
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+/* BOTH BUTTONS */
+
+.products .product-grid .product-actions > a,
+.products .product-grid .product-actions > .explore-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+
+  margin: 0;
+  padding: 10px 12px;
+
+  box-sizing: border-box;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+
+  border-radius: 8px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* REQUEST DETAILS */
+
+.products .product-grid .product-actions > a:first-child {
+  background: transparent;
+  border: 1px solid #10b981;
+  color: #6ee7b7;
+}
+
+/* EXPLORE PRODUCTS */
+
+.products .product-grid .product-actions > a:not(:first-child) {
+  background: #10b981;
+  border: 1px solid #10b981;
+  color: #062016;
+}
+
+/* PACKAGING DISABLED BUTTON */
+
+.products .product-grid .product-actions > .explore-disabled {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+  cursor: default;
+}
+
+/* BUTTON HOVER */
+
+@media (hover: hover) {
+
+  .products .product-grid .product-actions > a:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 6px 18px rgba(16, 185, 129, 0.20);
+  }
+
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .products .product-grid .product-actions {
+    gap: 10px;
+    padding-top: 18px;
+  }
+
+  .products .product-grid .product-actions > a,
+  .products .product-grid .product-actions > .explore-disabled {
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+}
+//
+/* =========================================
+   SP INTERNATIONAL - COMPACT PRODUCT CARDS
+========================================= */
+
+/* PRODUCT GRID */
+
+.products .container .product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 16px;
+  width: 100%;
+}
+
+/* SMALL PRODUCT CARDS */
+
+.products .product-grid > .product-card {
+  display: flex;
+  flex-direction: column;
+
+  flex: 0 1 190px;
+  width: 190px;
+  max-width: 210px;
+  min-width: 0;
+  height: auto;
+
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* PRODUCT IMAGE */
+
+.products .product-card .product-image {
+  width: 100%;
+  height: 145px;
+  overflow: hidden;
+}
+
+.products .product-card .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CARD CONTENT */
+
+.products .product-card .product-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  min-width: 0;
+  padding: 14px;
+}
+
+/* PRODUCT NAME */
+
+.products .product-card .product-body h3 {
+  margin: 0 0 8px;
+
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+/* DESCRIPTION */
+
+.products .product-card .product-body > p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* BUTTON ALIGNMENT */
+
+.products .product-grid .product-actions {
+  margin-top: auto;
+  padding-top: 14px;
+  gap: 7px;
+}
+
+/* COMPACT BUTTONS */
+
+.products .product-grid .product-actions > a,
+.products .product-grid .product-actions > .explore-disabled {
+  min-height: 36px;
+  padding: 7px 6px;
+
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 980px) {
+
+  .products .container .product-grid {
+    gap: 16px;
+  }
+
+  .products .product-grid > .product-card {
+    flex: 0 1 200px;
+    width: 200px;
+  }
+
+}
+
+/* =========================================
+   PHONE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .products .container .product-grid {
+    gap: 18px;
+  }
+
+  .products .product-grid > .product-card {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .products .product-card .product-image {
+    height: 190px;
+  }
+
+  .products .product-card .product-body {
+    padding: 16px;
+  }
+
+  .products .product-card .product-body h3 {
+    font-size: 17px;
+  }
+
+  .products .product-card .product-body > p {
+    font-size: 13px;
+  }
+
+  .products .product-grid .product-actions > a,
+  .products .product-grid .product-actions > .explore-disabled {
+    min-height: 40px;
+    font-size: 12px;
+  }
+
+}

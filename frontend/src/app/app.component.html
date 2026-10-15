@@ -130,30 +130,57 @@
 
   <p>{{ product.description }}</p>
 
-  <div class="product-actions">
+<!-- =========================================
+     PRODUCT ACTION BUTTONS
+========================================= -->
 
-    <!-- Request details: All products -->
-    <a href="#contact">
-      Request details →
-    </a>
+<div class="product-actions">
 
-    <!-- Industrial Chemicals only -->
-    <a
-      *ngIf="product.category === 'Chemicals'"
-      routerLink="/products/nutraceutical-ingredients"
-    >
-      Explore Products →
-    </a>
+  <!-- Request Details - All Products -->
+  <a href="#contact">
+    Request details →
+  </a>
 
-    <!-- Food and Packaging: Coming later -->
-    <span
-      *ngIf="product.category === 'Food' || product.category === 'Packaging'"
-      class="explore-disabled"
-    >
-      Explore Products →
-    </span>
+  <!-- Industrial Chemicals -->
+  <a
+    *ngIf="product.category === 'Chemicals'"
+    routerLink="/products/nutraceutical-ingredients"
+  >
+    Explore Products →
+  </a>
 
-  </div>
+  <!-- Food Ingredients -->
+  <a
+    *ngIf="product.category === 'Food'"
+    routerLink="/products/food-ingredients"
+  >
+    Explore Products →
+  </a>
+
+  <!-- Pharmaceutical Industries -->
+  <a
+    *ngIf="product.category === 'Pharmaceutical'"
+    routerLink="/products/pharmaceutical-industries"
+  >
+    Explore Products →
+  </a>
+
+  <!-- Packaging Materials -->
+  <span
+    *ngIf="product.category === 'Packaging'"
+    class="explore-disabled"
+  >
+    Explore Products →
+  </span>
+  <!-- Bakery Industries -->
+<span
+  *ngIf="product.category === 'Bakery'"
+  class="explore-disabled"
+>
+  Explore Products →
+</span>
+
+</div>
 
 </div>
 

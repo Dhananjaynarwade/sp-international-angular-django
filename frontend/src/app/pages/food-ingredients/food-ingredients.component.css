@@ -1,0 +1,1040 @@
+/* =========================================
+   SP INTERNATIONAL - FOOD INGREDIENTS
+========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.food-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 35px 20px 80px;
+
+  background: linear-gradient(
+    180deg,
+    #061523 0%,
+    #081c30 55%,
+    #061523 100%
+  );
+
+  color: #ffffff;
+}
+
+.food-page *,
+.food-page *::before,
+.food-page *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.food-container {
+  width: 100%;
+  max-width: 1150px;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 35px;
+
+  color: #6ee7b7;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.back-link:hover {
+  color: #ffffff;
+  transform: translateX(-5px);
+}
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+.food-heading {
+  max-width: 800px;
+  margin: 10px auto 40px;
+  text-align: center;
+}
+
+.food-label {
+  display: block;
+
+  color: #5eead4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+.food-heading h1 {
+  margin: 15px 0;
+
+  color: #ffffff;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.food-heading p {
+  max-width: 650px;
+  margin: 0 auto;
+
+  color: #b7c6d6;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   SEARCH BAR
+========================================= */
+
+.food-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 58px;
+  margin-bottom: 18px;
+  padding: 0 18px;
+
+  background: #10253b;
+  border: 1px solid #294158;
+  border-radius: 14px;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.food-search:focus-within {
+  border-color: #10b981;
+  box-shadow:
+    0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+.search-icon {
+  flex-shrink: 0;
+
+  color: #6ee7b7;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.food-search input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.food-search input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.food-search input::placeholder {
+  color: #91a6ba;
+}
+
+/* =========================================
+   PRODUCT COUNT
+========================================= */
+
+.food-count {
+  margin: 0 0 25px;
+
+  color: #aebfd1;
+  font-size: 13px;
+}
+
+/* =========================================
+   PRODUCT GRID - LAPTOP
+========================================= */
+
+.food-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* =========================================
+   PREMIUM PRODUCT CARD
+========================================= */
+
+.food-card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 0;
+
+  background: #10253b;
+  border: 1px solid #243d54;
+  border-radius: 18px;
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(110, 231, 183, 0.5);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(16, 185, 129, 0.08);
+}
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.food-card-image {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 220px;
+
+  background: #e8edf0;
+  overflow: hidden;
+}
+
+/* Placeholder shown when image is missing */
+
+.image-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 90%;
+
+  transform: translate(-50%, -50%);
+
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.food-card-image img {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.food-card:hover .food-card-image img {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   PRODUCT INFORMATION
+========================================= */
+
+.food-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+
+  padding: 22px;
+}
+
+/* Product Name */
+
+.food-card-content h3 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+/* Product Description */
+
+.food-description {
+  margin: 0;
+
+  color: #b7c6d6;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Product Applications */
+
+.food-applications {
+  margin: 0;
+
+  color: #a9bdd0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.food-applications strong {
+  color: #e1edf5;
+  font-weight: 700;
+}
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.food-card-actions {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.food-datasheet,
+.food-quote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1 1 125px;
+  min-width: 0;
+  min-height: 44px;
+
+  padding: 10px 12px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* =========================================
+   DATASHEET BUTTON
+========================================= */
+
+.food-datasheet {
+  background: transparent;
+  border: 1px solid #10b981;
+  color: #6ee7b7;
+}
+
+.food-datasheet:hover {
+  background: rgba(16, 185, 129, 0.12);
+  color: #ffffff;
+}
+
+/* =========================================
+   GET QUOTE BUTTON
+========================================= */
+
+.food-quote {
+  background: #10b981;
+  border: 1px solid #10b981;
+  color: #061523;
+}
+
+.food-quote:hover {
+  background: #34d399;
+  border-color: #34d399;
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   BUTTON ACCESSIBILITY
+========================================= */
+
+.food-datasheet:focus-visible,
+.food-quote:focus-visible,
+.back-link:focus-visible {
+  outline: 2px solid #6ee7b7;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   NO SEARCH RESULTS
+========================================= */
+
+.food-empty {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.food-empty h3 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.food-empty p {
+  margin: 0;
+
+  color: #aebfd1;
+  font-size: 14px;
+}
+
+/* =========================================
+   TABLET - 2 PRODUCTS PER ROW
+========================================= */
+
+@media (max-width: 900px) {
+
+  .food-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+  .food-card-image {
+    height: 190px;
+  }
+
+  .food-card-content {
+    padding: 18px;
+  }
+
+  .food-heading h1 {
+    font-size: 36px;
+  }
+
+}
+
+/* =========================================
+   MOBILE - 1 PRODUCT PER ROW
+========================================= */
+
+@media (max-width: 600px) {
+
+  .food-page {
+    padding: 25px 16px 55px;
+  }
+
+  .food-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Back Button */
+
+  .back-link {
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+
+  /* Heading */
+
+  .food-heading {
+    margin: 10px auto 28px;
+  }
+
+  .food-label {
+    font-size: 10px;
+    letter-spacing: 1.3px;
+  }
+
+  .food-heading h1 {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .food-heading p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* Search Bar */
+
+  .food-search {
+    min-height: 52px;
+    padding: 0 14px;
+    border-radius: 12px;
+  }
+
+  .food-search input {
+    height: 50px;
+    font-size: 16px;
+  }
+
+  /* Product Count */
+
+  .food-count {
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+
+  /* Product Grid */
+
+  .food-grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 20px;
+  }
+
+  /* Product Card */
+
+  .food-card {
+    border-radius: 16px;
+  }
+
+  .food-card-image {
+    height: 220px;
+  }
+
+  .food-card-content {
+    padding: 19px;
+    gap: 10px;
+  }
+
+  .food-card-content h3 {
+    font-size: 18px;
+  }
+
+  .food-description {
+    font-size: 14px;
+  }
+
+  .food-applications {
+    font-size: 13px;
+  }
+
+  .food-card-actions {
+    gap: 10px;
+  }
+
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+
+  .food-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .food-heading h1 {
+    font-size: 27px;
+  }
+
+  .food-card-image {
+    height: 185px;
+  }
+
+  .food-card-content {
+    padding: 16px;
+  }
+
+  .food-card-actions {
+    flex-direction: column;
+  }
+
+  .food-datasheet,
+  .food-quote {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+}/* =========================================
+   FOOD INGREDIENTS - COMPACT PRODUCT CARDS
+========================================= */
+
+/* LAPTOP - 4 CARDS PER ROW */
+
+@media (min-width: 901px) {
+
+  .food-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+}
+
+/* SMALLER PRODUCT IMAGE */
+
+.food-card-image {
+  height: 155px;
+}
+
+/* COMPACT CARD CONTENT */
+
+.food-card-content {
+  padding: 15px;
+  gap: 8px;
+}
+
+.food-card-content h3 {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.food-description {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.food-applications {
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+/* SMALLER BUTTONS */
+
+.food-card-actions {
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.food-datasheet,
+.food-quote {
+  flex: 1 1 95px;
+  min-height: 36px;
+  padding: 8px;
+  font-size: 11px;
+  border-radius: 7px;
+}
+
+/* TABLET - 3 CARDS PER ROW */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+  .food-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .food-card-image {
+    height: 145px;
+  }
+
+}
+
+/* PHONE - 2 CARDS PER ROW */
+
+@media (max-width: 600px) {
+
+  .food-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .food-card-image {
+    height: 125px;
+  }
+
+  .food-card-content {
+    padding: 12px;
+    gap: 7px;
+  }
+
+  .food-card-content h3 {
+    font-size: 13px;
+  }
+
+  .food-description {
+    font-size: 11px;
+  }
+
+  .food-applications {
+    font-size: 10px;
+  }
+
+  .food-card-actions {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .food-datasheet,
+  .food-quote {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 34px;
+    font-size: 10px;
+  }
+
+}
+
+/* VERY SMALL PHONES - 1 CARD PER ROW */
+
+@media (max-width: 360px) {
+
+  .food-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .food-card,
+  .food-card-image img,
+  .food-datasheet,
+  .food-quote,
+  .food-search,
+  .back-link {
+    transition: none;
+  }
+
+  .food-card:hover,
+  .food-card:hover .food-card-image img,
+  .food-quote:hover,
+  .back-link:hover {
+    transform: none;
+  }
+
+}
+/* =========================================
+   FOOD INGREDIENTS - PREMIUM UI ENHANCEMENTS
+========================================= */
+
+/* =========================================
+   PRODUCT CARD - SMOOTH HOVER
+========================================= */
+
+.food-card {
+  position: relative;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@media (hover: hover) {
+
+  .food-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 231, 183, 0.65);
+
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(16, 185, 129, 0.1);
+  }
+
+}
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.food-card-image {
+  isolation: isolate;
+}
+
+.food-card-image img {
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+@media (hover: hover) {
+
+  .food-card:hover .food-card-image img {
+    transform: scale(1.07);
+    filter: brightness(1.05);
+  }
+
+}
+
+/* =========================================
+   PRODUCT TITLE
+========================================= */
+
+.food-card-content h3 {
+  transition: color 0.3s ease;
+}
+
+@media (hover: hover) {
+
+  .food-card:hover .food-card-content h3 {
+    color: #6ee7b7;
+  }
+
+}
+
+/* =========================================
+   REQUEST DATASHEET - GMAIL BUTTON
+========================================= */
+
+.food-datasheet {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid #10b981;
+
+  color: #6ee7b7;
+
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Email icon */
+
+.food-datasheet::before {
+  content: "✉";
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Hover animation */
+
+@media (hover: hover) {
+
+  .food-datasheet:hover {
+    background: #10b981;
+    border-color: #10b981;
+    color: #061523;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 8px 20px rgba(16, 185, 129, 0.25);
+  }
+
+}
+
+/* =========================================
+   GET QUOTE - PREMIUM BUTTON
+========================================= */
+
+.food-quote {
+  position: relative;
+
+  background: linear-gradient(
+    135deg,
+    #10b981,
+    #34d399
+  );
+
+  border: 1px solid #10b981;
+  color: #061523;
+
+  font-weight: 800;
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+@media (hover: hover) {
+
+  .food-quote:hover {
+    background: linear-gradient(
+      135deg,
+      #34d399,
+      #6ee7b7
+    );
+
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 8px 22px rgba(16, 185, 129, 0.3);
+  }
+
+}
+
+/* =========================================
+   BUTTON CLICK EFFECT
+========================================= */
+
+.food-datasheet:active,
+.food-quote:active {
+  transform: scale(0.97);
+}
+
+/* =========================================
+   SEARCH BAR - PREMIUM EFFECT
+========================================= */
+
+.food-search {
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.food-search:focus-within {
+  background: #142d45;
+  border-color: #34d399;
+
+  box-shadow:
+    0 0 0 3px rgba(16, 185, 129, 0.12),
+    0 0 20px rgba(16, 185, 129, 0.08);
+}
+
+/* =========================================
+   KEYBOARD ACCESSIBILITY
+========================================= */
+
+.food-datasheet:focus-visible,
+.food-quote:focus-visible {
+  outline: 2px solid #a7f3d0;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   MOBILE TOUCH IMPROVEMENTS
+========================================= */
+
+@media (max-width: 600px) {
+
+  .food-datasheet,
+  .food-quote {
+    min-height: 38px;
+    gap: 5px;
+  }
+
+  .food-datasheet::before {
+    font-size: 13px;
+  }
+
+  .food-card:active {
+    border-color: rgba(110, 231, 183, 0.5);
+  }
+
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .food-card,
+  .food-card-image img,
+  .food-card-content h3,
+  .food-datasheet,
+  .food-quote,
+  .food-search {
+    transition: none;
+  }
+
+  .food-card:hover,
+  .food-card:hover .food-card-image img,
+  .food-datasheet:hover,
+  .food-quote:hover {
+    transform: none;
+  }
+
+}/* =========================================
+   FOOD INGREDIENTS - FULL IMAGE DISPLAY
+========================================= */
+
+.food-card-image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: #eef3f6;
+  overflow: hidden;
+}
+
+.food-card-image img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+}
+
+/* Keep the full image visible on hover */
+
+.food-card:hover .food-card-image img {
+  transform: none;
+}
+.food-page {
+  background: linear-gradient(
+    180deg,
+    #524141 0%,
+    #2a3646 55%,
+    #597451 100%
+  );
+}

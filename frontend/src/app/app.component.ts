@@ -58,6 +58,7 @@ private api = window.location.hostname === 'localhost' ||
   ? 'http://127.0.0.1:8000/api'
   : 'https://spinternational-backend.onrender.com/api';
 
+  // here we add new product here page 
   products: Product[] = [
     {
       name: 'Industrial Chemicals',
@@ -76,7 +77,32 @@ private api = window.location.hostname === 'localhost' ||
       category: 'Packaging',
       description: 'Commercial packaging solutions for supply and export operations.',
       image_url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80'
-    }
+    },
+   {
+  name: 'Pharmaceutical Industries',
+  category: 'Pharmaceutical',
+  description: 'Quality pharmaceutical ingredients and reliable sourcing solutions for healthcare applications.',
+  image_url: 'https://images.unsplash.com/photo-1763142843470-9a9e9db7f68f?auto=format&fit=crop&w=900&q=80'
+},
+{
+  name: 'Bakery Industries',
+  category: 'Bakery',
+  description: 'Quality bakery ingredients and reliable sourcing solutions for commercial baking and food production.',
+  image_url: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80'
+},
+{
+  name: 'Bakery Industries',
+  category: 'Bakery',
+  description: 'Quality bakery ingredients and reliable sourcing solutions for commercial baking and food production.',
+  image_url: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80'
+},
+{
+  name: 'Bakery Industries',
+  category: 'Bakery',
+  description: 'Quality bakery ingredients and reliable sourcing solutions for commercial baking and food production.',
+  image_url: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80'
+}
+
   ];
 
   quote = {
@@ -109,7 +135,24 @@ constructor(
     AOS.init({ duration: 850, once: true, offset: 80 });
     this.http.get<Product[]>(`${this.api}/products/`).subscribe({
       next: data => {
-        if (data?.length) this.products = data;
+       if (data?.length) {
+
+  const pharmaceutical = this.products.find(
+    product => product.name === 'Pharmaceutical Industries'
+  );
+
+  this.products = [...data];
+
+  if (
+    pharmaceutical &&
+    !this.products.some(
+      product => product.name === 'Pharmaceutical Industries'
+    )
+  ) {
+    this.products.push(pharmaceutical);
+  }
+
+}
       },
       error: () => {
         // Backend may not be running yet. Sample products remain visible.
