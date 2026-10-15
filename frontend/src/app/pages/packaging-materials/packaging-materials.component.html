@@ -1,0 +1,166 @@
+
+<section class="packaging-page">
+
+  <!-- HERO SECTION -->
+  <div class="packaging-hero">
+
+    <div class="packaging-container">
+
+      <!-- BACK BUTTON -->
+      <a
+        routerLink="/products"
+        class="back-link">
+        ← Back to Products
+      </a>
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          SP INTERNATIONAL · PRODUCT PORTFOLIO
+        </p>
+
+        <h1>
+          Packaging <span>Materials</span>
+        </h1>
+
+        <p class="hero-description">
+          Explore quality packaging materials for
+          logistics, warehousing, shipping,
+          e-commerce and industrial applications.
+        </p>
+
+        <div class="hero-badges">
+          <span>25 Products</span>
+          <span>7 Categories</span>
+          <span>Bulk Enquiries</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PRODUCTS SECTION -->
+  <div class="packaging-container">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">
+        EXPLORE OUR PRODUCTS
+      </p>
+
+      <h2>Our Packaging Collection</h2>
+
+      <p>
+        Find the right packaging materials
+        for your business requirements.
+      </p>
+
+    </div>
+
+    <!-- SEARCH AND FILTER -->
+    <div class="filters">
+
+      <input
+        type="search"
+        placeholder="Search packaging materials..."
+        [(ngModel)]="searchTerm"
+      />
+
+      <select [(ngModel)]="selectedCategory">
+
+        <option
+          *ngFor="let category of categories"
+          [value]="category">
+          {{ category }}
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- PRODUCT COUNT -->
+    <p class="result-count">
+      Showing {{ filteredProducts.length }}
+      of {{ products.length }} products
+    </p>
+
+    <!-- PRODUCT CARDS -->
+    <div class="product-grid">
+
+      <article
+        class="product-card"
+        *ngFor="let product of filteredProducts">
+
+        <!-- PRODUCT IMAGE PLACEHOLDER -->
+        <div class="product-image">
+          <span>{{ product.icon }}</span>
+        </div>
+
+        <!-- PRODUCT INFORMATION -->
+        <div class="product-info">
+
+          <span class="category">
+            {{ product.category }}
+          </span>
+
+          <h3>{{ product.name }}</h3>
+
+          <p>
+            Packaging solutions for commercial,
+            logistics and industrial needs.
+          </p>
+
+          <a
+            routerLink="/contact"
+            class="enquire-btn">
+            Enquire Now →
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+    <!-- NO SEARCH RESULTS -->
+    <div
+      class="empty-message"
+      *ngIf="filteredProducts.length === 0">
+
+      <h3>No products found</h3>
+
+      <p>
+        Try searching with a different
+        product name or category.
+      </p>
+
+    </div>
+
+    <!-- BULK ENQUIRY -->
+    <div class="bulk-banner">
+
+      <div>
+
+        <h2>
+          Need Packaging Materials in Bulk?
+        </h2>
+
+        <p>
+          Contact S-P International for
+          product specifications,
+          availability and quotations.
+        </p>
+
+      </div>
+
+      <a routerLink="/contact">
+        Request Quotation →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>

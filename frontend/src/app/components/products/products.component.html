@@ -86,13 +86,16 @@
               Explore Products →
             </a>
 
-            <!-- PACKAGING -->
-            <span
-              *ngIf="product.category === 'Packaging'"
-              class="sp-explore-disabled"
-            >
-              Explore Products →
-            </span>
+          
+<!-- PACKAGING MATERIALS -->
+<a
+  *ngIf="product.category === 'Packaging'"
+  routerLink="/products/packaging-materials"
+  class="sp-explore-button"
+>
+  Explore Products →
+</a>
+
 
             <!-- BAKERY -->
             <span
