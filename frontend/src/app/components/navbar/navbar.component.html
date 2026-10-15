@@ -1,1 +1,55 @@
-<p>navbar works!</p>
+<header class="navbar">
+
+  <div class="nav-inner">
+
+    <!-- LOGO -->
+    <a
+      class="brand"
+      href="#home"
+      (click)="navigateToSection($event, 'home')"
+    >
+      <span class="brand-mark">SP</span>
+
+      <span class="brand-text">
+        <strong>SP INTERNATIONAL</strong>
+        <small>Global Trade & Sourcing</small>
+      </span>
+    </a>
+
+    <!-- MOBILE MENU -->
+    <button
+      type="button"
+      class="mobile-menu-btn"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="mobileMenuOpen"
+      aria-controls="navbar-links"
+      aria-label="Toggle navigation menu"
+    >
+      ☰
+    </button>
+
+    <!-- NAVIGATION LINKS -->
+    <nav
+      id="navbar-links"
+      class="nav-links"
+      [class.mobile-open]="mobileMenuOpen"
+    >
+      <a href="#home" (click)="navigateToSection($event, 'home')">Home</a>
+      <a href="#about" (click)="navigateToSection($event, 'about')">About</a>
+      <a href="#products" (click)="navigateToSection($event, 'products')">Products</a>
+      <a href="#industries" (click)="navigateToSection($event, 'industries')">Industries</a>
+      <a href="#contact" (click)="navigateToSection($event, 'contact')">Contact</a>
+    </nav>
+
+    <!-- QUOTE BUTTON -->
+    <a
+      class="nav-quote"
+      href="#contact"
+      (click)="navigateToSection($event, 'contact')"
+    >
+      Request Quote
+    </a>
+
+  </div>
+
+</header>

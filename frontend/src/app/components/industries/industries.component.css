@@ -1,0 +1,243 @@
+/* =========================================
+   SP INTERNATIONAL - INDUSTRIES COMPONENT
+========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* MAIN SECTION */
+
+.sp-industries {
+  padding: 75px 0;
+
+  background: #081522;
+  color: #ffffff;
+
+  scroll-margin-top: 85px;
+}
+
+/* CONTAINER */
+
+.sp-industries-container {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.sp-industries-heading {
+  margin-bottom: 35px;
+}
+
+.sp-industries-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: #6ee7b7;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.sp-industries-heading h2 {
+  margin: 0;
+
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* =========================================
+   INDUSTRIES GRID
+========================================= */
+
+.sp-industries-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* INDUSTRY CARD */
+
+.sp-industry-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 190px;
+
+  padding: 24px;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    145deg,
+    #122337,
+    #0c1929
+  );
+
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* NUMBER */
+
+.sp-industry-number {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: #6ee7b7;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+/* TITLE */
+
+.sp-industry-card h3 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+/* DESCRIPTION */
+
+.sp-industry-card p {
+  margin: 0;
+
+  color: #a8b8ca;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   HOVER ANIMATION
+========================================= */
+
+@media (hover: hover) {
+
+  .sp-industry-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(16, 185, 129, 0.5);
+
+    box-shadow:
+      0 15px 30px rgba(0, 0, 0, 0.22);
+  }
+
+  .sp-industry-card:hover .sp-industry-number {
+    color: #a7f3d0;
+  }
+
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 980px) {
+
+  .sp-industries {
+    padding: 65px 0;
+  }
+
+  .sp-industries-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .sp-industry-card {
+    min-height: 170px;
+    padding: 20px;
+  }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .sp-industries {
+    padding: 55px 0;
+  }
+
+  .sp-industries-container {
+    width: calc(100% - 32px);
+  }
+
+  .sp-industries-heading {
+    margin-bottom: 25px;
+  }
+
+  .sp-industries-heading h2 {
+    font-size: 26px;
+  }
+
+  .sp-industries-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .sp-industry-card {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .sp-industry-number {
+    margin-bottom: 12px;
+  }
+
+  .sp-industry-card h3 {
+    font-size: 16px;
+  }
+
+  .sp-industry-card p {
+    font-size: 13px;
+  }
+
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-industry-card {
+    transition: none;
+  }
+
+}

@@ -113,3 +113,8 @@ To stop either server, go to its terminal and press:
 | Django API | http://127.0.0.1:8000/api/ |
 
 **Note:** The `/api/` URL works only if a matching API endpoint is configured. The Django root URL may show a 404 because no homepage route is defined.
+To run your S-P International Angular website on your phone, follow these steps.
+Step 1 — Start Angular in VS Code
+Open CMD in your frontend folder and run:
+
+ng serve --host 0.0.0.0 --poll=1000

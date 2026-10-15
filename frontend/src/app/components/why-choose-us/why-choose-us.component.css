@@ -1,0 +1,255 @@
+/* =========================================
+   SP INTERNATIONAL - WHY CHOOSE US
+========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* MAIN SECTION */
+
+.sp-why {
+  position: relative;
+  padding: 80px 0;
+
+  background: #081522;
+  color: #ffffff;
+
+  scroll-margin-top: 85px;
+}
+
+/* CONTAINER */
+
+.sp-why-container {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   TWO COLUMN LAYOUT
+========================================= */
+
+.sp-why-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 55px;
+  align-items: center;
+}
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.sp-why-content {
+  min-width: 0;
+}
+
+.sp-why-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 16px;
+
+  color: #6ee7b7;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+.sp-why-content h2 {
+  margin: 0 0 22px;
+
+  color: #ffffff;
+
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  line-height: 1.25;
+
+  letter-spacing: -0.03em;
+}
+
+.sp-why-content p {
+  max-width: 550px;
+  margin: 0;
+
+  color: #a8b8ca;
+
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* =========================================
+   RIGHT BENEFIT GRID
+========================================= */
+
+.sp-why-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+/* BENEFIT CARD */
+
+.sp-why-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 175px;
+
+  padding: 22px;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    145deg,
+    #122337,
+    #0b1929
+  );
+
+  border: 1px solid rgba(148, 163, 184, 0.17);
+  border-radius: 16px;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* CARD NUMBER */
+
+.sp-why-card span {
+  margin-bottom: 16px;
+
+  color: #6ee7b7;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* CARD TITLE */
+
+.sp-why-card h3 {
+  margin: 0 0 10px;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* CARD DESCRIPTION */
+
+.sp-why-card p {
+  margin: 0;
+
+  color: #a8b8ca;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  overflow-wrap: break-word;
+}
+
+/* =========================================
+   HOVER EFFECTS
+========================================= */
+
+@media (hover: hover) {
+
+  .sp-why-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(16, 185, 129, 0.5);
+
+    box-shadow:
+      0 15px 30px rgba(0, 0, 0, 0.22);
+  }
+
+  .sp-why-card:hover span {
+    color: #a7f3d0;
+  }
+
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 980px) {
+
+  .sp-why {
+    padding: 65px 0;
+  }
+
+  .sp-why-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 35px;
+  }
+
+  .sp-why-grid {
+    gap: 16px;
+  }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .sp-why {
+    padding: 55px 0;
+  }
+
+  .sp-why-container {
+    width: calc(100% - 32px);
+  }
+
+  .sp-why-content h2 {
+    font-size: 28px;
+  }
+
+  .sp-why-content p {
+    font-size: 14px;
+  }
+
+  .sp-why-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .sp-why-card {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .sp-why-card h3 {
+    font-size: 16px;
+  }
+
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-why-card {
+    transition: none;
+  }
+
+}

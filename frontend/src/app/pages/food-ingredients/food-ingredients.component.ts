@@ -74,14 +74,14 @@ export class FoodIngredientsComponent {
       name: 'Sodium Benzoate',
       description: 'Preservative for suitable acidic food formulations.',
       applications: 'Beverages, sauces and processed food products.',
-      image: 'sodium-benzoate.jpg'
+      image: 'sodium-benzoate.png'
     },
 
     {
       name: 'Potassium Sorbate',
       description: 'Preservative used to help control yeast and mould growth.',
       applications: 'Bakery, beverages and dairy formulations.',
-      image: 'potassium-sorbate.jpg'
+      image: 'potassium-sorbate.png'
     },
 
     {

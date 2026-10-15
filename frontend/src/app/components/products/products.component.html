@@ -1,0 +1,115 @@
+<section id="products" class="sp-products">
+
+  <div class="sp-products-container">
+
+    <!-- SECTION HEADING -->
+    <div class="sp-products-heading" data-aos="fade-up">
+
+      <div class="sp-products-eyebrow">
+        Our Products
+      </div>
+
+      <h2>
+        Products for business, industry and growth.
+      </h2>
+
+      <p>
+        Manage these products later from Django Admin.
+      </p>
+
+    </div>
+
+    <!-- PRODUCT CARDS -->
+    <div class="sp-products-grid">
+
+      <article
+        class="sp-product-card"
+        *ngFor="let product of products; let i = index"
+        data-aos="fade-up"
+        [attr.data-aos-delay]="i * 90"
+      >
+
+        <!-- PRODUCT IMAGE -->
+        <div class="sp-product-image">
+
+          <img
+            [src]="product.image_url"
+            [alt]="product.name"
+            [attr.loading]="i < 2 ? 'eager' : 'lazy'"
+          >
+
+          <span>{{ product.category }}</span>
+
+        </div>
+
+        <!-- PRODUCT CONTENT -->
+        <div class="sp-product-body">
+
+          <h3>{{ product.name }}</h3>
+
+          <p>{{ product.description }}</p>
+
+          <!-- BUTTONS -->
+          <div class="sp-product-actions">
+
+            <a
+              class="sp-request-button"
+              href="#contact"
+            >
+              Request details →
+            </a>
+
+            <!-- INDUSTRIAL CHEMICALS -->
+            <a
+              *ngIf="product.category === 'Chemicals'"
+              routerLink="/products/nutraceutical-ingredients"
+              class="sp-explore-button"
+            >
+              Explore Products →
+            </a>
+
+            <!-- FOOD INGREDIENTS -->
+            <a
+              *ngIf="product.category === 'Food'"
+              routerLink="/products/food-ingredients"
+              class="sp-explore-button"
+            >
+              Explore Products →
+            </a>
+
+            <!-- PHARMACEUTICAL -->
+            <a
+              *ngIf="product.category === 'Pharmaceutical'"
+              routerLink="/products/pharmaceutical-industries"
+              class="sp-explore-button"
+            >
+              Explore Products →
+            </a>
+
+            <!-- PACKAGING -->
+            <span
+              *ngIf="product.category === 'Packaging'"
+              class="sp-explore-disabled"
+            >
+              Explore Products →
+            </span>
+
+            <!-- BAKERY -->
+            <span
+              *ngIf="product.category === 'Bakery'"
+              class="sp-explore-disabled"
+            >
+              Explore Products →
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>

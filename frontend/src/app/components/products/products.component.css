@@ -1,0 +1,261 @@
+/* =========================================
+   SP INTERNATIONAL - PRODUCTS COMPONENT
+========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.sp-products {
+  padding: 75px 0;
+  background: #07111f;
+  color: #ffffff;
+}
+
+.sp-products-container {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* SECTION HEADING */
+
+.sp-products-heading {
+  margin-bottom: 38px;
+  text-align: center;
+}
+
+.sp-products-eyebrow {
+  color: #6ee7b7;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.sp-products-heading h2 {
+  margin: 12px 0;
+  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.sp-products-heading p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* =========================================
+   COMPACT RESPONSIVE PRODUCT GRID
+========================================= */
+
+.sp-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 190px));
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+}
+
+/* PRODUCT CARD */
+
+.sp-product-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+
+  background: linear-gradient(180deg, #111d2c, #0b1625);
+
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 15px;
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* PRODUCT IMAGE */
+
+.sp-product-image {
+  position: relative;
+  height: 145px;
+  overflow: hidden;
+}
+
+.sp-product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sp-product-image span {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  padding: 6px 9px;
+  border-radius: 7px;
+
+  background: #07111f;
+  color: #ffffff;
+  font-size: 11px;
+}
+
+/* PRODUCT DETAILS */
+
+.sp-product-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+}
+
+.sp-product-body h3 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sp-product-body > p {
+  margin: 0;
+
+  color: #a8b8ca;
+  font-size: 12px;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.sp-product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.sp-product-actions > a,
+.sp-product-actions > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 5px;
+
+  box-sizing: border-box;
+  border-radius: 7px;
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* REQUEST DETAILS */
+
+.sp-request-button {
+  color: #6ee7b7;
+  background: transparent;
+  border: 1px solid #10b981;
+}
+
+/* EXPLORE PRODUCTS */
+
+.sp-explore-button {
+  color: #062016;
+  background: #10b981;
+  border: 1px solid #10b981;
+}
+
+/* DISABLED EXPLORE BUTTON */
+
+.sp-explore-disabled {
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  opacity: 0.65;
+  cursor: default;
+}
+
+/* HOVER EFFECTS */
+
+@media (hover: hover) {
+  .sp-product-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(16, 185, 129, 0.45);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  .sp-product-card:hover img {
+    transform: scale(1.05);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .sp-products {
+    padding: 55px 0;
+  }
+
+  .sp-products-container {
+    width: calc(100% - 32px);
+  }
+
+  .sp-products-grid {
+    grid-template-columns: minmax(0, 360px);
+    gap: 18px;
+  }
+
+  .sp-product-image {
+    height: 190px;
+  }
+
+  .sp-product-body {
+    padding: 18px;
+  }
+
+  .sp-product-body h3 {
+    font-size: 17px;
+  }
+
+  .sp-product-body > p {
+    font-size: 13px;
+  }
+
+  .sp-product-actions > a,
+  .sp-product-actions > span {
+    min-height: 42px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-product-card,
+  .sp-product-image img {
+    transition: none;
+  }
+}

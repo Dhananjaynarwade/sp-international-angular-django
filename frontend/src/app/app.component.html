@@ -2,478 +2,51 @@
 
 <div *ngIf="!isProductDetailsPage">
 
-<header class="navbar">
-  <div class="container nav-inner">
-    <a class="brand" href="#home">
-      <span class="brand-mark">SP</span>
-      <span>
-        <strong>SP INTERNATIONAL</strong>
-        <small>Global Trade & Sourcing</small>
-      </span>
-    </a>
-<!-- Mobile menu button -->
-<button
-  type="button"
-  class="mobile-menu-btn"
-  (click)="mobileMenuOpen = !mobileMenuOpen"
-  [attr.aria-expanded]="mobileMenuOpen"
-  aria-label="Toggle navigation menu"
->
-  ☰
-</button>
+  <app-navbar></app-navbar>
 
-<nav [class.mobile-open]="mobileMenuOpen">
+  <main>
 
-  <a href="#home" (click)="navigateToSection($event, 'home')">
-    Home
-  </a>
+    <app-hero></app-hero>
 
-  <a href="#about" (click)="navigateToSection($event, 'about')">
-    About
-  </a>
+    <!-- Keep your actual About section here -->
+<app-about></app-about>
 
-  <a href="#products" (click)="navigateToSection($event, 'products')">
-    Products
-  </a>
 
-  <a href="#industries" (click)="navigateToSection($event, 'industries')">
-    Industries
-  </a>
+    <!-- Keep your actual Products section here -->
+     <app-products [products]="products"></app-products>
 
-  <a href="#contact" (click)="navigateToSection($event, 'contact')">
-    Contact
-  </a>
+    <!-- Keep your actual Industries section here -->
+     <app-industries></app-industries>
 
-</nav>
+    <!-- Keep your actual Process section here -->
+     <app-process></app-process>
+
+    <!-- Keep your actual Why Choose Us section here -->
+     <app-why-choose-us></app-why-choose-us>
+
+    <!-- Keep your actual Contact form here -->
+     <app-contact></app-contact>
 
 
 
-    <a class="btn btn-primary nav-btn" href="#contact">Request Quote</a>
-  </div>
-</header>
-
-<main>
-  <section id="home" class="hero">
-    <div class="hero-orb orb-1"></div>
-    <div class="hero-orb orb-2"></div>
-    <div class="container hero-grid">
-      <div class="hero-copy" data-aos="fade-right">
-        <div class="eyebrow">Trusted sourcing. Reliable delivery.</div>
-        <h1>Your Global Partner for <span>Import, Export & Distribution</span></h1>
-        <p>
-          We connect businesses with dependable products, competitive sourcing
-          and a supply chain built for speed, transparency and growth.
-        </p>
-        <div class="hero-actions">
-          <a href="#products" class="btn btn-primary">Explore Products</a>
-          <a href="#contact" class="btn btn-outline">Get a Quote</a>
-        </div>
-
-        <div class="trust-row">
-          <div><strong>10+</strong><span>Years Experience</span></div>
-          <div><strong>500+</strong><span>Business Clients</span></div>
-          <div><strong>100+</strong><span>Products</span></div>
-        </div>
-      </div>
-
-      <div class="hero-card card" data-aos="zoom-in">
-        <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=80" alt="Global logistics">
-        </div>
-        <div class="floating-chip chip-a">Global Sourcing</div>
-        <div class="floating-chip chip-b">Quality Checked</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section about">
-    <div class="container about-grid">
-      <div data-aos="fade-up">
-        <div class="eyebrow">About SP INTERNATIONAL</div>
-        <h2 class="section-title">Building dependable supply chains for modern businesses.</h2>
-      </div>
-      <div data-aos="fade-up" data-aos-delay="120">
-        <p class="section-copy">
-          S-P International is a professional sourcing, trading and distribution company.
-          Our focus is simple: reliable suppliers, consistent quality, transparent communication
-          and dependable delivery.
-        </p>
-        <div class="about-points">
-          <div>✓ Verified supplier network</div>
-          <div>✓ Quality-focused sourcing</div>
-          <div>✓ Pan-India distribution support</div>
-          <div>✓ Import & export coordination</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="products" class="section products">
-    <div class="container">
-      <div class="center-head" data-aos="fade-up">
-        <div class="eyebrow">Our Products</div>
-        <h2 class="section-title">Products for business, industry and growth.</h2>
-        <p class="section-copy">Manage these products later from Django Admin.</p>
-      </div>
-
-      <div class="grid product-grid">
-        <article class="product-card card" *ngFor="let product of products; let i=index"
-                 data-aos="fade-up" [attr.data-aos-delay]="i * 90">
-          <div class="product-image">
-            <img [src]="product.image_url" [alt]="product.name">
-            <span>{{ product.category }}</span>
-          </div>
-         
-<div class="product-body">
-
-  <h3>{{ product.name }}</h3>
-
-  <p>{{ product.description }}</p>
-
-<!-- =========================================
-     PRODUCT ACTION BUTTONS
-========================================= -->
-
-<div class="product-actions">
-
-  <!-- Request Details - All Products -->
-  <a href="#contact">
-    Request details →
-  </a>
-
-  <!-- Industrial Chemicals -->
-  <a
-    *ngIf="product.category === 'Chemicals'"
-    routerLink="/products/nutraceutical-ingredients"
-  >
-    Explore Products →
-  </a>
-
-  <!-- Food Ingredients -->
-  <a
-    *ngIf="product.category === 'Food'"
-    routerLink="/products/food-ingredients"
-  >
-    Explore Products →
-  </a>
-
-  <!-- Pharmaceutical Industries -->
-  <a
-    *ngIf="product.category === 'Pharmaceutical'"
-    routerLink="/products/pharmaceutical-industries"
-  >
-    Explore Products →
-  </a>
-
-  <!-- Packaging Materials -->
-  <span
-    *ngIf="product.category === 'Packaging'"
-    class="explore-disabled"
-  >
-    Explore Products →
-  </span>
-  <!-- Bakery Industries -->
-<span
-  *ngIf="product.category === 'Bakery'"
-  class="explore-disabled"
->
-  Explore Products →
-</span>
+  </main>
 
 </div>
+<app-footer></app-footer>
 
-</div>
 
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <section id="industries" class="section industries">
-    <div class="container">
-      <div data-aos="fade-up">
-        <div class="eyebrow">Industries We Serve</div>
-        <h2 class="section-title">One partner. Multiple industries.</h2>
-      </div>
 
-      <div class="grid industry-grid">
-        <div class="industry-card card" data-aos="fade-up">
-          <span>01</span><h3>Food & Beverage</h3><p>Ingredients and commercial supply solutions.</p>
-        </div>
-        <div class="industry-card card" data-aos="fade-up" data-aos-delay="80">
-          <span>02</span><h3>Manufacturing</h3><p>Industrial products for day-to-day operations.</p>
-        </div>
-        <div class="industry-card card" data-aos="fade-up" data-aos-delay="160">
-          <span>03</span><h3>Packaging</h3><p>Materials and sourcing support for product distribution.</p>
-        </div>
-        <div class="industry-card card" data-aos="fade-up" data-aos-delay="240">
-          <span>04</span><h3>Import / Export</h3><p>Global sourcing and cross-border trade coordination.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ 
 
-  <section class="section process">
-    <div class="container">
-      <div class="center-head" data-aos="fade-up">
-        <div class="eyebrow">Our Process</div>
-        <h2 class="section-title">From requirement to delivery.</h2>
-      </div>
-      <div class="process-line">
-        <div class="process-step" data-aos="fade-right"><b>1</b><span>Requirement</span></div>
-        <div class="process-step" data-aos="fade-right" data-aos-delay="80"><b>2</b><span>Sourcing</span></div>
-        <div class="process-step" data-aos="fade-right" data-aos-delay="160"><b>3</b><span>Quality Check</span></div>
-        <div class="process-step" data-aos="fade-right" data-aos-delay="240"><b>4</b><span>Dispatch</span></div>
-        <div class="process-step" data-aos="fade-right" data-aos-delay="320"><b>5</b><span>Delivery</span></div>
-      </div>
-    </div>
-  </section>
+ 
 
-  <section class="section why">
-    <div class="container why-grid">
-      <div data-aos="fade-right">
-        <div class="eyebrow">Why Choose Us</div>
-        <h2 class="section-title">Professional sourcing with practical business support.</h2>
-        <p class="section-copy">
-          We combine supplier relationships, responsive communication and quality checks
-          to reduce sourcing complexity for our customers.
-        </p>
-      </div>
 
-      <div class="grid why-cards">
-        <div class="card mini-card" data-aos="zoom-in"><b>01</b><h3>Quality First</h3><p>Products selected with consistency and standards in mind.</p></div>
-        <div class="card mini-card" data-aos="zoom-in" data-aos-delay="100"><b>02</b><h3>Reliable Supply</h3><p>Clear communication from order to delivery.</p></div>
-        <div class="card mini-card" data-aos="zoom-in" data-aos-delay="200"><b>03</b><h3>Competitive Sourcing</h3><p>Supplier comparison focused on long-term value.</p></div>
-        <div class="card mini-card" data-aos="zoom-in" data-aos-delay="300"><b>04</b><h3>Business Support</h3><p>Fast response for quotations and product requirements.</p></div>
-      </div>
-    </div>
-  </section>
+ 
 
-  <section id="contact" class="section contact">
-    <div class="container contact-grid">
-      <div data-aos="fade-right">
-        <div class="eyebrow">Request a Quote</div>
-        <h2 class="section-title">Tell us what you need.</h2>
-        <p class="section-copy">
-          Share your requirement and our team can contact you with product availability,
-          pricing and sourcing information.
-        </p>
-        <div class="contact-info">
-        <div>
-  <small>Email</small>
-  <strong>SPINTERNATIONAL42&#64;gmail.com</strong>
-</div>
-          <div><small>Phone</small><strong>+91 9137724155</strong></div>
-          <div><small>Location</small><strong>India</strong></div>
-        </div>
-      </div>
 
-     <form
-  class="quote-form card"
-  (ngSubmit)="submitQuote()"
-  #quoteForm="ngForm"
-  data-aos="fade-left"
->
-
-  <div class="form-row">
-
-    <!-- Customer Name -->
-    <div class="form-field">
-      <input
-        [(ngModel)]="quote.name"
-        name="name"
-        placeholder="Your name"
-        required
-        minlength="2"
-        maxlength="120"
-        pattern="[a-zA-Z]+([ .'-][a-zA-Z]+)*"
-        #nameInput="ngModel"
-      >
-
-      <small class="error-text"
-        *ngIf="nameInput.invalid && (nameInput.touched || nameInput.dirty)">
-        Enter a valid name using letters.
-      </small>
-    </div>
-
-    <!-- Company -->
-    <div class="form-field">
-      <input
-        [(ngModel)]="quote.company"
-        name="company"
-        placeholder="Company name"
-        maxlength="150"
-      >
-    </div>
-
-  </div>
-
-  <div class="form-row">
-
-    <!-- Email -->
-    <div class="form-field">
-      <input
-        [(ngModel)]="quote.email"
-        name="email"
-        type="email"
-        placeholder="Email address"
-        required
-        email
-        maxlength="254"
-        #emailInput="ngModel"
-      >
-
-      <small class="error-text"
-        *ngIf="emailInput.invalid && (emailInput.touched || emailInput.dirty)">
-        Enter a valid email address.
-      </small>
-    </div>
-
-    <!-- Phone -->
-    <div class="form-field">
-      <input
-        [(ngModel)]="quote.phone"
-        name="phone"
-        type="tel"
-        placeholder="10-digit mobile number"
-        pattern="[6-9][0-9]{9}"
-        maxlength="10"
-        inputmode="numeric"
-        #phoneInput="ngModel"
-      >
-
-      <small class="error-text"
-        *ngIf="phoneInput.invalid && (phoneInput.touched || phoneInput.dirty)">
-        Enter a valid 10-digit Indian mobile number.
-      </small>
-    </div>
-
-  </div>
-
-  <!-- Product -->
-  <div class="form-field">
-    <input
-      [(ngModel)]="quote.product"
-      name="product"
-      placeholder="Product / requirement"
-      required
-      maxlength="180"
-      #productInput="ngModel"
-    >
-
-    <small class="error-text"
-      *ngIf="productInput.invalid && productInput.touched">
-      Please enter your product requirement.
-    </small>
-  </div>
-
-  <!-- Message -->
-  <div class="form-field">
-    <textarea
-      [(ngModel)]="quote.message"
-      name="message"
-      rows="5"
-      placeholder="Tell us about your requirement"
-      required
-      minlength="4"
-      #messageInput="ngModel"
-    ></textarea>
-
-    <small class="error-text"
-      *ngIf="messageInput.invalid && messageInput.touched">
-      Please enter at least 10 characters.
-    </small>
-  </div>
-
-  <button
-    class="btn btn-primary"
-    type="submit"
-    [disabled]="sending || quoteForm.invalid"
-  >
-    {{ sending ? 'Sending...' : 'Send Request' }}
-  </button>
-
-  <p class="form-message" *ngIf="sentMessage">
-    {{ sentMessage }}
-  </p>
-
-</form>
-    </div>
-  </section>
-</main>
 
   <!-- </main> -->
 
-</div> <!-- END OF HOMEPAGE -->
-
-<!-- SHARED FOOTER - VISIBLE ON ALL PAGES -->
-<footer class="sp-footer">
-
-  <div class="container footer-grid">
-
-    <!-- COMPANY -->
-    <div class="footer-company">
-      <div class="brand footer-brand">
-        <span class="brand-mark">SP</span>
-
-        <span class="footer-brand-text">
-          <strong>SP INTERNATIONAL</strong>
-          <small>Global Trade & Sourcing</small>
-        </span>
-      </div>
-
-      <p>
-        <strong>Reliable sourcing.</strong>
-        Quality products.
-        <strong>Stronger business relationships.</strong>
-      </p>
-    </div>
-
-    <!-- QUICK LINKS -->
-    <div class="footer-links">
-      <h3>Quick Links</h3>
-
-      <a routerLink="/" fragment="about">About Us</a>
-      <a routerLink="/" fragment="products">Products</a>
-      <a routerLink="/" fragment="industries">Industries</a>
-      <a routerLink="/" fragment="contact">Contact</a>
-    </div>
-
-    <!-- OUR BUSINESS -->
-    <div class="footer-business">
-      <h3>Our Business</h3>
-
-      <span>Import</span>
-      <span>Export</span>
-      <span>Distribution</span>
-      <span>Global Sourcing</span>
-    </div>
-
-    <!-- CONTACT US -->
-    <div class="footer-contact">
-      <h3>Contact Us</h3>
-
-      <a href="mailto:SPINTERNATIONAL42@gmail.com">
-        SPINTERNATIONAL42&#64;gmail.com
-      </a>
-
-      <a href="tel:+919137724155">
-        +91 9137724155
-      </a>
-    </div>
-
-  </div>
-
-<!-- ANIMATED COPYRIGHT -->
-<div class="container footer-bottom">
-  <p class="copyright-text">
-    © 2026
-    <strong>SP INTERNATIONAL</strong>.
-    All rights reserved.
-  </p>
-</div>
-
-
-</footer>
 
 <!-- </div> -->
