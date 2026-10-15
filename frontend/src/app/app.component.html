@@ -1,53 +1,42 @@
+
+<!-- NAVBAR - ALL PAGES -->
 <app-navbar></app-navbar>
+
+<!-- ANGULAR ROUTED PAGES -->
 <router-outlet></router-outlet>
 
-
+<!-- HOMEPAGE SECTIONS -->
 <div *ngIf="!isProductDetailsPage">
-
 
   <main>
 
-    <app-hero></app-hero>
+    <!-- HOME -->
+    <app-hero id="home"></app-hero>
 
-    <!-- Keep your actual About section here -->
-<app-about></app-about>
+    <!-- ABOUT -->
+    <app-about id="about"></app-about>
 
+    <!-- PRODUCTS -->
+    <app-products
+      id="products"
+      [products]="products">
+    </app-products>
 
-    <!-- Keep your actual Products section here -->
-     <app-products [products]="products"></app-products>
+    <!-- INDUSTRIES -->
+    <app-industries id="industries"></app-industries>
 
-    <!-- Keep your actual Industries section here -->
-     <app-industries></app-industries>
+    <!-- PROCESS -->
+    <app-process></app-process>
 
-    <!-- Keep your actual Process section here -->
-     <app-process></app-process>
+    <!-- WHY CHOOSE US -->
+    <app-why-choose-us></app-why-choose-us>
 
-    <!-- Keep your actual Why Choose Us section here -->
-     <app-why-choose-us></app-why-choose-us>
-
-    <!-- Keep your actual Contact form here -->
-     <app-contact></app-contact>
-
-
+    <!-- CONTACT -->
+    <app-contact id="contact"></app-contact>
 
   </main>
 
 </div>
+
+<!-- FOOTER - ALL PAGES -->
 <app-footer></app-footer>
-
-
-
-
- 
-
- 
-
-
- 
-
-
-
-  <!-- </main> -->
-
-
-<!-- </div> -->

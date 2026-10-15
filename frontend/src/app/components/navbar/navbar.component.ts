@@ -1,15 +1,45 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { Router } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router} from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule,  RouterLink,RouterOutlet],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  
+scrollToSection(sectionId: string): void {
+
+  // Close mobile menu
+  this.mobileMenuOpen = false;
+
+  // Wait for Angular navigation to render the page
+  setTimeout(() => {
+
+    if (sectionId === 'home') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+  }, 200);
+
+}
+
 [x: string]: any;
 
   mobileMenuOpen = false;
@@ -20,6 +50,7 @@ export class NavbarComponent {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
+
 async navigateToSection(
   event: Event,
   sectionId: string
@@ -27,30 +58,14 @@ async navigateToSection(
 
   event.preventDefault();
 
+  // Close mobile menu
   this.mobileMenuOpen = false;
 
-  const scrollToSection = () => {
-    document.getElementById(sectionId)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  };
+  // Use clean Angular URLs
+  const route =
+    sectionId === 'home' ? '/' : `/${sectionId}`;
 
-  const currentPath = this.router.url.split(/[?#]/)[0];
-
-  if (currentPath !== '/') {
-    const navigated = await this.router.navigate(['/'], {
-      fragment: sectionId
-    });
-
-    if (navigated) {
-      setTimeout(scrollToSection, 100);
-    }
-
-    return;
-  }
-
-  scrollToSection();
+  await this.router.navigateByUrl(route);
 }
 
   @HostListener('document:click', ['$event'])

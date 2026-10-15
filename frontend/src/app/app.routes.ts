@@ -1,3 +1,5 @@
+
+import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
@@ -6,7 +8,46 @@ import { FoodIngredientsComponent } from './pages/food-ingredients/food-ingredie
 
 import { PharmaceuticalIndustriesComponent } from './pages/pharmaceutical-industries/pharmaceutical-industries.component';
 
+// Empty route component.
+// Your homepage sections are already displayed by AppComponent.
+@Component({
+  standalone: true,
+  template: ''
+})
+class HomeSectionRouteComponent {}
+
 export const routes: Routes = [
+
+  // Homepage
+  {
+    path: '',
+    component: HomeSectionRouteComponent,
+    pathMatch: 'full'
+  },
+
+  // About section
+  {
+    path: 'about',
+    component: HomeSectionRouteComponent
+  },
+
+  // Products section
+  {
+    path: 'products',
+    component: HomeSectionRouteComponent
+  },
+
+  // Industries section
+  {
+    path: 'industries',
+    component: HomeSectionRouteComponent
+  },
+
+  // Contact section
+  {
+    path: 'contact',
+    component: HomeSectionRouteComponent
+  },
 
   // Food Ingredients
   {

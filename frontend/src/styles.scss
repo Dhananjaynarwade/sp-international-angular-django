@@ -274,3 +274,22 @@ button,input,textarea,select{font:inherit}
 
 }
 
+/* Prevent fixed navbar from covering sections */
+
+#home,
+#about,
+#products,
+#industries,
+#contact {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  #home,
+  #about,
+  #products,
+  #industries,
+  #contact {
+    scroll-margin-top: 80px;
+  }
+}

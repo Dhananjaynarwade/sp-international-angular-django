@@ -51,13 +51,12 @@ interface Product {
     NavbarComponent,
     HeroComponent,
     AboutComponent,
-    ProductsComponent,
-    IndustriesComponent,
-    ProductsComponent,
     WhyChooseUsComponent,
     ContactComponent,
     FooterComponent,
-    FoodIngredientsComponent
+    FoodIngredientsComponent,
+    ProductsComponent,
+    IndustriesComponent,
 ],
 
   templateUrl: './app.component.html',
@@ -65,6 +64,49 @@ interface Product {
 })
 
 export class AppComponent implements OnInit {
+  
+private handleRouteChange(url: string): void {
+
+  const path = url.split(/[?#]/)[0];
+
+  // Show product detail pages separately.
+  this.isProductDetailsPage = path.startsWith('/products/');
+
+  const sectionRoutes: Record<string, string> = {
+    '/': 'home',
+    '/about': 'about',
+    '/products': 'products',
+    '/industries': 'industries',
+    '/contact': 'contact'
+  };
+
+  const sectionId = sectionRoutes[path];
+
+  if (!sectionId) {
+    return;
+  }
+
+  // Wait for Angular to display the homepage.
+  setTimeout(() => {
+
+    if (sectionId === 'home') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+      return;
+    }
+
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+  }, 100);
+
+}
+
 
   /* PRODUCT PAGE VISIBILITY */
 
@@ -141,26 +183,24 @@ export class AppComponent implements OnInit {
      CONSTRUCTOR
   ========================================= */
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
 
-    this.isProductDetailsPage =
-      this.router.url.startsWith('/products/');
+constructor(
+  private http: HttpClient,
+  private router: Router
+) {
 
-    this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd)
-      )
-      .subscribe(event => {
+  this.handleRouteChange(this.router.url);
 
-        this.isProductDetailsPage =
-          event.urlAfterRedirects.startsWith('/products/');
+  this.router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd)
+    )
+    .subscribe(event => {
+      this.handleRouteChange(event.urlAfterRedirects);
+    });
 
-      });
+}
 
-  }
 
   /* =========================================
      INITIALIZATION
