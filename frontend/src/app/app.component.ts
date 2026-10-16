@@ -72,6 +72,13 @@ export class AppComponent implements OnInit {
 private handleRouteChange(url: string): void {
 
   const path = url.split(/[?#]/)[0];
+  // Show boat only on the homepage
+this.showBoatAnimation = path === '/';
+
+ // Hide homepage sections on detail pages
+  this.isProductDetailsPage =
+    path.startsWith('/products/') ||
+    path === '/boat-animation';
 
   // Show product detail pages separately.
   // this.isProductDetailsPage = path.startsWith('/products/');
@@ -118,6 +125,7 @@ private handleRouteChange(url: string): void {
   /* PRODUCT PAGE VISIBILITY */
 
   isProductDetailsPage = false;
+  showBoatAnimation = false;
 
   /* DJANGO API */
 

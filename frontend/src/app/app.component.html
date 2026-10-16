@@ -2,21 +2,28 @@
 <!-- NAVBAR - ALL PAGES -->
 <app-navbar></app-navbar>
 
+
+
 <!-- ANGULAR ROUTED PAGES -->
 <router-outlet></router-outlet>
 
 <!-- HOMEPAGE SECTIONS -->
 <div *ngIf="!isProductDetailsPage">
+  
 
   <main>
+    
+   <!-- BOAT ANIMATION - HOME PAGE ONLY -->
+<app-boat-animation *ngIf="showBoatAnimation"></app-boat-animation>
+
+
 
     <!-- HOME -->
     <app-hero id="home"></app-hero>
-    <!-- SCROLL-CONTROLLED SHIP -->
-<app-boat-animation></app-boat-animation>
-
+   
     <!-- ABOUT -->
     <app-about id="about"></app-about>
+    
 
     <!-- PRODUCTS -->
     <app-products
