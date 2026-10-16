@@ -19,9 +19,9 @@
           SP INTERNATIONAL · PRODUCT PORTFOLIO
         </p>
 
-        <h1>
-          Packaging <span>Materials</span>
-        </h1>
+   <h1>
+  Packaging <span>&amp; Adhesives Chemicals</span>
+</h1>
 
         <p class="hero-description">
           Explore quality packaging materials for
@@ -30,8 +30,8 @@
         </p>
 
         <div class="hero-badges">
-          <span>25 Products</span>
-          <span>7 Categories</span>
+        <span>{{ products.length }} Products</span>
+        <span>{{ categories.length - 1 }} Categories</span>
           <span>Bulk Enquiries</span>
         </div>
 
@@ -50,7 +50,7 @@
         EXPLORE OUR PRODUCTS
       </p>
 
-      <h2>Our Packaging Collection</h2>
+      <h2>Our Packaging &amp; Adhesives Chemical Collection</h2>
 
       <p>
         Find the right packaging materials
@@ -107,10 +107,9 @@
 
           <h3>{{ product.name }}</h3>
 
-          <p>
-            Packaging solutions for commercial,
-            logistics and industrial needs.
-          </p>
+            <!-- CHEMICAL APPLICATION -->
+          <p>{{ product.application }}</p>
+
 
           <a
             routerLink="/contact"

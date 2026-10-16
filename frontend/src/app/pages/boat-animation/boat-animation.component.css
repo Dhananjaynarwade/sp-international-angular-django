@@ -1,0 +1,567 @@
+
+/* =========================================
+   SP INTERNATIONAL - BOAT ANIMATION
+   CLEAN & RESPONSIVE CSS
+========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* =========================================
+   1. SCROLL AREA
+========================================= */
+
+.boat-track {
+  position: relative;
+  height: 280vh;
+  padding-top: 80px;
+  box-sizing: border-box;
+  background: #6696bf;
+}
+
+/* =========================================
+   2. STICKY ANIMATION SCENE
+========================================= */
+
+.boat-scene {
+  position: sticky;
+  top: 80px;
+
+  width: 100%;
+  height: calc(100dvh - 80px);
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: linear-gradient(
+    to bottom,
+    #5486af 0%,
+    #86add5 55%,
+    #b6d5ea 100%
+  );
+}
+
+/* =========================================
+   3. GLOWING SUN
+========================================= */
+
+.sun {
+  position: absolute;
+  top: 12%;
+  right: 16%;
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fffef0 0%,
+    #fff2ad 30%,
+    #ffce69 72%,
+    #ffac45 100%
+  );
+
+  box-shadow:
+    0 0 35px rgba(255, 232, 155, 0.75),
+    0 0 85px rgba(255, 215, 130, 0.45),
+    0 0 140px rgba(255, 220, 150, 0.2);
+
+  z-index: 0;
+  pointer-events: none;
+
+  animation: sunGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes sunGlow {
+  from {
+    opacity: 0.9;
+    filter: brightness(1);
+  }
+
+  to {
+    opacity: 1;
+    filter: brightness(1.15);
+  }
+}
+
+/* =========================================
+   4. ANIMATED CLOUDS
+========================================= */
+
+.cloud {
+  position: absolute;
+
+  width: 150px;
+  height: 45px;
+
+  border-radius: 60px;
+
+  background: rgba(255, 255, 255, 0.58);
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 85px;
+  height: 85px;
+
+  left: 20px;
+  bottom: 10px;
+}
+
+.cloud::after {
+  width: 70px;
+  height: 70px;
+
+  right: 15px;
+  bottom: 6px;
+}
+
+.cloud-one {
+  top: 18%;
+  left: 12%;
+
+  animation: cloudDriftOne 28s ease-in-out infinite alternate;
+}
+
+.cloud-two {
+  top: 28%;
+  right: 12%;
+
+  animation: cloudDriftTwo 34s ease-in-out infinite alternate;
+}
+
+@keyframes cloudDriftOne {
+  from {
+    transform: translateX(-35px);
+  }
+
+  to {
+    transform: translateX(65px);
+  }
+}
+
+@keyframes cloudDriftTwo {
+  from {
+    transform: scale(0.65) translateX(-65px);
+  }
+
+  to {
+    transform: scale(0.65) translateX(65px);
+  }
+}
+
+/* =========================================
+   5. OCEAN BACKGROUND
+========================================= */
+
+.sea {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 29%;
+
+  z-index: 1;
+
+  background: linear-gradient(
+    to bottom,
+    #438fb8 0%,
+    #2876a9 30%,
+    #195a8e 70%,
+    #103c6a 100%
+  );
+}
+
+/* =========================================
+   6. MOVING BOAT - FINAL POSITION
+========================================= */
+
+.boat {
+  position: absolute;
+
+  left: 0;
+
+  /* Align bottom of ship with water surface */
+bottom: calc(29% - 12px);
+
+  /* Keep ship above ocean layers */
+  z-index: 5;
+
+  /* Controlled ship size */
+  width: clamp(280px, 44vw, 620px);
+
+  height: auto;
+
+  /* TypeScript controls horizontal movement */
+  will-change: transform;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   7. BOAT ILLUSTRATION
+========================================= */
+
+.boat svg {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+/* =========================================
+   8. BOAT FLOATING ANIMATION
+========================================= */
+
+.boat-bob {
+  transform-origin: center bottom;
+
+  animation: realisticBoatFloat
+    3.8s ease-in-out infinite;
+}
+
+@keyframes realisticBoatFloat {
+  0%, 100% {
+    transform:
+      translateY(0)
+      rotate(-0.5deg);
+  }
+
+  50% {
+    transform:
+      translateY(-6px)
+      rotate(0.5deg);
+  }
+}
+
+/* =========================================
+   9. FRONT WATER SURFACE
+========================================= */
+
+.water-front {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 19%;
+
+  overflow: visible;
+
+  /* Behind boat, in front of ocean background */
+  z-index: 3;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(61, 142, 188, 0.88) 0%,
+    rgba(29, 103, 156, 0.95) 55%,
+    #104675 100%
+  );
+}
+
+/* =========================================
+   10. MOVING OCEAN WAVES
+========================================= */
+
+.wave {
+  position: absolute;
+
+  left: 0;
+  width: 100%;
+  height: 48px;
+
+  pointer-events: none;
+
+  background-image: radial-gradient(
+    ellipse 85px 18px at 85px 0,
+    rgba(195, 238, 255, 0.36) 46%,
+    transparent 51%
+  );
+
+  background-size: 170px 48px;
+  background-repeat: repeat-x;
+}
+
+.wave-one {
+  top: 4%;
+  opacity: 0.85;
+
+  animation: waveMove 6s linear infinite;
+}
+
+.wave-two {
+  top: 38%;
+  opacity: 0.5;
+
+  animation: waveMoveReverse 9s linear infinite;
+}
+
+.wave-three {
+  top: 74%;
+  opacity: 0.35;
+
+  animation: waveMove 12s linear infinite;
+}
+
+@keyframes waveMove {
+  from {
+    background-position-x: 0;
+  }
+
+  to {
+    background-position-x: 170px;
+  }
+}
+
+@keyframes waveMoveReverse {
+  from {
+    background-position-x: 170px;
+  }
+
+  to {
+    background-position-x: 0;
+  }
+}
+
+/* =========================================
+   11. WATER SPARKLES
+========================================= */
+
+.water-sparkles {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image: radial-gradient(
+    ellipse,
+    rgba(255, 255, 255, 0.5) 0%,
+    transparent 65%
+  );
+
+  background-size: 130px 8px;
+  background-repeat: repeat;
+
+  opacity: 0.12;
+
+  animation: sparkleMove 7s linear infinite;
+}
+
+@keyframes sparkleMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 130px 15px;
+  }
+}
+
+/* =========================================
+   12. SUN REFLECTION
+========================================= */
+
+.sun-reflection {
+  position: absolute;
+
+  bottom: 0;
+  right: 12%;
+
+  width: 180px;
+  height: 29%;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 239, 167, 0.38),
+    rgba(255, 225, 145, 0.12),
+    transparent
+  );
+
+  clip-path: polygon(
+    46% 0,
+    54% 0,
+    100% 100%,
+    0 100%
+  );
+
+  z-index: 4;
+  pointer-events: none;
+
+  animation: reflectionGlow
+    3s ease-in-out infinite alternate;
+}
+
+@keyframes reflectionGlow {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 0.7;
+  }
+}
+
+/* =========================================
+   13. TABLET AND MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .boat-track {
+    padding-top: 70px;
+  }
+
+  .boat-scene {
+    top: 70px;
+    height: calc(100dvh - 70px);
+  }
+
+  .boat {
+    width: min(86vw, 440px);
+    bottom: 29%;
+  }
+
+  .sun {
+    width: 65px;
+    height: 65px;
+
+    top: 13%;
+    right: 12%;
+  }
+
+  .sun-reflection {
+    width: 100px;
+    right: 7%;
+  }
+
+  .wave {
+    height: 35px;
+  }
+
+}
+
+/* =========================================
+   14. SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .boat {
+    width: 85vw;
+    bottom: 29%;
+  }
+
+  .cloud {
+    width: 115px;
+    height: 35px;
+  }
+
+  .cloud-one {
+    left: 5%;
+  }
+
+  .cloud-two {
+    right: 3%;
+  }
+
+}
+
+/* =========================================
+   15. REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sun,
+  .cloud-one,
+  .cloud-two,
+  .boat-bob,
+  .wave,
+  .water-sparkles,
+  .sun-reflection {
+    animation: none;
+  }
+
+}
+
+/* =========================================
+   BLUE WAVES AT BOAT WATERLINE
+========================================= */
+
+.water-front::before {
+  content: "";
+  position: absolute;
+
+  top: -9px;
+  left: 0;
+
+  width: 100%;
+  height: 20px;
+
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse 52px 9px at 52px 10px,
+    transparent 65%,
+    #00bcd4 69%,
+    #00bcd4 82%,
+    transparent 85%
+  );
+
+  background-size: 104px 20px;
+  background-repeat: repeat-x;
+
+  animation: waterlineMove 5s linear infinite;
+}
+
+@keyframes waterlineMove {
+  from {
+    background-position-x: 0;
+  }
+
+  to {
+    background-position-x: 104px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .water-front::before {
+    animation: none;
+  }
+}
+
+/* =========================================
+   BOAT SECTION - HOMEPAGE INTEGRATION
+========================================= */
+
+.boat-track {
+  height: 230vh;
+  padding-top: 0;
+}
+
+@media (max-width: 768px) {
+  .boat-track {
+    padding-top: 0;
+  }
+}
+

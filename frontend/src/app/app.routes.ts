@@ -8,6 +8,7 @@ import { FoodIngredientsComponent } from './pages/food-ingredients/food-ingredie
 
 import { PharmaceuticalIndustriesComponent } from './pages/pharmaceutical-industries/pharmaceutical-industries.component';
 import { PackagingMaterialsComponent } from './pages/packaging-materials/packaging-materials.component';
+import { BoatAnimationComponent } from './pages/boat-animation/boat-animation.component';
 
 // Empty route component.
 // Your homepage sections are already displayed by AppComponent.
@@ -71,6 +72,10 @@ export const routes: Routes = [
 {
   path: 'products/packaging-materials',
   component: PackagingMaterialsComponent
+},
+{
+  path: 'boat-animation',
+  component: BoatAnimationComponent
 },
 
 ];

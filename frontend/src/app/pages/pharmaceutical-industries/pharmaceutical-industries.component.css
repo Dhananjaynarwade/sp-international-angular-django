@@ -1,0 +1,646 @@
+
+/* =========================================
+   PHARMACEUTICAL INDUSTRIES
+   SP INTERNATIONAL - DARK THEME
+========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.pharma-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #0e293b;
+  color: #ffffff;
+  overflow-x: clip;
+}
+
+.pharma-page * {
+  box-sizing: border-box;
+}
+
+.pharma-container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.pharma-hero {
+  background: linear-gradient(
+    135deg,
+    #081625 0%,
+    #102c40 55%,
+    #12453f 100%
+  );
+
+  padding: 125px 0 75px;
+  color: #ffffff;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #76e8c5;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #ffffff;
+}
+
+.hero-content {
+  max-width: 850px;
+  margin: 48px auto 0;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #73e3c1;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-content h1 {
+  margin: 18px 0;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+}
+
+.hero-content h1 span {
+  color: #73e3c1;
+}
+
+.hero-description {
+  max-width: 670px;
+  margin: 0 auto;
+  color: #c6d8e4;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* HERO BADGES */
+
+.hero-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-badges span {
+  padding: 9px 17px;
+  border: 1px solid #366c70;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #d7fff0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* =========================================
+   COLLECTION HEADING
+========================================= */
+
+.section-heading {
+  padding: 65px 0 32px;
+  text-align: center;
+}
+
+.section-heading .eyebrow {
+  color: #6ee8c5;
+}
+
+.section-heading h2 {
+  margin: 14px 0;
+  color: #ffffff;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.section-heading > p:last-child {
+  max-width: 680px;
+  margin: 0 auto;
+  color: #b4c8d5;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   SEARCH AND FILTERS
+========================================= */
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.filters input,
+.filters select {
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #31536a;
+  border-radius: 11px;
+  background: #142d40;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filters input {
+  flex: 1;
+  min-width: 0;
+}
+
+.filters input::placeholder {
+  color: #9cb4c4;
+}
+
+.filters select {
+  width: 250px;
+  cursor: pointer;
+}
+
+.filters select option {
+  background: #142d40;
+  color: #ffffff;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #6ee8c5;
+  box-shadow: 0 0 0 3px rgba(110, 232, 197, 0.15);
+}
+
+/* PRODUCT COUNT */
+
+.result-count {
+  margin: 0 0 24px;
+  color: #b4c8d5;
+  font-size: 13px;
+}
+
+/* =========================================
+   PRODUCT GRID - DESKTOP
+========================================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 22px;
+}
+
+/* =========================================
+   PRODUCT CARDS
+========================================= */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+
+  background: #142d40;
+  border: 1px solid #285065;
+  border-radius: 16px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: #58d9b7;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================
+   PRODUCT IMAGE AREA
+========================================= */
+
+.product-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 180px;
+
+  background: linear-gradient(
+    145deg,
+    #1d4051 0%,
+    #17384c 55%,
+    #16483e 100%
+  );
+
+  border-bottom: 1px solid #285065;
+}
+
+.product-image span {
+  font-size: 65px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.product-card:hover .product-image span {
+  transform: scale(1.1);
+}
+
+/* =========================================
+   PRODUCT INFORMATION
+========================================= */
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+
+/* CATEGORY LABEL */
+
+.category {
+  display: inline-block;
+  align-self: flex-start;
+
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  background: #17483f;
+  color: #88f0d1;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* PRODUCT NAME */
+
+.product-info h3 {
+  margin: 15px 0 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* PRODUCT APPLICATION */
+
+.product-info p {
+  margin: 0 0 22px;
+  color: #b8cbd8;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+/* =========================================
+   ENQUIRE BUTTON
+========================================= */
+
+.enquire-btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+
+  margin-top: auto;
+  padding: 11px 0;
+
+  color: #75e7c7;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.enquire-btn:hover {
+  color: #b4ffe7;
+}
+
+.enquire-btn:focus-visible,
+.back-link:focus-visible,
+.bulk-banner a:focus-visible {
+  outline: 2px solid #9df5da;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   EMPTY SEARCH RESULTS
+========================================= */
+
+.empty-message {
+  padding: 55px 20px;
+  text-align: center;
+}
+
+.empty-message h3 {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.empty-message p {
+  color: #b4c8d5;
+  font-size: 14px;
+}
+
+/* =========================================
+   BULK ENQUIRY BANNER
+========================================= */
+
+.bulk-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  margin: 65px 0;
+  padding: 35px 40px;
+
+  background: linear-gradient(
+    120deg,
+    #081c2b,
+    #10483f
+  );
+
+  border: 1px solid #285a57;
+  border-radius: 18px;
+}
+
+.bulk-banner h2 {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1.35;
+}
+
+.bulk-banner p {
+  margin: 0;
+  color: #c1d7dc;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.bulk-banner a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  padding: 15px 22px;
+  border-radius: 9px;
+
+  background: #75e5c4;
+  color: #103b36;
+
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.bulk-banner a:hover {
+  background: #a5f5dd;
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   SMALL LAPTOP - 3 COLUMNS
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .product-image {
+    height: 170px;
+  }
+
+}
+
+/* =========================================
+   TABLET - 2 COLUMNS
+========================================= */
+
+@media (max-width: 768px) {
+
+  .pharma-hero {
+    padding: 105px 0 60px;
+  }
+
+  .hero-content {
+    margin-top: 38px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .section-heading {
+    padding-top: 48px;
+  }
+
+  .filters {
+    gap: 12px;
+  }
+
+  .filters select {
+    width: 200px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .product-image {
+    height: 165px;
+  }
+
+  .product-info {
+    padding: 17px;
+  }
+
+  .bulk-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    gap: 22px;
+  }
+
+  .bulk-banner h2 {
+    font-size: 22px;
+  }
+
+}
+
+/* =========================================
+   MOBILE - 1 COLUMN
+========================================= */
+
+@media (max-width: 480px) {
+
+  .pharma-container {
+    width: 92%;
+  }
+
+  .pharma-hero {
+    padding: 95px 0 45px;
+  }
+
+  .back-link {
+    font-size: 13px;
+  }
+
+  .hero-content {
+    margin-top: 28px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+    letter-spacing: -0.4px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .hero-badges {
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .hero-badges span {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .section-heading {
+    padding: 42px 0 25px;
+  }
+
+  .section-heading h2 {
+    font-size: 26px;
+  }
+
+  .section-heading > p:last-child {
+    font-size: 13px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+    height: 48px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .product-image {
+    height: 190px;
+  }
+
+  .product-image span {
+    font-size: 72px;
+  }
+
+  .product-info {
+    padding: 20px;
+  }
+
+  .product-info h3 {
+    font-size: 17px;
+  }
+
+  .product-info p {
+    font-size: 13px;
+  }
+
+  .bulk-banner {
+    margin: 40px 0;
+    padding: 25px 18px;
+  }
+
+  .bulk-banner h2 {
+    font-size: 20px;
+  }
+
+  .bulk-banner p {
+    font-size: 13px;
+  }
+
+  .bulk-banner a {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .product-card,
+  .product-image span,
+  .enquire-btn,
+  .bulk-banner a {
+    transition: none;
+  }
+
+  .product-card:hover,
+  .bulk-banner a:hover {
+    transform: none;
+  }
+
+}

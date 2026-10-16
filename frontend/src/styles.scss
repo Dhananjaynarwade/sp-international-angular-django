@@ -293,3 +293,140 @@ button,input,textarea,select{font:inherit}
     scroll-margin-top: 80px;
   }
 }
+
+/* =========================================
+   SP INTERNATIONAL - GLOBAL ANIMATIONS
+========================================= */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation entrance */
+.navbar {
+  animation: navbarEntrance 0.6s ease-out both;
+}
+
+@keyframes navbarEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navbar links */
+.nav-links a,
+.nav-quote {
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-quote:hover {
+  transform: translateY(-2px);
+}
+
+/* Product cards */
+.sp-product-card,
+.product-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.sp-product-card:hover,
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Product images */
+.sp-product-image img,
+.product-image img {
+  transition: transform 0.45s ease;
+}
+
+.sp-product-card:hover .sp-product-image img,
+.product-card:hover .product-image img {
+  transform: scale(1.04);
+}
+
+/* Action buttons */
+.sp-request-button,
+.sp-explore-button,
+.enquire-btn,
+.bulk-banner a {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.sp-request-button:hover,
+.sp-explore-button:hover,
+.bulk-banner a:hover {
+  transform: translateY(-3px);
+}
+
+/* Angular product detail page entrance */
+router-outlet + * {
+  animation: pageEntrance 0.55s ease-out both;
+}
+
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility: reduce motion when requested */
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .navbar,
+  router-outlet + * {
+    animation: none;
+  }
+
+  .nav-links a,
+  .nav-quote,
+  .sp-product-card,
+  .product-card,
+  .sp-product-image img,
+  .product-image img,
+  .sp-request-button,
+  .sp-explore-button,
+  .enquire-btn,
+  .bulk-banner a {
+    transition: none;
+  }
+
+  .nav-links a:hover,
+  .nav-quote:hover,
+  .sp-product-card:hover,
+  .product-card:hover,
+  .sp-request-button:hover,
+  .sp-explore-button:hover,
+  .bulk-banner a:hover,
+  .sp-product-card:hover .sp-product-image img,
+  .product-card:hover .product-image img {
+    transform: none;
+  }
+}

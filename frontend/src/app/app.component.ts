@@ -21,6 +21,7 @@ import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.c
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FoodIngredientsComponent } from './pages/food-ingredients/food-ingredients.component';
+import { BoatAnimationComponent } from './pages/boat-animation/boat-animation.component';
 
 
 /* =========================================
@@ -48,8 +49,11 @@ interface Product {
     FormsModule,
     RouterOutlet,
     RouterLink,
+
     NavbarComponent,
     HeroComponent,
+    BoatAnimationComponent,
+
     AboutComponent,
     WhyChooseUsComponent,
     ContactComponent,
@@ -70,7 +74,10 @@ private handleRouteChange(url: string): void {
   const path = url.split(/[?#]/)[0];
 
   // Show product detail pages separately.
-  this.isProductDetailsPage = path.startsWith('/products/');
+  // this.isProductDetailsPage = path.startsWith('/products/');
+  this.isProductDetailsPage =
+  path.startsWith('/products/') ||
+  path === '/boat-animation';
 
   const sectionRoutes: Record<string, string> = {
     '/': 'home',
@@ -154,12 +161,9 @@ private handleRouteChange(url: string): void {
       image_url: 'https://images.unsplash.com/photo-1763142843470-9a9e9db7f68f?auto=format&fit=crop&w=900&q=80'
     },
 
-    {
-      name: 'Bakery Industries',
-      category: 'Bakery',
-      description: 'Quality bakery ingredients and reliable sourcing solutions for commercial baking and food production.',
-      image_url: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80'
-    }
+  
+  
+    
 
   ];
 

@@ -1,0 +1,145 @@
+
+<section class="boat-track" #boatTrack>
+
+  <div class="boat-scene">
+
+    <!-- SKY -->
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+
+    <!-- SEA BACKGROUND -->
+    <div class="sea"></div>
+
+    <!-- MOVING CARGO SHIP -->
+    <div
+      class="boat"
+      #boat
+      [style.transform]="'translate3d(' + boatX + 'px, 0, 0)'"
+    >
+
+      <div class="boat-bob">
+
+       
+<svg
+  viewBox="0 0 700 280"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="SP International cargo ship"
+>
+
+
+          <defs>
+            <linearGradient id="shipHull" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#293f62"/>
+              <stop offset="100%" stop-color="#111e38"/>
+            </linearGradient>
+
+            <linearGradient id="shipCabin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e7edf5"/>
+              <stop offset="100%" stop-color="#9eafc7"/>
+            </linearGradient>
+          </defs>
+
+          <!-- CONTAINER STACKS -->
+          <g stroke="#35516e" stroke-width="3">
+
+            <rect x="120" y="142" width="110" height="66"
+                  fill="#ba6c4d"/>
+            <rect x="235" y="142" width="110" height="66"
+                  fill="#cf9a4b"/>
+            <rect x="350" y="142" width="110" height="66"
+                  fill="#49768e"/>
+
+            <rect x="170" y="78" width="110" height="60"
+                  fill="#d4a55d"/>
+            <rect x="285" y="78" width="110" height="60"
+                  fill="#b75e53"/>
+
+            <path d="M148 146V204 M175 146V204 M202 146V204
+                     M263 146V204 M290 146V204 M317 146V204
+                     M378 146V204 M405 146V204 M432 146V204"
+                  stroke="#ffffff"
+                  stroke-opacity=".22"
+                  fill="none"/>
+
+          </g>
+
+          <!-- SHIP BRIDGE -->
+          <rect x="494" y="101" width="125" height="106"
+                fill="url(#shipCabin)"/>
+
+          <rect x="515" y="79" width="84" height="25"
+                fill="#dbe5f0"/>
+
+          <rect x="537" y="44" width="28" height="34"
+                fill="#a94350"/>
+
+          <!-- CABIN WINDOWS -->
+          <g fill="#315981">
+            <rect x="505" y="119" width="19" height="21"/>
+            <rect x="530" y="119" width="19" height="21"/>
+            <rect x="555" y="119" width="19" height="21"/>
+            <rect x="580" y="119" width="19" height="21"/>
+            <rect x="530" y="151" width="20" height="22"/>
+            <rect x="558" y="151" width="20" height="22"/>
+          </g>
+
+          <!-- DECK -->
+          <rect x="66" y="202" width="600" height="18"
+                rx="3" fill="#394e6a"/>
+
+          <!-- MAIN SHIP HULL -->
+          <path
+            d="M36 218 L682 218 L628 277
+               L132 277 L72 253 Z"
+            fill="url(#shipHull)"
+          />
+
+          <!-- HULL WATERLINE -->
+          <path
+            d="M126 266 L626 266"
+            stroke="#b8c8dc"
+            stroke-width="5"
+            opacity=".65"
+          />
+
+          <!-- ANCHOR SYMBOL -->
+          <circle cx="580" cy="239" r="7"
+                  fill="none" stroke="#76d9ce"
+                  stroke-width="3"/>
+          <path d="M580 247V259 M569 252Q580 269 591 252"
+                fill="none"
+                stroke="#76d9ce"
+                stroke-width="3"/>
+                
+
+<!-- COMPANY NAME ABOVE WATER -->
+<text
+  x="340"
+  y="241"
+  text-anchor="middle"
+  fill="#ffffff"
+  stroke="#101e33"
+  stroke-width="0.5"
+  paint-order="stroke"
+  font-family="Arial, sans-serif"
+  font-size="24"
+  font-weight="800"
+  letter-spacing="2"
+>
+  SP - INTERNATIONAL
+</text>
+
+
+        </svg>
+        
+      </div>
+
+    </div>
+
+    <!-- WATER SURFACE IN FRONT OF SHIP -->
+    <div class="water-front"></div>
+
+  </div>
+
+</section>

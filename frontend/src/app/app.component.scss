@@ -1,0 +1,138 @@
+
+/* =========================================
+   PRODUCTS - RESPONSIVE IMPROVEMENTS
+========================================= */
+
+.sp-products,
+.sp-products * {
+  box-sizing: border-box;
+}
+
+.sp-products-container {
+  width: 92%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sp-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sp-product-card {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-product-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sp-product-image img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.sp-product-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-product-body h3,
+.sp-product-body p {
+  overflow-wrap: anywhere;
+}
+
+.sp-product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.sp-product-actions a,
+.sp-product-actions .sp-explore-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  width: 100%;
+  text-align: center;
+  white-space: normal;
+}
+
+/* TABLET */
+
+@media (max-width: 1024px) {
+
+  .sp-products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .sp-product-image img {
+    height: 190px;
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .sp-products-container {
+    width: 92%;
+  }
+
+  .sp-products-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .sp-products-heading h2 {
+    font-size: clamp(25px, 7vw, 34px);
+    line-height: 1.25;
+  }
+
+  .sp-product-image img {
+    height: 210px;
+  }
+
+  .sp-product-body {
+    padding: 20px;
+  }
+
+  .sp-product-body h3 {
+    font-size: 19px;
+  }
+
+  .sp-product-actions {
+    gap: 12px;
+  }
+
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 360px) {
+
+  .sp-product-image img {
+    height: 170px;
+  }
+
+  .sp-product-body {
+    padding: 16px;
+  }
+
+}
