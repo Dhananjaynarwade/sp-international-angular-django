@@ -11,15 +11,14 @@ interface FoodProduct {
 }
 
 @Component({
-  selector: 'app-food-ingredients',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterLink
-  ],
-  templateUrl: './food-ingredients.component.html',
-  styleUrl: './food-ingredients.component.css'
+    selector: 'app-food-ingredients',
+    imports: [
+        CommonModule,
+        FormsModule,
+        RouterLink
+    ],
+    templateUrl: './food-ingredients.component.html',
+    styleUrl: './food-ingredients.component.css'
 })
 export class FoodIngredientsComponent {
 

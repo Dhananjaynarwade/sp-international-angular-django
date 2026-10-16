@@ -41,30 +41,25 @@ interface Product {
 ========================================= */
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterOutlet,
-    RouterLink,
-
-    NavbarComponent,
-    HeroComponent,
-    BoatAnimationComponent,
-
-    AboutComponent,
-    WhyChooseUsComponent,
-    ContactComponent,
-    FooterComponent,
-    FoodIngredientsComponent,
-    ProductsComponent,
-    IndustriesComponent,
-],
-
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [
+        CommonModule,
+        FormsModule,
+        RouterOutlet,
+        RouterLink,
+        NavbarComponent,
+        HeroComponent,
+        BoatAnimationComponent,
+        AboutComponent,
+        WhyChooseUsComponent,
+        ContactComponent,
+        FooterComponent,
+        FoodIngredientsComponent,
+        ProductsComponent,
+        IndustriesComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 
 export class AppComponent implements OnInit {

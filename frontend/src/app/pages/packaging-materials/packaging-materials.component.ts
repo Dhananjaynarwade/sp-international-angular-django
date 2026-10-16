@@ -21,11 +21,10 @@ interface ChemicalGroup {
 }
 
 @Component({
-  selector: 'app-packaging-materials',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './packaging-materials.component.html',
-  styleUrl: './packaging-materials.component.css'
+    selector: 'app-packaging-materials',
+    imports: [CommonModule, FormsModule, RouterLink],
+    templateUrl: './packaging-materials.component.html',
+    styleUrl: './packaging-materials.component.css'
 })
 export class PackagingMaterialsComponent {
 

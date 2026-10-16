@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Router} from '@angular/router';
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [CommonModule,  RouterLink,RouterOutlet],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+    selector: 'app-navbar',
+    imports: [CommonModule, RouterLink, RouterOutlet],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
   

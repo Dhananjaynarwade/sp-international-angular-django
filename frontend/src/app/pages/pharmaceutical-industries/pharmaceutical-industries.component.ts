@@ -12,11 +12,10 @@ interface PharmaProduct {
 }
 
 @Component({
-  selector: 'app-pharmaceutical-industries',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './pharmaceutical-industries.component.html',
-  styleUrl: './pharmaceutical-industries.component.css'
+    selector: 'app-pharmaceutical-industries',
+    imports: [CommonModule, FormsModule, RouterLink],
+    templateUrl: './pharmaceutical-industries.component.html',
+    styleUrl: './pharmaceutical-industries.component.css'
 })
 export class PharmaceuticalIndustriesComponent {
 
