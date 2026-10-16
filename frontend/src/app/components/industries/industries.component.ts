@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-industries',
-  standalone: true,
-  imports: [],
-  templateUrl: './industries.component.html',
-  styleUrl: './industries.component.css'
+    selector: 'app-industries',
+    imports: [],
+    templateUrl: './industries.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './industries.component.css'
 })
 export class IndustriesComponent {
 

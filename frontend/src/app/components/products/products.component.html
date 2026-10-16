@@ -22,97 +22,84 @@
     <!-- PRODUCT CARDS -->
     <div class="sp-products-grid">
 
-      <article
-        class="sp-product-card"
-        *ngFor="let product of products; let i = index"
-        data-aos="fade-up"
-        [attr.data-aos-delay]="i * 90"
-      >
-
-        <!-- PRODUCT IMAGE -->
-        <div class="sp-product-image">
-
-          <img
-            [src]="product.image_url"
-            [alt]="product.name"
-            [attr.loading]="i < 2 ? 'eager' : 'lazy'"
+      @for (product of products; track product; let i = $index) {
+        <article
+          class="sp-product-card"
+          data-aos="fade-up"
+          [attr.data-aos-delay]="i * 90"
           >
+          <!-- PRODUCT IMAGE -->
+          <div class="sp-product-image">
+            <img
+              [src]="product.image_url"
+              [alt]="product.name"
+              [attr.loading]="i < 2 ? 'eager' : 'lazy'"
+              >
+              <span>{{ product.category }}</span>
+            </div>
+            <!-- PRODUCT CONTENT -->
+            <div class="sp-product-body">
+              <h3>{{ product.name }}</h3>
+              <p>{{ product.description }}</p>
+              <!-- BUTTONS -->
+              <div class="sp-product-actions">
+                <a
+                  class="sp-request-button"
+                  href="#contact"
+                  >
+                  Request details →
+                </a>
+                <!-- INDUSTRIAL CHEMICALS -->
+                @if (product.category === 'Chemicals') {
+                  <a
+                    routerLink="/products/nutraceutical-ingredients"
+                    class="sp-explore-button"
+                    >
+                    Explore Products →
+                  </a>
+                }
+                <!-- FOOD INGREDIENTS -->
+                @if (product.category === 'Food') {
+                  <a
+                    routerLink="/products/food-ingredients"
+                    class="sp-explore-button"
+                    >
+                    Explore Products →
+                  </a>
+                }
+                <!-- PHARMACEUTICAL -->
+                @if (product.category === 'Pharmaceutical') {
+                  <a
+                    routerLink="/products/pharmaceutical-industries"
+                    class="sp-explore-button"
+                    >
+                    Explore Products →
+                  </a>
+                }
+                <!-- PACKAGING MATERIALS -->
+                @if (product.category === 'Packaging') {
+                  <a
+                    routerLink="/products/packaging-materials"
+                    class="sp-explore-button"
+                    >
+                    Explore Products →
+                  </a>
+                }
+                <!-- BAKERY -->
+                @if (product.category === 'Bakery') {
+                  <span
+                    class="sp-explore-disabled"
+                    >
+                    Explore Products →
+                  </span>
+                }
+              </div>
+            </div>
+          </article>
+        }
 
-          <span>{{ product.category }}</span>
-
-        </div>
-
-        <!-- PRODUCT CONTENT -->
-        <div class="sp-product-body">
-
-          <h3>{{ product.name }}</h3>
-
-          <p>{{ product.description }}</p>
-
-          <!-- BUTTONS -->
-          <div class="sp-product-actions">
-
-            <a
-              class="sp-request-button"
-              href="#contact"
-            >
-              Request details →
-            </a>
-
-            <!-- INDUSTRIAL CHEMICALS -->
-            <a
-              *ngIf="product.category === 'Chemicals'"
-              routerLink="/products/nutraceutical-ingredients"
-              class="sp-explore-button"
-            >
-              Explore Products →
-            </a>
-
-            <!-- FOOD INGREDIENTS -->
-            <a
-              *ngIf="product.category === 'Food'"
-              routerLink="/products/food-ingredients"
-              class="sp-explore-button"
-            >
-              Explore Products →
-            </a>
-
-            <!-- PHARMACEUTICAL -->
-            <a
-              *ngIf="product.category === 'Pharmaceutical'"
-              routerLink="/products/pharmaceutical-industries"
-              class="sp-explore-button"
-            >
-              Explore Products →
-            </a>
-
-          
-<!-- PACKAGING MATERIALS -->
-<a
-  *ngIf="product.category === 'Packaging'"
-  routerLink="/products/packaging-materials"
-  class="sp-explore-button"
->
-  Explore Products →
-</a>
-
-
-            <!-- BAKERY -->
-            <span
-              *ngIf="product.category === 'Bakery'"
-              class="sp-explore-disabled"
-            >
-              Explore Products →
-            </span>
-
-          </div>
-
-        </div>
-
-      </article>
+      </div>
 
     </div>
 
-  </div>
-
-</section>
+  </section>

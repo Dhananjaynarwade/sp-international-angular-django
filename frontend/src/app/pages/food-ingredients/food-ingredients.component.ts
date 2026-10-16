@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -11,15 +11,14 @@ interface FoodProduct {
 }
 
 @Component({
-  selector: 'app-food-ingredients',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-food-ingredients',
+    imports: [
     FormsModule,
     RouterLink
-  ],
-  templateUrl: './food-ingredients.component.html',
-  styleUrl: './food-ingredients.component.css'
+],
+    templateUrl: './food-ingredients.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './food-ingredients.component.css'
 })
 export class FoodIngredientsComponent {
 

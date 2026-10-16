@@ -1,6 +1,6 @@
 
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 
@@ -12,11 +12,11 @@ interface ProductSection {
 }
 
 @Component({
-  selector: 'app-product-details',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+    selector: 'app-product-details',
+    imports: [RouterLink],
+    templateUrl: './product-details.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './product-details.component.css'
 })
 export class ProductDetailsComponent implements OnInit {
 

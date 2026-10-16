@@ -430,3 +430,21 @@ router-outlet + * {
     transform: none;
   }
 }
+
+/* =========================================
+   PREVENT MOBILE PAGE FROM SLIDING SIDEWAYS
+========================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+app-root {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}

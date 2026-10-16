@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-hero',
-  standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './hero.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './hero.component.css'
 })
 export class HeroComponent {}

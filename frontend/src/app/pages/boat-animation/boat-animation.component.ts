@@ -5,13 +5,15 @@ import {
   ViewChild,
   AfterViewInit,
   OnDestroy,
-  HostListener
+  HostListener,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'app-boat-animation',
   standalone: true,
   templateUrl: './boat-animation.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './boat-animation.component.css'
 })
 export class BoatAnimationComponent
@@ -71,10 +73,13 @@ export class BoatAnimationComponent
 const startX = -boatWidth;
 
 /* Stop 30px before the right edge */
+
 const endX = Math.max(
   0,
-  window.innerWidth - boatWidth - 30
+  this.boatTrack.nativeElement.clientWidth - boatWidth
+  +(boatWidth * 45 / 700)
 );
+
 
 /* Smooth movement controlled by scrolling */
 this.boatX =

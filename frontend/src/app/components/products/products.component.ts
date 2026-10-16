@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+
 import { RouterLink } from '@angular/router';
 
 interface Product {
@@ -11,11 +11,11 @@ interface Product {
 }
 
 @Component({
-  selector: 'app-products',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+    selector: 'app-products',
+    imports: [RouterLink],
+    templateUrl: './products.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './products.component.css'
 })
 export class ProductsComponent {
 

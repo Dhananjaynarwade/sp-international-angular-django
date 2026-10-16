@@ -1,11 +1,11 @@
 <!-- =========================================
-     FOOD INGREDIENTS PAGE
+FOOD INGREDIENTS PAGE
 ========================================= -->
 <a
   routerLink="/"
   fragment="products"
   class="back-link"
->
+  >
   ← Back to Products
 </a>
 <div class="food-page">
@@ -18,7 +18,7 @@
       routerLink="/"
       fragment="products"
       class="back-link"
-    >
+      >
       ← Back to Products
     </a>
 
@@ -51,100 +51,85 @@
         [(ngModel)]="searchText"
         placeholder="Search products..."
         aria-label="Search Food Ingredients"
-      />
+        />
 
-    </div>
+      </div>
 
-    <!-- PRODUCT COUNT -->
+      <!-- PRODUCT COUNT -->
 
-    <p class="food-count">
-      Showing {{ filteredProducts.length }}
-      of {{ products.length }} products
-    </p>
+      <p class="food-count">
+        Showing {{ filteredProducts.length }}
+        of {{ products.length }} products
+      </p>
 
-    <!-- PRODUCT CARDS -->
+      <!-- PRODUCT CARDS -->
 
-    <div class="food-grid">
+      <div class="food-grid">
 
-      <div
-        class="food-card"
-        *ngFor="let product of filteredProducts"
-      >
-
-        <!-- PRODUCT IMAGE -->
-
-        <div class="food-card-image">
-
-          <span class="image-placeholder">
-            Product image coming soon
-          </span>
-
-          <img
-            [src]="getProductImage(product)"
-            [alt]="product.name"
-            loading="lazy"
-            (error)="onImageError($event)"
-          />
-
-        </div>
-
-        <!-- PRODUCT INFORMATION -->
-
-        <div class="food-card-content">
-
-          <h3>{{ product.name }}</h3>
-
-          <p class="food-description">
-            {{ product.description }}
-          </p>
-
-          <p class="food-applications">
-            <strong>Applications:</strong>
-            {{ product.applications }}
-          </p>
-
-          <!-- ACTION BUTTONS -->
-
-          <div class="food-card-actions">
-<a
-  [href]="getDatasheetGmail(product.name)"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="food-datasheet"
->
-  Request Datasheet
-</a>
-
-            <a
-              routerLink="/"
-              fragment="contact"
-              [queryParams]="{ product: product.name }"
-              class="food-quote"
+        @for (product of filteredProducts; track product) {
+          <div
+            class="food-card"
             >
-              Get Quote →
-            </a>
-
-          </div>
+            <!-- PRODUCT IMAGE -->
+            <div class="food-card-image">
+              <span class="image-placeholder">
+                Product image coming soon
+              </span>
+              <img
+                [src]="getProductImage(product)"
+                [alt]="product.name"
+                loading="lazy"
+                (error)="onImageError($event)"
+                />
+              </div>
+              <!-- PRODUCT INFORMATION -->
+              <div class="food-card-content">
+                <h3>{{ product.name }}</h3>
+                <p class="food-description">
+                  {{ product.description }}
+                </p>
+                <p class="food-applications">
+                  <strong>Applications:</strong>
+                  {{ product.applications }}
+                </p>
+                <!-- ACTION BUTTONS -->
+                <div class="food-card-actions">
+                  <a
+                    [href]="getDatasheetGmail(product.name)"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="food-datasheet"
+                    >
+                    Request Datasheet
+                  </a>
+                  <a
+                    routerLink="/"
+                    fragment="contact"
+                    [queryParams]="{ product: product.name }"
+                    class="food-quote"
+                    >
+                    Get Quote →
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
 
         </div>
+
+        <!-- NO RESULTS -->
+
+        @if (filteredProducts.length === 0) {
+          <div
+            class="food-empty"
+            >
+            <h3>No products found</h3>
+            <p>
+              Try searching for another product.
+            </p>
+          </div>
+        }
 
       </div>
 
     </div>
-
-    <!-- NO RESULTS -->
-
-    <div
-      class="food-empty"
-      *ngIf="filteredProducts.length === 0"
-    >
-      <h3>No products found</h3>
-
-      <p>
-        Try searching for another product.
-      </p>
-    </div>
-
-  </div>
-
-</div>

@@ -1,12 +1,12 @@
 
 <!-- =========================================
-     PHARMACEUTICAL INDUSTRIES PAGE
+PHARMACEUTICAL INDUSTRIES PAGE
 ========================================= -->
 
 <section class="pharma-page">
 
   <!-- =====================================
-       HERO SECTION
+  HERO SECTION
   ===================================== -->
 
   <div class="pharma-hero">
@@ -63,7 +63,7 @@
 
 
   <!-- =====================================
-       PRODUCT COLLECTION
+  PRODUCT COLLECTION
   ===================================== -->
 
   <div class="pharma-container">
@@ -90,7 +90,7 @@
 
 
     <!-- ===================================
-         SEARCH AND CATEGORY FILTER
+    SEARCH AND CATEGORY FILTER
     =================================== -->
 
     <div class="filters">
@@ -101,139 +101,124 @@
         [(ngModel)]="searchTerm"
         placeholder="Search pharmaceutical products..."
         aria-label="Search pharmaceutical products"
-      />
+        />
 
-      <!-- CATEGORY DROPDOWN -->
-      <select
-        [(ngModel)]="selectedCategory"
-        aria-label="Filter pharmaceutical products by category">
+        <!-- CATEGORY DROPDOWN -->
+        <select
+          [(ngModel)]="selectedCategory"
+          aria-label="Filter pharmaceutical products by category">
 
-        <option
-          *ngFor="let category of categories"
-          [value]="category">
+          @for (category of categories; track category) {
+            <option
+              [value]="category">
+              {{ category }}
+            </option>
+          }
 
-          {{ category }}
-
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <!-- PRODUCT COUNT -->
-
-    <p class="result-count">
-
-      Showing {{ filteredProducts.length }}
-      of {{ products.length }} products
-
-    </p>
-
-
-    <!-- ===================================
-         PRODUCT CARDS
-    =================================== -->
-
-    <div class="product-grid">
-
-      <article
-        class="product-card"
-        *ngFor="let product of filteredProducts">
-
-        <!-- PRODUCT IMAGE PLACEHOLDER -->
-
-        <div class="product-image">
-
-          <span aria-hidden="true">
-            {{ product.icon }}
-          </span>
-
-        </div>
-
-
-        <!-- PRODUCT INFORMATION -->
-
-        <div class="product-info">
-
-          <!-- PRODUCT CATEGORY -->
-          <span class="category">
-            {{ product.category }}
-          </span>
-
-          <!-- PRODUCT NAME -->
-          <h3>
-            {{ product.name }}
-          </h3>
-
-          <!-- PRODUCT APPLICATION -->
-          <p>
-            {{ product.application }}
-          </p>
-
-          <!-- ENQUIRY BUTTON -->
-          <a
-            routerLink="/contact"
-            class="enquire-btn">
-
-            Enquire Now →
-
-          </a>
-
-        </div>
-
-      </article>
-
-    </div>
-
-
-    <!-- ===================================
-         NO SEARCH RESULTS
-    =================================== -->
-
-    <div
-      class="empty-message"
-      *ngIf="filteredProducts.length === 0">
-
-      <h3>
-        No Products Found
-      </h3>
-
-      <p>
-        Try searching with a different
-        product name or category.
-      </p>
-
-    </div>
-
-
-    <!-- ===================================
-         BULK ENQUIRY BANNER
-    =================================== -->
-
-    <div class="bulk-banner">
-
-      <div>
-
-        <h2>
-          Looking for Pharmaceutical
-          Products in Bulk?
-        </h2>
-
-        <p>
-          Contact S-P International for product
-          specifications, availability,
-          documentation and quotations.
-        </p>
+        </select>
 
       </div>
 
-      <a routerLink="/contact">
-        Request Quotation →
-      </a>
+
+      <!-- PRODUCT COUNT -->
+
+      <p class="result-count">
+
+        Showing {{ filteredProducts.length }}
+        of {{ products.length }} products
+
+      </p>
+
+
+      <!-- ===================================
+      PRODUCT CARDS
+      =================================== -->
+
+      <div class="product-grid">
+
+        @for (product of filteredProducts; track product) {
+          <article
+            class="product-card"
+            >
+            <!-- PRODUCT IMAGE PLACEHOLDER -->
+            <div class="product-image">
+              <span aria-hidden="true">
+                {{ product.icon }}
+              </span>
+            </div>
+            <!-- PRODUCT INFORMATION -->
+            <div class="product-info">
+              <!-- PRODUCT CATEGORY -->
+              <span class="category">
+                {{ product.category }}
+              </span>
+              <!-- PRODUCT NAME -->
+              <h3>
+                {{ product.name }}
+              </h3>
+              <!-- PRODUCT APPLICATION -->
+              <p>
+                {{ product.application }}
+              </p>
+              <!-- ENQUIRY BUTTON -->
+              <a
+                routerLink="/contact"
+                class="enquire-btn">
+                Enquire Now →
+              </a>
+            </div>
+          </article>
+        }
+
+      </div>
+
+
+      <!-- ===================================
+      NO SEARCH RESULTS
+      =================================== -->
+
+      @if (filteredProducts.length === 0) {
+        <div
+          class="empty-message"
+          >
+          <h3>
+            No Products Found
+          </h3>
+          <p>
+            Try searching with a different
+            product name or category.
+          </p>
+        </div>
+      }
+
+
+      <!-- ===================================
+      BULK ENQUIRY BANNER
+      =================================== -->
+
+      <div class="bulk-banner">
+
+        <div>
+
+          <h2>
+            Looking for Pharmaceutical
+            Products in Bulk?
+          </h2>
+
+          <p>
+            Contact S-P International for product
+            specifications, availability,
+            documentation and quotations.
+          </p>
+
+        </div>
+
+        <a routerLink="/contact">
+          Request Quotation →
+        </a>
+
+      </div>
 
     </div>
 
-  </div>
-
-</section>
+  </section>

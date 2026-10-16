@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Routes } from '@angular/router';
 
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
@@ -14,6 +14,7 @@ import { BoatAnimationComponent } from './pages/boat-animation/boat-animation.co
 // Your homepage sections are already displayed by AppComponent.
 @Component({
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ''
 })
 class HomeSectionRouteComponent {}
