@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -17,6 +17,7 @@ interface FoodProduct {
     RouterLink
 ],
     templateUrl: './food-ingredients.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './food-ingredients.component.css'
 })
 export class FoodIngredientsComponent {

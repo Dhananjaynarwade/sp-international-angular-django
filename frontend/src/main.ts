@@ -1,6 +1,6 @@
 import { provideZoneChangeDetection } from "@angular/core";
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 // import { provideRouter } from '@angular/router';
 
 import { AppComponent } from './app/app.component';
@@ -9,7 +9,7 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideZoneChangeDetection(),provideHttpClient(),
+    provideZoneChangeDetection(),provideHttpClient(withXhr()),
 provideRouter(
   routes,
   withInMemoryScrolling({

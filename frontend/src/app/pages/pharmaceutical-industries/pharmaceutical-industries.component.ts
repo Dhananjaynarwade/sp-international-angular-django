@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -15,6 +15,7 @@ interface PharmaProduct {
     selector: 'app-pharmaceutical-industries',
     imports: [FormsModule, RouterLink],
     templateUrl: './pharmaceutical-industries.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './pharmaceutical-industries.component.css'
 })
 export class PharmaceuticalIndustriesComponent {

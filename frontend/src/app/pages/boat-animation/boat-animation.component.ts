@@ -5,13 +5,15 @@ import {
   ViewChild,
   AfterViewInit,
   OnDestroy,
-  HostListener
+  HostListener,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'app-boat-animation',
   standalone: true,
   templateUrl: './boat-animation.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './boat-animation.component.css'
 })
 export class BoatAnimationComponent

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 
@@ -14,6 +14,7 @@ interface Product {
     selector: 'app-products',
     imports: [RouterLink],
     templateUrl: './products.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './products.component.css'
 })
 export class ProductsComponent {

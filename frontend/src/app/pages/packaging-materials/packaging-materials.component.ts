@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -24,6 +24,7 @@ interface ChemicalGroup {
     selector: 'app-packaging-materials',
     imports: [FormsModule, RouterLink],
     templateUrl: './packaging-materials.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './packaging-materials.component.css'
 })
 export class PackagingMaterialsComponent {
