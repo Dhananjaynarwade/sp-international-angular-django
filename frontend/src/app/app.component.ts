@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -43,21 +43,20 @@ interface Product {
 @Component({
     selector: 'app-root',
     imports: [
-        CommonModule,
-        FormsModule,
-        RouterOutlet,
-        RouterLink,
-        NavbarComponent,
-        HeroComponent,
-        BoatAnimationComponent,
-        AboutComponent,
-        WhyChooseUsComponent,
-        ContactComponent,
-        FooterComponent,
-        FoodIngredientsComponent,
-        ProductsComponent,
-        IndustriesComponent,
-    ],
+    FormsModule,
+    RouterOutlet,
+    RouterLink,
+    NavbarComponent,
+    HeroComponent,
+    BoatAnimationComponent,
+    AboutComponent,
+    WhyChooseUsComponent,
+    ContactComponent,
+    FooterComponent,
+    FoodIngredientsComponent,
+    ProductsComponent,
+    IndustriesComponent
+],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })

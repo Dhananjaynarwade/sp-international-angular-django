@@ -1,11 +1,11 @@
 <!-- =========================================
-     SP INTERNATIONAL - INDUSTRIAL CHEMICALS
+SP INTERNATIONAL - INDUSTRIAL CHEMICALS
 ========================================= -->
 <a
   routerLink="/"
   fragment="products"
   class="back-link"
->
+  >
   ← Back to Products
 </a>
 <div class="product-details-page">
@@ -13,20 +13,20 @@
   <div class="page-container">
 
     <!-- =========================================
-         BACK TO HOMEPAGE
+    BACK TO HOMEPAGE
     ========================================= -->
 
     <a
       routerLink="/"
       fragment="products"
       class="back-link"
-    >
+      >
       ← Back to Products
     </a>
 
 
     <!-- =========================================
-         PAGE HEADING
+    PAGE HEADING
     ========================================= -->
 
     <div class="page-heading">
@@ -45,110 +45,79 @@
       </p>
 
     </div>
-    
+
 
 
     <!-- =========================================
-         PRODUCT CATEGORIES
+    PRODUCT CATEGORIES
     ========================================= -->
 
-    <section
-      class="details-card category-card"
-      *ngFor="let section of sections"
-    >
-
-      <!-- CATEGORY HEADER -->
-
-      <div class="category-header">
-
-        <!-- COLORED CATEGORY PANEL -->
-
-        <div
-          class="category-panel"
-          [style.background]="section.color"
+    @for (section of sections; track section) {
+      <section
+        class="details-card category-card"
         >
-
-          <span class="category-label">
-            OUR PRODUCT RANGE
-          </span>
-
-          <h2>
-            {{ section.title }}
-          </h2>
-
-          <span class="category-decoration"></span>
-
-        </div>
-
-
-        <!-- CATEGORY INFORMATION -->
-
-        <div class="category-info">
-
-          <span class="section-label">
-            SP INTERNATIONAL
-          </span>
-
-          <h2>
-            {{ section.title }}
-          </h2>
-
-          <p>
-            {{ section.description }}
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- =========================================
-           PRODUCT LIST
-      ========================================= -->
-
-      <div class="products-section">
-
-        <div class="products-heading">
-
-          <h3>
-            Explore Our Products
-          </h3>
-
-          <span>
-            {{ section.products.length }} Products
-          </span>
-
-        </div>
-
-
-        <!-- PRODUCT GRID -->
-
-        <div class="products-grid">
-
+        <!-- CATEGORY HEADER -->
+        <div class="category-header">
+          <!-- COLORED CATEGORY PANEL -->
           <div
-            class="product-item"
-            *ngFor="let product of section.products; let i = index"
-          >
-
-            <span class="product-number">
-              {{ (i + 1).toString().padStart(2, '0') }}
+            class="category-panel"
+            [style.background]="section.color"
+            >
+            <span class="category-label">
+              OUR PRODUCT RANGE
             </span>
-
-            <span class="product-name">
-              {{ product }}
-            </span>
-
+            <h2>
+              {{ section.title }}
+            </h2>
+            <span class="category-decoration"></span>
           </div>
-
+          <!-- CATEGORY INFORMATION -->
+          <div class="category-info">
+            <span class="section-label">
+              SP INTERNATIONAL
+            </span>
+            <h2>
+              {{ section.title }}
+            </h2>
+            <p>
+              {{ section.description }}
+            </p>
+          </div>
         </div>
-
-      </div>
-
-    </section>
+        <!-- =========================================
+        PRODUCT LIST
+        ========================================= -->
+        <div class="products-section">
+          <div class="products-heading">
+            <h3>
+              Explore Our Products
+            </h3>
+            <span>
+              {{ section.products.length }} Products
+            </span>
+          </div>
+          <!-- PRODUCT GRID -->
+          <div class="products-grid">
+            @for (product of section.products; track product; let i = $index) {
+              <div
+                class="product-item"
+                >
+                <span class="product-number">
+                  {{ (i + 1).toString().padStart(2, '0') }}
+                </span>
+                <span class="product-name">
+                  {{ product }}
+                </span>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+    }
 
 
     <!-- =========================================
-         CUSTOM SOURCING
+    CUSTOM SOURCING
     ========================================= -->
 
     <section class="details-card sourcing-card">
@@ -180,16 +149,14 @@
 
         <div class="sourcing-grid">
 
-          <div
-            class="sourcing-item"
-            *ngFor="let service of sourcingServices"
-          >
-
-            <span>✓</span>
-
-            {{ service }}
-
-          </div>
+          @for (service of sourcingServices; track service) {
+            <div
+              class="sourcing-item"
+              >
+              <span>✓</span>
+              {{ service }}
+            </div>
+          }
 
         </div>
 
@@ -199,7 +166,7 @@
 
 
     <!-- =========================================
-         REQUEST QUOTATION
+    REQUEST QUOTATION
     ========================================= -->
 
     <section class="details-card enquiry-section">
@@ -221,7 +188,7 @@
         routerLink="/"
         fragment="contact"
         class="enquiry-button"
-      >
+        >
         Request a Quote →
       </a>
 

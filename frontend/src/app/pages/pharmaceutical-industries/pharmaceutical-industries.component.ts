@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -13,7 +13,7 @@ interface PharmaProduct {
 
 @Component({
     selector: 'app-pharmaceutical-industries',
-    imports: [CommonModule, FormsModule, RouterLink],
+    imports: [FormsModule, RouterLink],
     templateUrl: './pharmaceutical-industries.component.html',
     styleUrl: './pharmaceutical-industries.component.css'
 })

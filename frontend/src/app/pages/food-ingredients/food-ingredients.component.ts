@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -13,10 +13,9 @@ interface FoodProduct {
 @Component({
     selector: 'app-food-ingredients',
     imports: [
-        CommonModule,
-        FormsModule,
-        RouterLink
-    ],
+    FormsModule,
+    RouterLink
+],
     templateUrl: './food-ingredients.component.html',
     styleUrl: './food-ingredients.component.css'
 })

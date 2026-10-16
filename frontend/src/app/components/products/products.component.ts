@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 
 interface Product {
@@ -12,7 +12,7 @@ interface Product {
 
 @Component({
     selector: 'app-products',
-    imports: [CommonModule, RouterLink],
+    imports: [RouterLink],
     templateUrl: './products.component.html',
     styleUrl: './products.component.css'
 })

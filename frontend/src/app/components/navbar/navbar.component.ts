@@ -1,10 +1,10 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Router} from '@angular/router';
 @Component({
     selector: 'app-navbar',
-    imports: [CommonModule, RouterLink, RouterOutlet],
+    imports: [RouterLink, RouterOutlet],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css'
 })

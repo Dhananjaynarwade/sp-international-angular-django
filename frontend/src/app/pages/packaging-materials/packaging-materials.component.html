@@ -19,9 +19,9 @@
           SP INTERNATIONAL · PRODUCT PORTFOLIO
         </p>
 
-   <h1>
-  Packaging <span>&amp; Adhesives Chemicals</span>
-</h1>
+        <h1>
+          Packaging <span>&amp; Adhesives Chemicals</span>
+        </h1>
 
         <p class="hero-description">
           Explore quality packaging materials for
@@ -30,8 +30,8 @@
         </p>
 
         <div class="hero-badges">
-        <span>{{ products.length }} Products</span>
-        <span>{{ categories.length - 1 }} Categories</span>
+          <span>{{ products.length }} Products</span>
+          <span>{{ categories.length - 1 }} Categories</span>
           <span>Bulk Enquiries</span>
         </div>
 
@@ -66,100 +66,93 @@
         type="search"
         placeholder="Search packaging materials..."
         [(ngModel)]="searchTerm"
-      />
+        />
 
-      <select [(ngModel)]="selectedCategory">
+        <select [(ngModel)]="selectedCategory">
 
-        <option
-          *ngFor="let category of categories"
-          [value]="category">
-          {{ category }}
-        </option>
+          @for (category of categories; track category) {
+            <option
+              [value]="category">
+              {{ category }}
+            </option>
+          }
 
-      </select>
-
-    </div>
-
-    <!-- PRODUCT COUNT -->
-    <p class="result-count">
-      Showing {{ filteredProducts.length }}
-      of {{ products.length }} products
-    </p>
-
-    <!-- PRODUCT CARDS -->
-    <div class="product-grid">
-
-      <article
-        class="product-card"
-        *ngFor="let product of filteredProducts">
-
-        <!-- PRODUCT IMAGE PLACEHOLDER -->
-        <div class="product-image">
-          <span>{{ product.icon }}</span>
-        </div>
-
-        <!-- PRODUCT INFORMATION -->
-        <div class="product-info">
-
-          <span class="category">
-            {{ product.category }}
-          </span>
-
-          <h3>{{ product.name }}</h3>
-
-            <!-- CHEMICAL APPLICATION -->
-          <p>{{ product.application }}</p>
-
-
-          <a
-            routerLink="/contact"
-            class="enquire-btn">
-            Enquire Now →
-          </a>
-
-        </div>
-
-      </article>
-
-    </div>
-
-    <!-- NO SEARCH RESULTS -->
-    <div
-      class="empty-message"
-      *ngIf="filteredProducts.length === 0">
-
-      <h3>No products found</h3>
-
-      <p>
-        Try searching with a different
-        product name or category.
-      </p>
-
-    </div>
-
-    <!-- BULK ENQUIRY -->
-    <div class="bulk-banner">
-
-      <div>
-
-        <h2>
-          Need Packaging Materials in Bulk?
-        </h2>
-
-        <p>
-          Contact S-P International for
-          product specifications,
-          availability and quotations.
-        </p>
+        </select>
 
       </div>
 
-      <a routerLink="/contact">
-        Request Quotation →
-      </a>
+      <!-- PRODUCT COUNT -->
+      <p class="result-count">
+        Showing {{ filteredProducts.length }}
+        of {{ products.length }} products
+      </p>
+
+      <!-- PRODUCT CARDS -->
+      <div class="product-grid">
+
+        @for (product of filteredProducts; track product) {
+          <article
+            class="product-card"
+            >
+            <!-- PRODUCT IMAGE PLACEHOLDER -->
+            <div class="product-image">
+              <span>{{ product.icon }}</span>
+            </div>
+            <!-- PRODUCT INFORMATION -->
+            <div class="product-info">
+              <span class="category">
+                {{ product.category }}
+              </span>
+              <h3>{{ product.name }}</h3>
+              <!-- CHEMICAL APPLICATION -->
+              <p>{{ product.application }}</p>
+              <a
+                routerLink="/contact"
+                class="enquire-btn">
+                Enquire Now →
+              </a>
+            </div>
+          </article>
+        }
+
+      </div>
+
+      <!-- NO SEARCH RESULTS -->
+      @if (filteredProducts.length === 0) {
+        <div
+          class="empty-message"
+          >
+          <h3>No products found</h3>
+          <p>
+            Try searching with a different
+            product name or category.
+          </p>
+        </div>
+      }
+
+      <!-- BULK ENQUIRY -->
+      <div class="bulk-banner">
+
+        <div>
+
+          <h2>
+            Need Packaging Materials in Bulk?
+          </h2>
+
+          <p>
+            Contact S-P International for
+            product specifications,
+            availability and quotations.
+          </p>
+
+        </div>
+
+        <a routerLink="/contact">
+          Request Quotation →
+        </a>
+
+      </div>
 
     </div>
 
-  </div>
-
-</section>
+  </section>

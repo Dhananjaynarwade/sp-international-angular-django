@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -22,7 +22,7 @@ interface ChemicalGroup {
 
 @Component({
     selector: 'app-packaging-materials',
-    imports: [CommonModule, FormsModule, RouterLink],
+    imports: [FormsModule, RouterLink],
     templateUrl: './packaging-materials.component.html',
     styleUrl: './packaging-materials.component.css'
 })

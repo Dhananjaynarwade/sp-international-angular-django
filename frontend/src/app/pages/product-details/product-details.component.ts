@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 
@@ -13,7 +13,7 @@ interface ProductSection {
 
 @Component({
     selector: 'app-product-details',
-    imports: [CommonModule, RouterLink],
+    imports: [RouterLink],
     templateUrl: './product-details.component.html',
     styleUrl: './product-details.component.css'
 })
