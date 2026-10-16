@@ -71,10 +71,13 @@ export class BoatAnimationComponent
 const startX = -boatWidth;
 
 /* Stop 30px before the right edge */
+
 const endX = Math.max(
   0,
-  window.innerWidth - boatWidth - 30
+  this.boatTrack.nativeElement.clientWidth - boatWidth
+  +(boatWidth * 45 / 700)
 );
+
 
 /* Smooth movement controlled by scrolling */
 this.boatX =

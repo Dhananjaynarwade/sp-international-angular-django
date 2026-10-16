@@ -13,13 +13,18 @@
    1. SCROLL AREA
 ========================================= */
 
+
 .boat-track {
   position: relative;
-  height: 280vh;
-  padding-top: 80px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 230vh;
+  padding-top: 0;
   box-sizing: border-box;
   background: #6696bf;
 }
+
 
 /* =========================================
    2. STICKY ANIMATION SCENE
@@ -262,7 +267,7 @@ bottom: calc(29% - 12px);
   bottom: 0;
 
   width: 100%;
-  height: 19%;
+  height: 29%;
 
   overflow: visible;
 
@@ -428,7 +433,7 @@ bottom: calc(29% - 12px);
 @media (max-width: 768px) {
 
   .boat-track {
-    padding-top: 70px;
+    padding-top: 0;
   }
 
   .boat-scene {
@@ -549,23 +554,4 @@ bottom: calc(29% - 12px);
     animation: none;
   }
 }
-
-/* =========================================
-   BOAT SECTION - HOMEPAGE INTEGRATION
-========================================= */
-
-.boat-track {
-  height: 230vh;
-  padding-top: 0;
-}
-
-@media (max-width: 768px) {
-  .boat-track {
-    padding-top: 0;
-  }
-}
-/* we remove  meerj */
-
-/* also chec  */
-
 

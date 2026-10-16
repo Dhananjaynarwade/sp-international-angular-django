@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -63,22 +62,21 @@ interface Product {
 
 export class AppComponent implements OnInit {
   
+
 private handleRouteChange(url: string): void {
 
   const path = url.split(/[?#]/)[0];
-  // Show boat only on the homepage
-this.showBoatAnimation = path === '/';
 
- // Hide homepage sections on detail pages
+  // Show boat only on the homepage
+  this.showBoatAnimation = path === '/';
+
+  // Hide homepage sections on product detail pages
   this.isProductDetailsPage =
     path.startsWith('/products/') ||
     path === '/boat-animation';
 
-  // Show product detail pages separately.
-  // this.isProductDetailsPage = path.startsWith('/products/');
-  this.isProductDetailsPage =
-  path.startsWith('/products/') ||
-  path === '/boat-animation';
+  // Request Angular to update the displayed layout
+  this.cdr.markForCheck();
 
   const sectionRoutes: Record<string, string> = {
     '/': 'home',
@@ -88,32 +86,47 @@ this.showBoatAnimation = path === '/';
     '/contact': 'contact'
   };
 
-  const sectionId = sectionRoutes[path];
+
+const fragment = this.router.parseUrl(url).fragment;
+
+// If Get Quote was clicked, go to Contact instead of Home
+const sectionId =
+  path === '/' && fragment === 'contact'
+    ? 'contact'
+    : sectionRoutes[path];
+
 
   if (!sectionId) {
     return;
   }
 
-  // Wait for Angular to display the homepage.
+  // Wait for Angular to render the changed layout
   setTimeout(() => {
+
+    // Recalculate AOS elements after navigation
+    AOS.refreshHard();
 
     if (sectionId === 'home') {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
-
       return;
     }
 
-    document.getElementById(sectionId)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    const section = document.getElementById(sectionId);
 
-  }, 100);
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+  }, 200);
 
 }
+
 
 
   /* PRODUCT PAGE VISIBILITY */
@@ -192,7 +205,8 @@ this.showBoatAnimation = path === '/';
 
 constructor(
   private http: HttpClient,
-  private router: Router
+  private router: Router,
+  private cdr: ChangeDetectorRef
 ) {
 
   this.handleRouteChange(this.router.url);
