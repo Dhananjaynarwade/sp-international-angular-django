@@ -1,5 +1,6 @@
+
 <!-- =========================================
-SP INTERNATIONAL - CONTACT COMPONENT
+     SP INTERNATIONAL - CONTACT COMPONENT
 ========================================= -->
 
 <section id="contact" class="sp-contact">
@@ -19,13 +20,14 @@ SP INTERNATIONAL - CONTACT COMPONENT
         <h2>Tell us what you need.</h2>
 
         <p class="sp-contact-description">
-          Share your requirement and our team can contact you
-          with product availability, pricing and sourcing
-          information.
+          Share your product requirements with us.
+          Our team will contact you regarding product
+          availability, pricing and sourcing information.
         </p>
 
         <div class="sp-contact-details">
 
+          <!-- EMAIL -->
           <div class="sp-contact-detail">
             <small>Email</small>
 
@@ -34,6 +36,7 @@ SP INTERNATIONAL - CONTACT COMPONENT
             </a>
           </div>
 
+          <!-- PHONE -->
           <div class="sp-contact-detail">
             <small>Phone</small>
 
@@ -42,6 +45,7 @@ SP INTERNATIONAL - CONTACT COMPONENT
             </a>
           </div>
 
+          <!-- LOCATION -->
           <div class="sp-contact-detail">
             <small>Location</small>
             <strong>India</strong>
@@ -51,199 +55,189 @@ SP INTERNATIONAL - CONTACT COMPONENT
 
       </div>
 
-      <!-- RIGHT SIDE - QUOTATION FORM -->
+      <!-- =====================================
+           RIGHT SIDE - CUSTOMER ENQUIRY FORM
+      ===================================== -->
 
       <form
         class="sp-contact-form"
-        (ngSubmit)="submitQuote()"
         #quoteForm="ngForm"
+        (ngSubmit)="submitQuote(quoteForm)"
         data-aos="fade-left"
-        >
+      >
 
         <h3>Send Your Requirement</h3>
 
         <p class="sp-form-subtitle">
-          Complete the details below and our team will respond.
+          Fill in your details below.
+          Our team will get in touch with you.
         </p>
+        @if (sentMessage) {
+  <div
+    class="sp-inline-toast"
+    [class.sp-inline-toast-error]="toastType === 'error'"
+    role="status"
+    aria-live="polite"
+  >
+    <span class="sp-toast-icon">
+      {{ toastType === 'success' ? '✓' : '!' }}
+    </span>
+
+    <span class="sp-toast-text">
+      {{ sentMessage }}
+    </span>
+
+    <button
+      type="button"
+      class="sp-toast-close"
+      (click)="closeToast()"
+      aria-label="Close message"
+    >
+      ×
+    </button>
+  </div>
+}
 
         <div class="sp-form-grid">
 
           <!-- CUSTOMER NAME -->
           <div class="sp-form-field">
 
-            <label for="quote-name">Your Name *</label>
+            <label for="quote-name">
+              Your Name *
+            </label>
 
             <input
               id="quote-name"
               type="text"
               name="name"
               [(ngModel)]="quote.name"
-              placeholder="Your full name"
-              required
-              minlength="2"
+              placeholder="Enter your full name"
+              autocomplete="name"
               maxlength="120"
-              pattern="[a-zA-Z]+([ .'-][a-zA-Z]+)*"
-              #nameInput="ngModel"
-              >
+              required
+            />
 
-              @if (nameInput.invalid && (nameInput.touched || nameInput.dirty)) {
-                <small
-                  class="sp-error"
-                  >
-                  Enter a valid name using letters.
-                </small>
-              }
+          </div>
 
-            </div>
+          <!-- COMPANY NAME -->
+          <div class="sp-form-field">
 
-            <!-- COMPANY NAME -->
-            <div class="sp-form-field">
+            <label for="quote-company">
+              Company Name
+            </label>
 
-              <label for="quote-company">Company Name</label>
+            <input
+              id="quote-company"
+              type="text"
+              name="company"
+              [(ngModel)]="quote.company"
+              placeholder="Company name (optional)"
+              autocomplete="organization"
+              maxlength="150"
+            />
 
-              <input
-                id="quote-company"
-                type="text"
-                name="company"
-                [(ngModel)]="quote.company"
-                placeholder="Company name"
-                maxlength="150"
-                >
+          </div>
 
-              </div>
+          <!-- EMAIL ADDRESS -->
+          <div class="sp-form-field">
 
-              <!-- EMAIL ADDRESS -->
-              <div class="sp-form-field">
+            <label for="quote-email">
+              Email Address *
+            </label>
 
-                <label for="quote-email">Email Address *</label>
+            <input
+              id="quote-email"
+              type="email"
+              name="email"
+              [(ngModel)]="quote.email"
+              placeholder="example@gmail.com"
+              autocomplete="email"
+              maxlength="254"
+              required
+              email
+            />
 
-                <input
-                  id="quote-email"
-                  type="email"
-                  name="email"
-                  [(ngModel)]="quote.email"
-                  placeholder="Email address"
-                  required
-                  email
-                  maxlength="254"
-                  #emailInput="ngModel"
-                  >
+          </div>
 
-                  @if (emailInput.invalid && (emailInput.touched || emailInput.dirty)) {
-                    <small
-                      class="sp-error"
-                      >
-                      Enter a valid email address.
-                    </small>
-                  }
+          <!-- PHONE NUMBER -->
+          <div class="sp-form-field">
 
-                </div>
+            <label for="quote-phone">
+              Phone Number *
+            </label>
 
-                <!-- PHONE NUMBER -->
-                <div class="sp-form-field">
+            <input
+              id="quote-phone"
+              type="tel"
+              name="phone"
+              [(ngModel)]="quote.phone"
+              placeholder="Enter your contact number"
+              autocomplete="tel"
+              inputmode="tel"
+              maxlength="20"
+              required
+            />
 
-                  <label for="quote-phone">Phone Number</label>
+          </div>
 
-                  <input
-                    id="quote-phone"
-                    type="tel"
-                    name="phone"
-                    [(ngModel)]="quote.phone"
-                    placeholder="10-digit mobile number"
-                    pattern="[6-9][0-9]{9}"
-                    maxlength="10"
-                    inputmode="numeric"
-                    #phoneInput="ngModel"
-                    >
+        </div>
 
-                    @if (phoneInput.invalid && (phoneInput.touched || phoneInput.dirty)) {
-                      <small
-                        class="sp-error"
-                        >
-                        Enter a valid 10-digit Indian mobile number.
-                      </small>
-                    }
+        <!-- PRODUCT REQUIREMENT -->
+        <div class="sp-form-field">
 
-                  </div>
+          <label for="quote-product">
+            Product / Requirement *
+          </label>
 
-                </div>
+          <input
+            id="quote-product"
+            type="text"
+            name="product"
+            [(ngModel)]="quote.product"
+            placeholder="Which product do you need?"
+            maxlength="180"
+            required
+          />
 
-                <!-- PRODUCT REQUIREMENT -->
-                <div class="sp-form-field">
+        </div>
 
-                  <label for="quote-product">Product / Requirement *</label>
+        <!-- CUSTOMER MESSAGE -->
+        <div class="sp-form-field">
 
-                  <input
-                    id="quote-product"
-                    type="text"
-                    name="product"
-                    [(ngModel)]="quote.product"
-                    placeholder="Enter the product you need"
-                    required
-                    maxlength="180"
-                    #productInput="ngModel"
-                    >
+          <label for="quote-message">
+            Your Message *
+          </label>
 
-                    @if (productInput.invalid && productInput.touched) {
-                      <small
-                        class="sp-error"
-                        >
-                        Please enter your product requirement.
-                      </small>
-                    }
+          <textarea
+            id="quote-message"
+            name="message"
+            [(ngModel)]="quote.message"
+            rows="5"
+            placeholder="Tell us your quantity, product specifications or other requirements"
+            required
+          ></textarea>
 
-                  </div>
+        </div>
 
-                  <!-- MESSAGE -->
-                  <div class="sp-form-field">
+        <!-- SUBMIT BUTTON -->
+        <button
+          type="submit"
+          class="sp-submit-button"
+          [disabled]="sending || quoteForm.invalid"
+        >
+          {{ sending ? 'Sending...' : 'Send Request →' }}
+        </button>
 
-                    <label for="quote-message">Your Message *</label>
+ 
+<!-- SUCCESS / ERROR TOAST -->
 
-                    <textarea
-                      id="quote-message"
-                      name="message"
-                      [(ngModel)]="quote.message"
-                      rows="5"
-                      placeholder="Tell us about your requirement"
-                      required
-                      minlength="4"
-                      #messageInput="ngModel"
-                    ></textarea>
+        
 
-                    @if (messageInput.invalid && messageInput.touched) {
-                      <small
-                        class="sp-error"
-                        >
-                        Please enter at least 4 characters.
-                      </small>
-                    }
+      </form>
 
-                  </div>
+    </div>
 
-                  <!-- SUBMIT BUTTON -->
-                  <button
-                    type="submit"
-                    class="sp-submit-button"
-                    [disabled]="sending || quoteForm.invalid"
-                    >
-                    {{ sending ? 'Sending...' : 'Send Request →' }}
-                  </button>
+  </div>
 
-                  <!-- RESPONSE MESSAGE -->
-                  @if (sentMessage) {
-                    <p
-                      class="sp-form-message"
-                      role="status"
-                      aria-live="polite"
-                      >
-                      {{ sentMessage }}
-                    </p>
-                  }
-
-                </form>
-
-              </div>
-
-            </div>
-
-          </section>
+</section>

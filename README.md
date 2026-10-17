@@ -117,4 +117,7 @@ To run your S-P International Angular website on your phone, follow these steps.
 Step 1 — Start Angular in VS Code
 Open CMD in your frontend folder and run:
 
+python manage.py runserver
+
+
 ng serve --host 0.0.0.0 --poll=1000

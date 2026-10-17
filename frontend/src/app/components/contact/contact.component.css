@@ -187,10 +187,140 @@
   line-height: 1.5;
 }
 
-.sp-form-field input.ng-invalid.ng-touched,
-.sp-form-field textarea.ng-invalid.ng-touched {
-  border-color: #fb7185;
+
+/* =========================================
+   CONTACT FORM - CLEAN INPUT STATES
+========================================= */
+
+/* NORMAL / EMPTY FIELDS */
+
+.sp-contact-form .sp-form-field input,
+.sp-contact-form .sp-form-field textarea {
+  border: 1px solid #334155;
+  outline: none;
 }
+
+/* GREEN WHEN FIELD IS SELECTED */
+
+.sp-contact-form .sp-form-field input:focus,
+.sp-contact-form .sp-form-field textarea:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.14);
+}
+
+/* GREEN AFTER VALID DETAILS ARE ENTERED */
+
+.sp-contact-form .sp-form-field input.ng-valid.ng-dirty:not(:placeholder-shown),
+.sp-contact-form .sp-form-field textarea.ng-valid.ng-dirty:not(:placeholder-shown) {
+  border-color: #10b981;
+}
+
+/* =========================================
+   SMALL SUCCESS TOAST
+========================================= */
+
+.sp-quote-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 11000;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: max-content;
+  max-width: min(370px, calc(100vw - 32px));
+  padding: 13px 15px;
+
+  background: #065f46;
+  color: #ffffff;
+
+  border: 1px solid #34d399;
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+
+  animation: quoteToastIn 0.3s ease-out;
+}
+
+/* GREEN CHECKMARK */
+
+.sp-toast-icon {
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 26px;
+  height: 26px;
+
+  border-radius: 50%;
+
+  background: #10b981;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* CLOSE BUTTON */
+
+.sp-toast-close {
+  margin-left: auto;
+  padding: 0 4px;
+
+  background: transparent;
+  border: 0;
+
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ERROR TOAST */
+
+.sp-quote-toast-error {
+  background: #7f1d1d;
+  border-color: #f87171;
+}
+
+.sp-quote-toast-error .sp-toast-icon {
+  background: #dc2626;
+}
+
+/* ANIMATION */
+
+@keyframes quoteToastIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .sp-quote-toast {
+    right: 12px;
+    bottom: 16px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-quote-toast {
+    animation: none;
+  }
+}
+
 
 /* SUBMIT BUTTON */
 
@@ -299,4 +429,62 @@
     transition: none;
   }
 
+}
+/* =========================================
+   INLINE TOAST ABOVE FORM FIELDS
+========================================= */
+
+.sp-inline-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 4px 0 2px;
+  padding: 12px 14px;
+
+  background: #065f46;
+  color: #ffffff;
+
+  border: 1px solid #34d399;
+  border-radius: 10px;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sp-inline-toast-error {
+  background: #7f1d1d;
+  border-color: #f87171;
+}
+
+.sp-toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sp-toast-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-toast-close {
+  background: transparent;
+  border: 0;
+  color: #ffffff;
+
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
 }
