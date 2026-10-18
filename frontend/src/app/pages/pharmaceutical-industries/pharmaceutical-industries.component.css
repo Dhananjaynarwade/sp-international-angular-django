@@ -1,12 +1,20 @@
 
 /* =========================================
+   SP INTERNATIONAL
    PHARMACEUTICAL INDUSTRIES
-   SP INTERNATIONAL - DARK THEME
+   PREMIUM ROYAL BLUE + WHITE THEME
 ========================================= */
 
 :host {
   display: block;
   width: 100%;
+
+  --pharma-blue: #1d4ed8;
+  --pharma-blue-dark: #1e40af;
+  --pharma-blue-light: #60a5fa;
+  --pharma-heading: #0f172a;
+  --pharma-text: #475569;
+  --pharma-border: #dbeafe;
 }
 
 /* =========================================
@@ -16,12 +24,22 @@
 .pharma-page {
   width: 100%;
   min-height: 100vh;
-  background: #0e293b;
-  color: #ffffff;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f8fbff 60%,
+    #eff6ff
+  );
+
+  color: var(--pharma-heading);
+
   overflow-x: clip;
 }
 
-.pharma-page * {
+.pharma-page *,
+.pharma-page *::before,
+.pharma-page *::after {
   box-sizing: border-box;
 }
 
@@ -32,35 +50,110 @@
 }
 
 /* =========================================
-   HERO SECTION
+   HERO SECTION - ROYAL BLUE
 ========================================= */
 
 .pharma-hero {
-  background: linear-gradient(
-    135deg,
-    #081625 0%,
-    #102c40 55%,
-    #12453f 100%
-  );
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 
   padding: 125px 0 75px;
+
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(191, 219, 254, 0.25),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 85%,
+      rgba(147, 197, 253, 0.17),
+      transparent 36%
+    ),
+    linear-gradient(
+      120deg,
+      #102968 0%,
+      #1d4ed8 55%,
+      #3b82f6 100%
+    );
+
   color: #ffffff;
 }
+
+/* SOFT BLUE BACKGROUND GLOW */
+
+.pharma-hero::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  width: 380px;
+  height: 380px;
+
+  top: -150px;
+  right: -130px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.18),
+    transparent 70%
+  );
+
+  pointer-events: none;
+
+  animation: pharmaGlowFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes pharmaGlowFloat {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-25px, 25px);
+  }
+}
+
+/* =========================================
+   BACK TO PRODUCTS
+========================================= */
 
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #76e8c5;
+
+  padding: 9px 13px;
+
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.11);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9px;
+
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  transition: color 0.2s ease;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
 }
 
 .back-link:hover {
   color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateX(-4px);
 }
+
+/* =========================================
+   HERO CONTENT
+========================================= */
 
 .hero-content {
   max-width: 850px;
@@ -68,58 +161,104 @@
   text-align: center;
 }
 
+/* SMALL HEADING */
+
 .eyebrow {
   margin: 0;
-  color: #73e3c1;
+
+  color: #dbeafe;
+
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 2px;
+
   text-transform: uppercase;
 }
 
+/* MAIN HEADING */
+
 .hero-content h1 {
   margin: 18px 0;
+
+  color: #ffffff;
+
   font-size: clamp(34px, 5vw, 58px);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.7px;
 }
 
+/* LIGHT BLUE HIGHLIGHT */
+
 .hero-content h1 span {
-  color: #73e3c1;
+  color: #bfdbfe;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #bfdbfe,
+    #93c5fd
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+/* HERO DESCRIPTION */
 
 .hero-description {
   max-width: 670px;
   margin: 0 auto;
-  color: #c6d8e4;
+
+  color: #e0edff;
+
   font-size: 16px;
   line-height: 1.8;
 }
 
-/* HERO BADGES */
+/* =========================================
+   HERO BADGES
+========================================= */
 
 .hero-badges {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+
   gap: 12px;
   margin-top: 28px;
 }
 
 .hero-badges span {
   padding: 9px 17px;
-  border: 1px solid #366c70;
+
+  background: rgba(255, 255, 255, 0.13);
+  color: #ffffff;
+
+  border: 1px solid rgba(219, 234, 254, 0.36);
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #d7fff0;
+
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
+
+  backdrop-filter: blur(6px);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.hero-badges span:hover {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: #bfdbfe;
+  transform: translateY(-3px);
 }
 
 /* =========================================
-   COLLECTION HEADING
+   COLLECTION SECTION
 ========================================= */
 
 .section-heading {
@@ -128,21 +267,29 @@
 }
 
 .section-heading .eyebrow {
-  color: #6ee8c5;
+  color: var(--pharma-blue);
 }
+
+/* COLLECTION HEADING */
 
 .section-heading h2 {
   margin: 14px 0;
-  color: #ffffff;
+
+  color: var(--pharma-heading);
+
   font-size: clamp(26px, 3vw, 38px);
   font-weight: 800;
   line-height: 1.3;
 }
 
+/* DESCRIPTION */
+
 .section-heading > p:last-child {
   max-width: 680px;
   margin: 0 auto;
-  color: #b4c8d5;
+
+  color: var(--pharma-text);
+
   font-size: 15px;
   line-height: 1.7;
 }
@@ -154,6 +301,7 @@
 .filters {
   display: flex;
   align-items: center;
+
   gap: 16px;
   margin-bottom: 18px;
 }
@@ -162,14 +310,22 @@
 .filters select {
   height: 52px;
   padding: 0 16px;
-  border: 1px solid #31536a;
+
+  background: #ffffff;
+  color: #0f172a;
+
+  border: 1px solid #bfdbfe;
   border-radius: 11px;
-  background: #142d40;
-  color: #ffffff;
+
   font-size: 14px;
   font-family: inherit;
+
   outline: none;
+
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.04);
+
   transition:
+    background 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
@@ -180,7 +336,7 @@
 }
 
 .filters input::placeholder {
-  color: #9cb4c4;
+  color: #64748b;
 }
 
 .filters select {
@@ -189,31 +345,42 @@
 }
 
 .filters select option {
-  background: #142d40;
-  color: #ffffff;
+  background: #ffffff;
+  color: #0f172a;
 }
+
+/* FILTER FOCUS */
 
 .filters input:focus,
 .filters select:focus {
-  border-color: #6ee8c5;
-  box-shadow: 0 0 0 3px rgba(110, 232, 197, 0.15);
+  background: #ffffff;
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
 /* PRODUCT COUNT */
 
 .result-count {
   margin: 0 0 24px;
-  color: #b4c8d5;
+
+  color: #64748b;
+
   font-size: 13px;
+  font-weight: 500;
 }
 
 /* =========================================
-   PRODUCT GRID - DESKTOP
+   PRODUCT GRID
 ========================================= */
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
   align-items: stretch;
   gap: 22px;
 }
@@ -223,28 +390,39 @@
 ========================================= */
 
 .product-card {
+  position: relative;
+
   display: flex;
   flex-direction: column;
+
   min-width: 0;
   height: 100%;
+
   overflow: hidden;
 
-  background: #142d40;
-  border: 1px solid #285065;
+  background: #ffffff;
+
+  border: 1px solid #dbeafe;
   border-radius: 16px;
 
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
+  box-shadow:
+    0 8px 25px rgba(29, 78, 216, 0.06);
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
+/* PRESERVE CARD HOVER LIFT */
+
 .product-card:hover {
-  transform: translateY(-5px);
-  border-color: #58d9b7;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+  transform: translateY(-6px);
+
+  border-color: #93c5fd;
+
+  box-shadow:
+    0 18px 42px rgba(29, 78, 216, 0.15);
 }
 
 /* =========================================
@@ -261,19 +439,22 @@
 
   background: linear-gradient(
     145deg,
-    #1d4051 0%,
-    #17384c 55%,
-    #16483e 100%
+    #eff6ff 0%,
+    #dbeafe 55%,
+    #bfdbfe 100%
   );
 
-  border-bottom: 1px solid #285065;
+  border-bottom: 1px solid #dbeafe;
 }
 
 .product-image span {
   font-size: 65px;
   line-height: 1;
-  transition: transform 0.25s ease;
+
+  transition: transform 0.3s ease;
 }
+
+/* KEEP PREVIOUS IMAGE ZOOM */
 
 .product-card:hover .product-image span {
   transform: scale(1.1);
@@ -287,44 +468,59 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+
   padding: 20px;
 }
 
-/* CATEGORY LABEL */
+/* CATEGORY BADGE */
 
 .category {
   display: inline-block;
   align-self: flex-start;
 
   padding: 6px 10px;
+
+  background: #dbeafe;
+  color: #1d4ed8;
+
+  border: 1px solid #bfdbfe;
   border-radius: 6px;
 
-  background: #17483f;
-  color: #88f0d1;
-
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.4;
   letter-spacing: 0.4px;
+
   text-transform: uppercase;
 }
 
-/* PRODUCT NAME */
+/* PRODUCT TITLE */
 
 .product-info h3 {
   margin: 15px 0 12px;
-  color: #ffffff;
+
+  color: #0f172a;
+
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.5;
+
   overflow-wrap: anywhere;
+
+  transition: color 0.25s ease;
 }
 
-/* PRODUCT APPLICATION */
+.product-card:hover .product-info h3 {
+  color: #1d4ed8;
+}
+
+/* PRODUCT DESCRIPTION */
 
 .product-info p {
   margin: 0 0 22px;
-  color: #b8cbd8;
+
+  color: #475569;
+
   font-size: 13px;
   line-height: 1.75;
 }
@@ -336,26 +532,51 @@
 .enquire-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   align-self: flex-start;
 
   margin-top: auto;
-  padding: 11px 0;
+  padding: 11px 17px;
 
-  color: #75e7c7;
-  font-size: 14px;
+  background: #1d4ed8;
+  color: #ffffff;
+
+  border: 1px solid #1d4ed8;
+  border-radius: 9px;
+
+  font-size: 13px;
   font-weight: 700;
+
   text-decoration: none;
-  transition: color 0.2s ease;
+
+  box-shadow:
+    0 6px 15px rgba(29, 78, 216, 0.14);
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+/* ENQUIRE HOVER */
 
 .enquire-btn:hover {
-  color: #b4ffe7;
+  background: #2563eb;
+  color: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 23px rgba(29, 78, 216, 0.23);
 }
+
+/* KEYBOARD ACCESSIBILITY */
 
 .enquire-btn:focus-visible,
 .back-link:focus-visible,
 .bulk-banner a:focus-visible {
-  outline: 2px solid #9df5da;
+  outline: 3px solid #93c5fd;
   outline-offset: 4px;
 }
 
@@ -369,12 +590,12 @@
 }
 
 .empty-message h3 {
-  color: #ffffff;
+  color: #0f172a;
   font-size: 20px;
 }
 
 .empty-message p {
-  color: #b4c8d5;
+  color: #64748b;
   font-size: 14px;
 }
 
@@ -383,62 +604,85 @@
 ========================================= */
 
 .bulk-banner {
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
 
+  gap: 30px;
   margin: 65px 0;
   padding: 35px 40px;
 
   background: linear-gradient(
     120deg,
-    #081c2b,
-    #10483f
+    #102968 0%,
+    #1d4ed8 55%,
+    #2563eb 100%
   );
 
-  border: 1px solid #285a57;
+  border: 1px solid #60a5fa;
   border-radius: 18px;
+
+  box-shadow:
+    0 15px 35px rgba(29, 78, 216, 0.13);
 }
 
 .bulk-banner h2 {
   margin: 0 0 12px;
+
   color: #ffffff;
+
   font-size: 24px;
+  font-weight: 800;
   line-height: 1.35;
 }
 
 .bulk-banner p {
   margin: 0;
-  color: #c1d7dc;
+
+  color: #dbeafe;
+
   font-size: 14px;
   line-height: 1.75;
 }
+
+/* BULK ENQUIRY BUTTON */
 
 .bulk-banner a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   flex-shrink: 0;
 
   padding: 15px 22px;
+
+  background: #ffffff;
+  color: #1d4ed8;
+
   border-radius: 9px;
 
-  background: #75e5c4;
-  color: #103b36;
-
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   text-decoration: none;
 
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .bulk-banner a:hover {
-  background: #a5f5dd;
-  transform: translateY(-2px);
+  background: #dbeafe;
+  color: #1e40af;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 9px 22px rgba(15, 23, 42, 0.16);
 }
 
 /* =========================================
@@ -448,7 +692,9 @@
 @media (max-width: 1100px) {
 
   .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
     gap: 20px;
   }
 
@@ -489,7 +735,9 @@
   }
 
   .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
     gap: 16px;
   }
 
@@ -504,6 +752,7 @@
   .bulk-banner {
     flex-direction: column;
     text-align: center;
+
     padding: 30px;
     gap: 22px;
   }
@@ -568,6 +817,8 @@
     font-size: 13px;
   }
 
+  /* FILTERS */
+
   .filters {
     flex-direction: column;
     align-items: stretch;
@@ -578,6 +829,8 @@
     width: 100%;
     height: 48px;
   }
+
+  /* PRODUCT GRID */
 
   .product-grid {
     grid-template-columns: 1fr;
@@ -604,6 +857,8 @@
     font-size: 13px;
   }
 
+  /* BULK ENQUIRY */
+
   .bulk-banner {
     margin: 40px 0;
     padding: 25px 18px;
@@ -626,19 +881,32 @@
 }
 
 /* =========================================
-   ACCESSIBILITY
+   REDUCED MOTION - ACCESSIBILITY
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
+  .pharma-hero::before {
+    animation: none;
+  }
+
+  .back-link,
+  .hero-badges span,
   .product-card,
   .product-image span,
+  .product-info h3,
   .enquire-btn,
-  .bulk-banner a {
+  .bulk-banner a,
+  .filters input,
+  .filters select {
     transition: none;
   }
 
+  .back-link:hover,
+  .hero-badges span:hover,
   .product-card:hover,
+  .product-card:hover .product-image span,
+  .enquire-btn:hover,
   .bulk-banner a:hover {
     transform: none;
   }
