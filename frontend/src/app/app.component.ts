@@ -64,12 +64,27 @@ interface Product {
 export class AppComponent implements OnInit {
   
 
+private readonly wasPageReloaded =
+  (performance.getEntriesByType('navigation')[0] as
+    PerformanceNavigationTiming | undefined)?.type === 'reload';
+
+private initialNavigationComplete = false;
+
 private handleRouteChange(url: string): void {
 
   const path = url.split(/[?#]/)[0];
 
-  // Show boat only on the homepage
-  this.showBoatAnimation = path === '/';
+
+// Keep the boat on all homepage section routes.
+// Hide it only on separate product detail pages.
+
+this.showBoatAnimation = [
+  '/',
+  '/about',
+  '/products',
+  '/industries',
+  '/contact'
+].includes(path);
 
   // Hide homepage sections on product detail pages
   this.isProductDetailsPage =
@@ -88,13 +103,37 @@ private handleRouteChange(url: string): void {
   };
 
 
+
 const fragment = this.router.parseUrl(url).fragment;
 
-// If Get Quote was clicked, go to Contact instead of Home
-const sectionId =
-  path === '/' && fragment === 'contact'
-    ? 'contact'
-    : sectionRoutes[path];
+// Support section navigation from product detail pages.
+// Example: /#products should scroll to Products, not Home.
+
+const validSections = [
+  'home',
+  'about',
+  'products',
+  'industries',
+  'contact'
+];
+
+
+// On a browser refresh, return to the boat.
+// Normal navigation and Back to Products still work.
+
+const resetToBoat =
+  this.wasPageReloaded &&
+  !this.initialNavigationComplete &&
+  !this.isProductDetailsPage;
+
+const sectionId = resetToBoat
+  ? 'home'
+  : path === '/' &&
+    fragment &&
+    validSections.includes(fragment)
+      ? fragment
+      : sectionRoutes[path];
+
 
 
   if (!sectionId) {
@@ -115,14 +154,38 @@ const sectionId =
       return;
     }
 
-    const section = document.getElementById(sectionId);
+const section =
+  sectionId === 'products'
+    ? document.querySelector<HTMLElement>('.sp-products-grid')
+      ?? document.getElementById('products')
+    : document.getElementById(sectionId);
 
-    if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+if (section) {
+
+  if (sectionId === 'products') {
+
+    // Show the product cards with some space above them.
+    const scrollPosition =
+      section.getBoundingClientRect().top +
+      window.scrollY -
+      110;
+
+    window.scrollTo({
+      top: Math.max(0, scrollPosition),
+      behavior: 'smooth'
+    });
+
+  } else {
+
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+  }
+
+}
+
 
   }, 200);
 
@@ -204,11 +267,17 @@ const sectionId =
   ========================================= */
 
 
+
 constructor(
   private http: HttpClient,
   private router: Router,
   private cdr: ChangeDetectorRef
 ) {
+  // Prevent Chrome from restoring the old scroll position.
+
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
 
   this.handleRouteChange(this.router.url);
 
@@ -218,9 +287,11 @@ constructor(
     )
     .subscribe(event => {
       this.handleRouteChange(event.urlAfterRedirects);
-    });
 
+      this.initialNavigationComplete = true;
+    });
 }
+
 
 
   /* =========================================

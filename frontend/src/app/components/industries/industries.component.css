@@ -1,31 +1,103 @@
+
 /* =========================================
-   SP INTERNATIONAL - INDUSTRIES COMPONENT
+   SP INTERNATIONAL - INDUSTRIES
+   PREMIUM ROYAL BLUE + WHITE THEME
 ========================================= */
 
 :host {
   display: block;
   width: 100%;
+
+  --industry-blue: #1d4ed8;
+  --industry-blue-dark: #1e40af;
+  --industry-blue-light: #dbeafe;
+  --industry-heading: #0f172a;
+  --industry-text: #475569;
+  --industry-border: #dbeafe;
 }
 
-/* MAIN SECTION */
+/* =========================================
+   MAIN SECTION
+========================================= */
 
 .sp-industries {
-  padding: 75px 0;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 
-  background: #081522;
-  color: #ffffff;
+  padding: 88px 0;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(59, 130, 246, 0.10),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #eff6ff 0%,
+      #f8fbff 55%,
+      #ffffff 100%
+    );
+
+  color: var(--industry-heading);
 
   scroll-margin-top: 85px;
 }
 
-/* CONTAINER */
+/* =========================================
+   ANIMATED BACKGROUND LIGHT
+========================================= */
+
+.sp-industries::before {
+  content: "";
+
+  position: absolute;
+  top: -130px;
+  right: -120px;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(96, 165, 250, 0.18),
+    rgba(191, 219, 254, 0.08) 48%,
+    transparent 72%
+  );
+
+  pointer-events: none;
+
+  animation:
+    industryBackgroundFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes industryBackgroundFloat {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-45px, 30px, 0) scale(1.08);
+  }
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
 
 .sp-industries-container {
+  position: relative;
+  z-index: 1;
+
+  box-sizing: border-box;
+
   width: calc(100% - 40px);
   max-width: 1200px;
 
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 /* =========================================
@@ -33,31 +105,115 @@
 ========================================= */
 
 .sp-industries-heading {
-  margin-bottom: 35px;
+  margin-bottom: 42px;
 }
 
+/* EYEBROW LABEL */
+
 .sp-industries-eyebrow {
-  display: inline-block;
+  position: relative;
 
-  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 
-  color: #6ee7b7;
+  margin-bottom: 18px;
+  padding: 9px 15px;
+
+  background: #eff6ff;
+  color: var(--industry-blue);
+
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
 
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
 
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
-.sp-industries-heading h2 {
-  margin: 0;
+/* PULSING BLUE INDICATOR */
 
-  font-size: clamp(26px, 3vw, 36px);
+.sp-industries-eyebrow::before {
+  content: "";
+
+  flex: 0 0 7px;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background: #2563eb;
+
+  animation: industryDotPulse 3s ease-in-out infinite;
+}
+
+@keyframes industryDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.25);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
+  }
+}
+
+/* MAIN HEADING */
+
+.sp-industries-heading h2 {
+  position: relative;
+
+  margin: 0;
+  padding-bottom: 24px;
+
+  color: var(--industry-heading);
+
+  font-size: clamp(28px, 3.5vw, 43px);
   font-weight: 800;
 
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+
+  overflow-wrap: break-word;
+}
+
+/* ANIMATED ROYAL BLUE UNDERLINE */
+
+.sp-industries-heading h2::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 96px;
+  height: 4px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa,
+    #bfdbfe
+  );
+
+  transform-origin: left center;
+
+  animation: industryLineReveal 1.2s ease-out both;
+}
+
+@keyframes industryLineReveal {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }
 
 /* =========================================
@@ -67,36 +223,42 @@
 .sp-industries-grid {
   display: grid;
 
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
-  gap: 18px;
+  gap: 20px;
   align-items: stretch;
 }
 
-/* INDUSTRY CARD */
+/* =========================================
+   INDUSTRY CARD
+========================================= */
 
 .sp-industry-card {
   position: relative;
+  isolation: isolate;
 
   display: flex;
   flex-direction: column;
 
-  min-width: 0;
-  min-height: 190px;
-
-  padding: 24px;
   box-sizing: border-box;
 
-  background: linear-gradient(
-    145deg,
-    #122337,
-    #0c1929
-  );
+  min-width: 0;
+  min-height: 205px;
 
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 16px;
+  padding: 26px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--industry-border);
+  border-radius: 18px;
 
   overflow: hidden;
+
+  box-shadow:
+    0 5px 20px rgba(29, 78, 216, 0.06);
+
+  /* Existing card lift preserved */
 
   transition:
     transform 0.3s ease,
@@ -104,96 +266,273 @@
     box-shadow 0.3s ease;
 }
 
-/* NUMBER */
+/* KEEP CARD CONTENT ABOVE LIGHT EFFECT */
+
+.sp-industry-number,
+.sp-industry-card h3,
+.sp-industry-card p {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   ANIMATED TOP BORDER
+========================================= */
+
+.sp-industry-card::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa,
+    #2563eb
+  );
+
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  transition: transform 0.45s ease;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   CARD SHIMMER EFFECT
+========================================= */
+
+.sp-industry-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(147, 197, 253, 0.24) 48%,
+    transparent 75%
+  );
+
+  transform: translateX(-130%);
+
+  pointer-events: none;
+}
+
+/* =========================================
+   INDUSTRY NUMBER
+========================================= */
 
 .sp-industry-number {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
 
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 
-  color: #6ee7b7;
+  color: var(--industry-blue);
 
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 900;
 
   letter-spacing: 1px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
-/* TITLE */
+/* BLUE DOT NEXT TO NUMBER */
+
+.sp-industry-number::after {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #93c5fd;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+/* =========================================
+   INDUSTRY TITLE
+========================================= */
 
 .sp-industry-card h3 {
-  margin: 0 0 12px;
+  margin: 0 0 13px;
 
-  color: #ffffff;
+  color: var(--industry-heading);
 
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
 
   line-height: 1.4;
+
+  transition: color 0.3s ease;
 }
 
-/* DESCRIPTION */
+/* =========================================
+   DESCRIPTION
+========================================= */
 
 .sp-industry-card p {
   margin: 0;
 
-  color: #a8b8ca;
+  color: var(--industry-text);
 
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.8;
+
+  overflow-wrap: break-word;
 }
 
 /* =========================================
-   HOVER ANIMATION
+   HOVER ANIMATIONS
 ========================================= */
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
+
+  /* Original upward lift preserved */
 
   .sp-industry-card:hover {
     transform: translateY(-6px);
 
-    border-color: rgba(16, 185, 129, 0.5);
+    border-color: #93c5fd;
 
     box-shadow:
-      0 15px 30px rgba(0, 0, 0, 0.22);
+      0 18px 40px rgba(29, 78, 216, 0.15);
   }
+
+  /* Growing blue top border */
+
+  .sp-industry-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Light moving across the card */
+
+  .sp-industry-card:hover::after {
+    animation: industryCardShine 0.85s ease-out;
+  }
+
+  /* Blue title highlight */
+
+  .sp-industry-card:hover h3 {
+    color: var(--industry-blue);
+  }
+
+  /* Animated number */
 
   .sp-industry-card:hover .sp-industry-number {
-    color: #a7f3d0;
+    color: var(--industry-blue-dark);
+    transform: translateX(4px);
   }
 
+  .sp-industry-card:hover .sp-industry-number::after {
+    background: var(--industry-blue);
+    transform: scale(1.4);
+  }
+}
+
+@keyframes industryCardShine {
+  from {
+    transform: translateX(-130%);
+  }
+
+  to {
+    transform: translateX(130%);
+  }
 }
 
 /* =========================================
-   TABLET
+   SCROLL REVEAL ANIMATION
+   CSS-ONLY / SUPPORTED BROWSERS
+========================================= */
+
+@keyframes industryCardReveal {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@supports (animation-timeline: view()) {
+
+  .sp-industry-card {
+    animation: industryCardReveal linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 26%;
+  }
+
+  /* Slightly stagger the four cards */
+
+  .sp-industry-card:nth-child(2) {
+    animation-range: entry 0% cover 30%;
+  }
+
+  .sp-industry-card:nth-child(3) {
+    animation-range: entry 0% cover 34%;
+  }
+
+  .sp-industry-card:nth-child(4) {
+    animation-range: entry 0% cover 38%;
+  }
+}
+
+/* =========================================
+   TABLET RESPONSIVE
 ========================================= */
 
 @media (max-width: 980px) {
 
   .sp-industries {
-    padding: 65px 0;
+    padding: 70px 0;
   }
 
   .sp-industries-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
   }
 
   .sp-industry-card {
-    min-height: 170px;
-    padding: 20px;
+    min-height: 185px;
+    padding: 23px;
   }
 
+  .sp-industries-heading h2 {
+    font-size: clamp(28px, 4vw, 38px);
+  }
 }
 
 /* =========================================
-   MOBILE
+   MOBILE RESPONSIVE
 ========================================= */
 
 @media (max-width: 600px) {
 
   .sp-industries {
-    padding: 55px 0;
+    padding: 58px 0;
   }
 
   .sp-industries-container {
@@ -201,33 +540,769 @@
   }
 
   .sp-industries-heading {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+  }
+
+  .sp-industries-eyebrow {
+    max-width: 100%;
+    box-sizing: border-box;
+
+    padding: 8px 12px;
+
+    font-size: 10px;
+    letter-spacing: 0.8px;
   }
 
   .sp-industries-heading h2 {
-    font-size: 26px;
+    padding-bottom: 20px;
+
+    font-size: clamp(27px, 7vw, 34px);
+  }
+
+  .sp-industries-heading h2::after {
+    width: 72px;
+    height: 3px;
   }
 
   .sp-industries-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 14px;
+    gap: 15px;
   }
 
   .sp-industry-card {
     min-height: 0;
-    padding: 20px;
+    padding: 21px;
+
+    border-radius: 15px;
   }
 
   .sp-industry-number {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    font-size: 14px;
   }
 
   .sp-industry-card h3 {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .sp-industry-card p {
     font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* Lower animation load on mobile */
+
+  .sp-industries::before {
+    animation: none;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY / REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-industries::before,
+  .sp-industries-eyebrow::before,
+  .sp-industries-heading h2::after,
+  .sp-industry-card,
+  .sp-industry-card::after {
+    animation: none !important;
+  }
+
+  .sp-industry-card {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+
+  .sp-industry-card:hover {
+    transform: none;
+  }
+
+  .sp-industry-card::before,
+  .sp-industry-number,
+  .sp-industry-number::after,
+  .sp-industry-card h3 {
+    transition: none;
+  }
+
+  .sp-industries-heading h2::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   INDUSTRIES - EXTRA PREMIUM ANIMATIONS
+   ROYAL BLUE + WHITE
+========================================= */
+
+/* =========================================
+   1. ANIMATED EYEBROW SHIMMER
+========================================= */
+
+.sp-industries-eyebrow {
+  background-image: linear-gradient(
+    110deg,
+    #eff6ff 10%,
+    #dbeafe 35%,
+    #bfdbfe 50%,
+    #dbeafe 65%,
+    #eff6ff 90%
+  );
+
+  background-size: 250% 100%;
+
+  animation: industryBadgeShimmer 7s
+    ease-in-out infinite;
+}
+
+@keyframes industryBadgeShimmer {
+  0%, 100% {
+    background-position: 100% center;
+  }
+
+  50% {
+    background-position: 0% center;
+  }
+}
+
+/* =========================================
+   2. GLOWING INDUSTRY NUMBERS
+========================================= */
+
+.sp-industry-number {
+  animation: industryNumberGlow 4s
+    ease-in-out infinite;
+}
+
+.sp-industry-card:nth-child(2)
+.sp-industry-number {
+  animation-delay: -1s;
+}
+
+.sp-industry-card:nth-child(3)
+.sp-industry-number {
+  animation-delay: -2s;
+}
+
+.sp-industry-card:nth-child(4)
+.sp-industry-number {
+  animation-delay: -3s;
+}
+
+@keyframes industryNumberGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 0 rgba(37, 99, 235, 0);
+  }
+
+  50% {
+    text-shadow:
+      0 0 12px rgba(37, 99, 235, 0.3);
+  }
+}
+
+/* =========================================
+   3. ANIMATED INDUSTRY TITLE UNDERLINE
+========================================= */
+
+.sp-industry-card h3 {
+  align-self: flex-start;
+  padding-bottom: 7px;
+
+  background-image: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa
+  );
+
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 3px;
+
+  transition:
+    color 0.3s ease,
+    background-size 0.45s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sp-industry-card:hover h3 {
+    background-size: 100% 3px;
+  }
+}
+
+/* =========================================
+   4. INTERACTIVE BLUE CARD GRADIENT
+========================================= */
+
+.sp-industry-card {
+  background-image: linear-gradient(
+    125deg,
+    #ffffff 0%,
+    #f8fbff 35%,
+    #eaf3ff 65%,
+    #ffffff 100%
+  );
+
+  background-size: 220% 220%;
+  background-position: 0% 50%;
+
+  /* Preserve the existing card lift,
+     border and shadow transitions */
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-position 0.7s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sp-industry-card:hover {
+    background-position: 100% 50%;
+  }
+}
+
+/* =========================================
+   5. MOBILE OPTIMIZATION
+========================================= */
+
+@media (max-width: 600px) {
+  .sp-industries-eyebrow {
+    animation-duration: 10s;
+  }
+
+  .sp-industry-number {
+    animation-duration: 6s;
+  }
+}
+
+/* =========================================
+   6. REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-industries-eyebrow,
+  .sp-industry-number {
+    animation: none !important;
+  }
+
+  .sp-industry-card,
+  .sp-industry-card h3 {
+    transition: none !important;
+  }
+}
+
+/* =========================================
+   INDUSTRIES - PREMIUM TEXT & HEIGHT
+   KEEP ALL PREVIOUS ANIMATIONS
+========================================= */
+
+/* MAIN SECTION HEADING */
+
+.sp-industries-heading h2 {
+  max-width: 950px;
+
+  font-size: clamp(34px, 4.4vw, 54px);
+  font-weight: 850;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+
+  color: #0f172a;
+
+  text-shadow: 0 5px 24px rgba(37, 99, 235, 0.06);
+}
+
+/* EYEBROW TEXT */
+
+.sp-industries-eyebrow {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+}
+
+/* TALLER PREMIUM CARDS */
+
+.sp-industry-card {
+  min-height: 235px;
+  padding: 28px 25px;
+  gap: 0;
+}
+
+/* BIGGER INDUSTRY NUMBERS */
+
+.sp-industry-number {
+  margin-bottom: 24px;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  letter-spacing: 1.8px;
+  line-height: 1.3;
+}
+
+/* MORE VISIBLE CARD TITLES */
+
+.sp-industry-card h3 {
+  margin-bottom: 14px;
+
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+
+  color: #172554;
+}
+
+/* IMPROVED DESCRIPTION READABILITY */
+
+.sp-industry-card p {
+  max-width: 35ch;
+
+  font-size: 14px;
+  font-weight: 450;
+  line-height: 1.85;
+
+  color: #475569;
+}
+
+/* INTERACTIVE TEXT DEPTH */
+
+@media (hover: hover) and (pointer: fine) {
+  .sp-industry-card:hover h3 {
+    color: #1d4ed8;
+  }
+
+  .sp-industry-card:hover .sp-industry-number {
+    text-shadow: 0 0 12px rgba(37, 99, 235, 0.18);
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 980px) {
+  .sp-industries-heading h2 {
+    font-size: clamp(32px, 4.5vw, 44px);
+  }
+
+  .sp-industry-card {
+    min-height: 205px;
+    padding: 24px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .sp-industries-heading h2 {
+    font-size: clamp(29px, 8vw, 37px);
+    line-height: 1.22;
+    letter-spacing: -0.035em;
+  }
+
+  .sp-industry-card {
+    min-height: 0;
+    padding: 24px 22px;
+  }
+
+  .sp-industry-number {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+
+  .sp-industry-card h3 {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+
+  .sp-industry-card p {
+    max-width: none;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}
+
+/* EXTRA SMALL PHONES */
+
+@media (max-width: 380px) {
+  .sp-industries-heading h2 {
+    font-size: 28px;
+  }
+
+  .sp-industry-card {
+    padding: 20px;
+  }
+}
+
+/* =========================================
+   INDUSTRIES - PREMIUM TRACKING TEXT
+   CSS ONLY
+========================================= */
+
+/* 1. MAIN HEADING - TRACKING IN EXPAND */
+
+@keyframes industryTrackingExpand {
+  from {
+    opacity: 0;
+    letter-spacing: -0.14em;
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: -0.045em;
+    filter: blur(0);
+  }
+}
+
+/* 2. CARD TITLES - TRACKING IN CONTRACT */
+
+@keyframes industryTrackingContract {
+  from {
+    opacity: 0;
+    letter-spacing: 0.12em;
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: -0.02em;
+    filter: blur(0);
+  }
+}
+
+/* 3. TRIGGER ANIMATIONS WHEN SCROLLING */
+
+@supports (animation-timeline: view()) {
+
+  .sp-industries-heading h2 {
+    animation: industryTrackingExpand linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 35%;
+  }
+
+  .sp-industry-card h3 {
+    animation: industryTrackingContract linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+/* 4. MOBILE TEXT READABILITY */
+
+@media (max-width: 600px) {
+
+  .sp-industries-heading h2 {
+    line-height: 1.25;
+    overflow-wrap: break-word;
+  }
+
+  .sp-industry-card h3 {
+    line-height: 1.45;
+  }
+}
+
+/* 5. ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-industries-heading h2,
+  .sp-industry-card h3 {
+    animation: none !important;
+    opacity: 1;
+    filter: none;
+  }
+
+  .sp-industries-heading h2 {
+    letter-spacing: -0.035em;
+  }
+
+  .sp-industry-card h3 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* =========================================
+   INDUSTRIES - TWO TRACKING ANIMATIONS
+========================================= */
+
+/* Keep heading text responsive */
+
+.sp-industries-heading h2 span {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: baseline;
+  white-space: normal;
+}
+
+/* =========================================
+   1. TRACKING IN EXPAND
+========================================= */
+
+@keyframes trackingInExpand {
+  from {
+    letter-spacing: -0.35em;
+    opacity: 0;
+    filter: blur(7px);
+  }
+
+  to {
+    letter-spacing: inherit;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* =========================================
+   2. TRACKING IN EXPAND FWD TOP
+========================================= */
+
+@keyframes trackingInExpandFwdTop {
+  from {
+    letter-spacing: -0.35em;
+    transform: translateY(-35px) scale(0.86);
+    opacity: 0;
+    filter: blur(7px);
+  }
+
+  to {
+    letter-spacing: inherit;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* =========================================
+   ACTIVATE WHEN SCROLLING INTO VIEW
+========================================= */
+
+@supports (animation-timeline: view()) {
+
+  /* Replaces only the old heading reveal.
+     Industry card animations stay unchanged. */
+
+  .sp-industries-heading h2 {
+    animation: none;
+  }
+
+  .industry-tracking-expand {
+    animation: trackingInExpand linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 35%;
+  }
+
+  .industry-tracking-fwd-top {
+    animation: trackingInExpandFwdTop linear both;
+    animation-timeline: view(block);
+    animation-range: entry 8% cover 45%;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 600px) {
+  .sp-industries-heading h2 span {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-tracking-expand,
+  .industry-tracking-fwd-top {
+    animation: none !important;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* =========================================
+   INDUSTRIES - WOBBLE VER LEFT ANIMATION
+   KEEP PREVIOUS ANIMATIONS
+========================================= */
+
+/* MAIN HEADING WOBBLE */
+
+.sp-industries-heading h2 {
+  transform-origin: left center;
+
+  animation: industryWobbleVerLeft 1.3s ease-in-out both;
+}
+
+/* WOBBLE FROM LEFT */
+
+@keyframes industryWobbleVerLeft {
+
+  0%, 100% {
+    transform: perspective(900px)
+      translateY(0)
+      rotateY(0deg);
+  }
+
+  15% {
+    transform: perspective(900px)
+      translateY(-12px)
+      rotateY(-8deg);
+  }
+
+  30% {
+    transform: perspective(900px)
+      translateY(7px)
+      rotateY(5deg);
+  }
+
+  45% {
+    transform: perspective(900px)
+      translateY(-5px)
+      rotateY(-3deg);
+  }
+
+  60% {
+    transform: perspective(900px)
+      translateY(3px)
+      rotateY(2deg);
+  }
+
+  75% {
+    transform: perspective(900px)
+      translateY(-2px)
+      rotateY(-1deg);
+  }
+}
+
+/* PLAY WOBBLE WHEN SECTION ENTERS VIEW */
+
+@supports (animation-timeline: view()) {
+
+  .sp-industries-heading h2 {
+    animation: industryWobbleVerLeft 1.3s ease-in-out both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+/* MOBILE - REDUCE MOVEMENT */
+
+@media (max-width: 600px) {
+
+  .sp-industries-heading h2 {
+    transform-origin: left center;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-industries-heading h2 {
+    animation: none !important;
+    transform: none;
+  }
+}
+
+/* =========================================
+   INDUSTRIES - ORIGINAL ANIMISTA WOBBLE
+   wobble-ver-left
+========================================= */
+
+/* Apply animation to main heading */
+
+.sp-industries-heading h2 {
+  transform-origin: 50% 50%;
+  animation: wobble-ver-left 0.8s both;
+}
+
+/* Original Animista animation */
+
+@keyframes wobble-ver-left {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+    transform-origin: 50% 50%;
+  }
+
+  15% {
+    transform: translateY(-30px) rotate(-6deg);
+  }
+
+  30% {
+    transform: translateY(15px) rotate(6deg);
+  }
+
+  45% {
+    transform: translateY(-15px) rotate(-3.6deg);
+  }
+
+  60% {
+    transform: translateY(9px) rotate(2.4deg);
+  }
+
+  75% {
+    transform: translateY(-6px) rotate(-1.2deg);
+  }
+}
+
+/* Scroll-triggered animation in supported browsers */
+
+@supports (animation-timeline: view()) {
+
+  .sp-industries-heading h2 {
+    animation: wobble-ver-left 0.8s both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+/* Mobile optimization */
+
+@media (max-width: 600px) {
+
+  .sp-industries-heading h2 {
+    transform-origin: center center;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-industries-heading h2 {
+    animation: none !important;
+    transform: none;
+  }
+}
+
+/* =========================================
+   INDUSTRIES - WOBBLE HOR TOP
+   ORIGINAL ANIMISTA STYLE
+========================================= */
+
+/* Horizontal wobble on heading hover */
+
+
+/* =========================================
+   CONTINUOUS WOBBLE ON MOUSE HOVER
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-industries-heading h2:hover {
+    animation: wobble-hor-top 0.8s ease-in-out infinite;
+    animation-timeline: auto;
+    transform-origin: 50% 0%;
+    cursor: default;
   }
 
 }
@@ -236,8 +1311,108 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .sp-industry-card {
-    transition: none;
+  .sp-industries-heading h2:hover {
+    animation: none !important;
+    transform: none;
   }
 
+}
+
+
+/* ANIMISTA WOBBLE-HOR-TOP KEYFRAMES */
+
+@keyframes wobble-hor-top {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+    transform-origin: 50% 0%;
+  }
+
+  15% {
+    transform: translateX(-30px) rotate(6deg);
+  }
+
+  30% {
+    transform: translateX(15px) rotate(-6deg);
+  }
+
+  45% {
+    transform: translateX(-15px) rotate(3.6deg);
+  }
+
+  60% {
+    transform: translateX(9px) rotate(-2.4deg);
+  }
+
+  75% {
+    transform: translateX(-6px) rotate(1.2deg);
+  }
+}
+
+/* MOBILE SAFETY */
+
+@media (max-width: 600px) {
+
+  .sp-industries-heading h2 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-industries-heading h2:hover {
+    animation: none !important;
+    -webkit-animation: none !important;
+    transform: none;
+  }
+}
+
+/* =========================================
+   OUR PRODUCTS - CONTINUOUS PULSATE BCK
+   ORIGINAL ANIMISTA ANIMATION
+========================================= */
+
+/* Heading always animates */
+
+.sp-products-heading h2 {
+  -webkit-animation: pulsate-bck 0.5s ease-in-out infinite both;
+  animation: pulsate-bck 0.5s ease-in-out infinite both;
+
+  transform-origin: center center;
+}
+
+/* PULSATE-BCK KEYFRAMES */
+
+@-webkit-keyframes pulsate-bck {
+  0%, 100% {
+    -webkit-transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(0.9);
+  }
+}
+
+@keyframes pulsate-bck {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-products-heading h2 {
+    -webkit-animation: none !important;
+    animation: none !important;
+    transform: none;
+  }
 }

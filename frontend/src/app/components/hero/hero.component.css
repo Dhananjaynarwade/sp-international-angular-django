@@ -1,53 +1,79 @@
+
 /* =========================================
-   SP INTERNATIONAL - HERO COMPONENT
+   SP INTERNATIONAL
+   PREMIUM ROYAL BLUE + WHITE HERO
 ========================================= */
 
 :host {
   display: block;
   width: 100%;
+
+  --hero-primary: #1d4ed8;
+  --hero-hover: #1e40af;
+  --hero-heading: #0f172a;
+  --hero-text: #475569;
+  --hero-border: #dbeafe;
+  --hero-light: #eff6ff;
+  --hero-white: #ffffff;
 }
 
-/* HERO SECTION */
+/* =========================================
+   HERO SECTION
+========================================= */
 
 .hero {
   position: relative;
   overflow: hidden;
 
-  padding: 150px 0 95px;
+  padding: 150px 0 100px;
 
   background:
     radial-gradient(
-      circle at 15% 20%,
-      rgba(25, 195, 125, 0.14),
-      transparent 28%
+      circle at 12% 18%,
+      rgba(59, 130, 246, 0.12),
+      transparent 33%
     ),
     radial-gradient(
-      circle at 85% 30%,
-      rgba(55, 120, 255, 0.11),
-      transparent 30%
+      circle at 90% 70%,
+      rgba(147, 197, 253, 0.15),
+      transparent 35%
     ),
-    linear-gradient(180deg, #07111f, #081522);
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8fbff 55%,
+      #eff6ff 100%
+    );
 
-  color: #ffffff;
+  color: var(--hero-heading);
 }
 
-/* CONTAINER */
+/* =========================================
+   CONTAINER
+========================================= */
 
 .hero .container {
+  box-sizing: border-box;
+
   width: calc(100% - 48px);
   max-width: 1200px;
+
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
-/* TWO-COLUMN GRID */
+/* =========================================
+   TWO-COLUMN GRID
+========================================= */
 
 .hero-grid {
   position: relative;
   z-index: 1;
 
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr);
 
   align-items: center;
   gap: 55px;
@@ -57,151 +83,231 @@
   min-width: 0;
 }
 
-/* HERO TEXT */
+/* =========================================
+   HERO TEXT
+========================================= */
 
 .eyebrow {
-  color: #6ee7b7;
+  display: inline-block;
+
+  padding: 9px 14px;
+
+  background: #eff6ff;
+  color: var(--hero-primary);
+
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+
+  letter-spacing: 1.1px;
   text-transform: uppercase;
 }
 
-.hero-copy h1 {
-  margin: 18px 0 24px;
+/* MAIN HEADING */
 
-  font-size: clamp(40px, 5.5vw, 76px);
+.hero-copy h1 {
+  margin: 22px 0 24px;
+
+  color: var(--hero-heading);
+
+  font-size: clamp(40px, 5.2vw, 70px);
   font-weight: 800;
-  line-height: 1.08;
+
+  line-height: 1.12;
   letter-spacing: -0.04em;
 
   overflow-wrap: break-word;
 }
 
+/* BLUE HIGHLIGHT */
+
 .hero-copy h1 span {
-  color: #6ee7b7;
+  color: var(--hero-primary);
 }
+
+/* DESCRIPTION */
 
 .hero-copy > p {
-  max-width: 620px;
+  max-width: 600px;
   margin: 0;
 
-  color: #a8b8ca;
+  color: var(--hero-text);
+
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
-/* HERO BUTTONS */
+/* =========================================
+   HERO BUTTONS
+========================================= */
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
 
-  margin: 30px 0;
+  gap: 14px;
+  margin: 32px 0;
 }
 
 .hero-actions .btn {
+  box-sizing: border-box;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  min-height: 46px;
-  padding: 12px 22px;
+  min-height: 48px;
+  padding: 13px 24px;
 
-  border-radius: 10px;
+  border-radius: 11px;
 
   font-size: 14px;
   font-weight: 700;
+
   text-align: center;
   text-decoration: none;
 
+  cursor: pointer;
+
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.btn-primary {
-  background: #10b981;
-  color: #062016;
-  border: 1px solid #10b981;
-}
+/* PRIMARY BUTTON */
 
-.btn-outline {
-  background: transparent;
+.hero-actions .btn-primary {
+  background: var(--hero-primary);
   color: #ffffff;
-  border: 1px solid rgba(110, 231, 183, 0.5);
+
+  border: 1px solid var(--hero-primary);
+
+  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.16);
 }
+
+.hero-actions .btn-primary:hover {
+  background: var(--hero-hover);
+  border-color: var(--hero-hover);
+
+  color: #ffffff;
+}
+
+/* SECONDARY BUTTON */
+
+.hero-actions .btn-outline {
+  background: #ffffff;
+  color: var(--hero-primary);
+
+  border: 1px solid #93c5fd;
+}
+
+.hero-actions .btn-outline:hover {
+  background: var(--hero-light);
+  border-color: var(--hero-primary);
+  color: var(--hero-hover);
+}
+
+/* BUTTON HOVER */
 
 .hero-actions .btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.15);
 }
 
-/* COMPANY STATISTICS */
+/* =========================================
+   COMPANY STATISTICS
+========================================= */
 
 .trust-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
 
-  margin-top: 34px;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+  margin-top: 38px;
 }
 
 .trust-row > div {
   min-width: 0;
-  padding: 16px 0;
 
-  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 17px 0;
+
+  border-top: 2px solid #bfdbfe;
 }
 
 .trust-row strong {
   display: block;
-  font-size: 24px;
+
+  color: var(--hero-primary);
+
+  font-size: 25px;
   font-weight: 800;
 }
 
 .trust-row span {
   display: block;
-  margin-top: 4px;
 
-  color: #94a3b8;
+  margin-top: 6px;
+
+  color: #64748b;
+
   font-size: 12px;
+  line-height: 1.5;
 }
 
 /* =========================================
-   HERO IMAGE
+   HERO IMAGE CARD
 ========================================= */
 
 .hero-card {
   position: relative;
 
+  box-sizing: border-box;
   min-width: 0;
+
   padding: 12px;
 
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 18px;
+  background: #ffffff;
 
-  background: rgba(14, 31, 49, 0.7);
+  border: 1px solid var(--hero-border);
+  border-radius: 20px;
 
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 20px 55px rgba(37, 99, 235, 0.10),
+    0 4px 14px rgba(15, 23, 42, 0.04);
 
-  transition: transform 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .hero-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 26px 60px rgba(37, 99, 235, 0.15);
 }
+
+/* IMAGE */
 
 .hero-image {
   height: 490px;
+
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 13px;
+
+  background: #dbeafe;
 }
 
 .hero-image img {
   display: block;
+
   width: 100%;
   height: 100%;
 
@@ -211,81 +317,101 @@
 }
 
 .hero-card:hover .hero-image img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* FLOATING LABELS */
+/* =========================================
+   FLOATING LABELS
+========================================= */
 
 .floating-chip {
   position: absolute;
+  z-index: 2;
 
-  padding: 11px 15px;
+  max-width: 75%;
 
-  border-radius: 10px;
+  padding: 12px 16px;
 
   background: #ffffff;
-  color: #07111f;
+  color: var(--hero-primary);
+
+  border: 1px solid #dbeafe;
+  border-radius: 11px;
 
   font-size: 13px;
   font-weight: 800;
 
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 10px 28px rgba(29, 78, 216, 0.14);
 
   animation: chipFloat 4s ease-in-out infinite;
 }
 
 .chip-a {
   top: 55px;
-  left: -20px;
+  left: -16px;
 }
 
 .chip-b {
-  right: -20px;
+  right: -16px;
   bottom: 50px;
+
   animation-delay: -2s;
 }
 
+/* =========================================
+   FLOATING ANIMATION
+========================================= */
+
 @keyframes chipFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
   50% {
-    transform: translateY(-9px);
+    transform: translateY(-8px);
   }
 }
 
 /* =========================================
-   TABLET
+   TABLET RESPONSIVE
 ========================================= */
 
 @media (max-width: 980px) {
 
   .hero {
-    padding: 115px 0 65px;
+    padding: 120px 0 75px;
   }
 
   .hero-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 36px;
+    gap: 40px;
+  }
+
+  .hero-copy h1 {
+    max-width: 780px;
   }
 
   .hero-card {
     width: 100%;
     max-width: 650px;
+
     margin: 0 auto;
-    box-sizing: border-box;
   }
 
   .hero-image {
-    height: 400px;
+    height: 420px;
   }
 }
 
 /* =========================================
-   MOBILE
+   MOBILE RESPONSIVE
 ========================================= */
 
 @media (max-width: 600px) {
 
   .hero {
-    padding: 105px 0 50px;
+    padding: 108px 0 55px;
   }
 
   .hero .container {
@@ -293,34 +419,62 @@
   }
 
   .hero-grid {
-    gap: 28px;
+    gap: 32px;
+  }
+
+  /* TEXT */
+
+  .eyebrow {
+    max-width: 100%;
+    box-sizing: border-box;
+
+    font-size: 10px;
+    letter-spacing: 0.8px;
+
+    padding: 8px 12px;
   }
 
   .hero-copy h1 {
-    font-size: clamp(30px, 8vw, 42px);
+    margin: 18px 0 20px;
+
+    font-size: clamp(32px, 8vw, 42px);
     line-height: 1.15;
+
+    letter-spacing: -0.03em;
   }
 
   .hero-copy > p {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.75;
   }
+
+  /* BUTTONS */
 
   .hero-actions {
     flex-direction: column;
+    gap: 12px;
+
+    margin: 28px 0;
   }
 
   .hero-actions .btn {
     width: 100%;
-    box-sizing: border-box;
+    min-height: 48px;
   }
 
+  /* STATISTICS */
+
   .trust-row {
-    gap: 8px;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .trust-row > div {
+    padding: 13px 0;
   }
 
   .trust-row strong {
-    font-size: clamp(17px, 5vw, 23px);
+    font-size: clamp(18px, 5vw, 24px);
   }
 
   .trust-row span {
@@ -328,28 +482,78 @@
     overflow-wrap: anywhere;
   }
 
-  .hero-image {
-    height: clamp(220px, 70vw, 350px);
+  /* IMAGE */
+
+  .hero-card {
+    padding: 8px;
+    border-radius: 16px;
   }
 
+  .hero-image {
+    height: clamp(230px, 68vw, 350px);
+    border-radius: 11px;
+  }
+
+  /* FLOATING LABELS */
+
   .floating-chip {
-    max-width: 65%;
+    max-width: 70%;
+
     padding: 8px 10px;
+
     font-size: 11px;
+    line-height: 1.4;
   }
 
   .chip-a {
+    top: 20px;
     left: 0;
   }
 
   .chip-b {
     right: 0;
+    bottom: 20px;
   }
 }
 
-/* REDUCED MOTION */
+/* =========================================
+   EXTRA SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+  .hero .container {
+    width: calc(100% - 28px);
+  }
+
+  .hero-copy h1 {
+    font-size: 30px;
+  }
+
+  .trust-row {
+    gap: 7px;
+  }
+
+  .trust-row strong {
+    font-size: 17px;
+  }
+
+  .trust-row span {
+    font-size: 10px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.hero-actions .btn:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
 
 @media (prefers-reduced-motion: reduce) {
+
   .floating-chip {
     animation: none;
   }
@@ -360,4 +564,892 @@
     transition: none;
   }
 }
-/* here we remove  */
+
+/* =========================================
+   SP INTERNATIONAL
+   PREMIUM HERO CSS ANIMATIONS
+========================================= */
+
+/* 1. MOVING ROYAL BLUE HEADING */
+
+.hero-copy h1 span {
+  background: linear-gradient(
+    110deg,
+    #1d4ed8 15%,
+    #60a5fa 40%,
+    #2563eb 60%,
+    #1e40af 85%
+  );
+
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: heroBlueText 5s ease-in-out infinite alternate;
+}
+
+@keyframes heroBlueText {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 100% center;
+  }
+}
+
+/* 2. MAIN HEADING ENTRANCE */
+
+.hero-copy h1 {
+  animation: heroTitleReveal 1s ease-out both;
+}
+
+@keyframes heroTitleReveal {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* 3. DESCRIPTION REVEAL */
+
+.hero-copy > p {
+  animation: heroDescriptionReveal 1s ease-out 0.2s both;
+}
+
+@keyframes heroDescriptionReveal {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* 4. SLOW SHIPPING PORT IMAGE ZOOM */
+
+.hero-image img {
+  animation: heroImageBreathe 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroImageBreathe {
+  from {
+    scale: 1.01;
+  }
+
+  to {
+    scale: 1.055;
+  }
+}
+
+/* 5. FLOATING LABEL SOFT GLOW */
+
+.floating-chip {
+  animation:
+    chipFloat 4s ease-in-out infinite,
+    heroChipGlow 4s ease-in-out infinite;
+}
+
+.chip-b {
+  animation-delay: -2s, -2s;
+}
+
+@keyframes heroChipGlow {
+  0%, 100% {
+    box-shadow: 0 8px 22px rgba(29, 78, 216, 0.12);
+  }
+
+  50% {
+    box-shadow: 0 12px 30px rgba(29, 78, 216, 0.27);
+  }
+}
+
+/* 6. SHINING PRIMARY BUTTON */
+
+.hero-actions .btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-actions .btn-primary::after {
+  content: "";
+
+  position: absolute;
+  top: -50%;
+  left: -75%;
+
+  width: 35%;
+  height: 200%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+
+  transform: skewX(-22deg);
+
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .hero-actions .btn-primary:hover::after {
+    animation: heroButtonShine 0.8s ease-out forwards;
+  }
+}
+
+@keyframes heroButtonShine {
+  from {
+    left: -75%;
+  }
+
+  to {
+    left: 150%;
+  }
+}
+
+/* 7. STAGGERED STATISTICS REVEAL */
+
+.trust-row > div {
+  animation: heroStatReveal 0.9s ease-out both;
+}
+
+.trust-row > div:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.trust-row > div:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.trust-row > div:nth-child(3) {
+  animation-delay: 0.7s;
+}
+
+@keyframes heroStatReveal {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* 8. ANIMATED BLUE LIGHT BACKGROUND */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  top: 8%;
+  right: -90px;
+
+  width: 340px;
+  height: 340px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.12),
+    rgba(147, 197, 253, 0.05) 45%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+
+  animation: heroBackgroundFloat 10s ease-in-out infinite alternate;
+}
+
+@keyframes heroBackgroundFloat {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: -35px 25px;
+  }
+}
+
+/* 9. MOBILE PERFORMANCE */
+
+@media (max-width: 600px) {
+
+  .hero::before {
+    width: 200px;
+    height: 200px;
+    right: -70px;
+  }
+
+  .hero-image img {
+    animation-duration: 16s;
+  }
+}
+
+/* 10. ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-copy h1,
+  .hero-copy h1 span,
+  .hero-copy > p,
+  .hero-image img,
+  .floating-chip,
+  .trust-row > div,
+  .hero::before,
+  .hero-actions .btn-primary::after {
+    animation: none !important;
+    opacity: 1;
+    translate: none;
+  }
+
+  .hero-image img {
+    scale: 1;
+  }
+}
+
+/* =========================================
+   SP INTERNATIONAL
+   HERO - EXTRA PREMIUM ANIMATIONS
+========================================= */
+
+/* =========================================
+   1. ANIMATED EYEBROW BADGE
+========================================= */
+
+.hero .eyebrow {
+  background-image: linear-gradient(
+    110deg,
+    #eff6ff 15%,
+    #dbeafe 35%,
+    #bfdbfe 50%,
+    #dbeafe 65%,
+    #eff6ff 85%
+  );
+
+  background-size: 250% 100%;
+
+  animation: heroBadgeShimmer 6s linear infinite;
+}
+
+@keyframes heroBadgeShimmer {
+  from {
+    background-position: 200% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+/* =========================================
+   2. SHIPPING PORT IMAGE LIGHT SWEEP
+========================================= */
+
+.hero-image {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Reflective light overlay */
+
+.hero-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.24) 47%,
+    rgba(219, 234, 254, 0.35) 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-130%);
+  transition: transform 0.9s ease;
+
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .hero-card:hover .hero-image::after {
+    transform: translateX(130%);
+  }
+}
+
+/* =========================================
+   3. SOFT ANIMATED IMAGE BORDER
+========================================= */
+
+.hero-card::before {
+  content: "";
+
+  position: absolute;
+  inset: -2px;
+
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: 21px;
+
+  pointer-events: none;
+
+  animation: heroBorderPulse 5s ease-in-out infinite;
+}
+
+@keyframes heroBorderPulse {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: 0 0 0 rgba(37, 99, 235, 0);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.14);
+  }
+}
+
+/* =========================================
+   4. INTERACTIVE STATISTICS LINES
+========================================= */
+
+.trust-row > div {
+  position: relative;
+}
+
+/* Blue accent line */
+
+.trust-row > div::after {
+  content: "";
+
+  position: absolute;
+  top: -2px;
+  left: 0;
+
+  width: 0;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa
+  );
+
+  border-radius: 999px;
+
+  transition: width 0.5s ease;
+}
+
+@media (hover: hover) {
+  .trust-row > div:hover::after {
+    width: 100%;
+  }
+
+  .trust-row strong {
+    transition: color 0.3s ease;
+  }
+
+  .trust-row > div:hover strong {
+    color: #1e40af;
+  }
+}
+
+/* =========================================
+   5. OUTLINE BUTTON BLUE LIGHT EFFECT
+========================================= */
+
+.hero-actions .btn-outline {
+  background-image: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #eff6ff 35%,
+    #bfdbfe 50%,
+    #eff6ff 65%,
+    #ffffff 100%
+  );
+
+  background-size: 230% 100%;
+  background-position: left center;
+
+  transition:
+    background-position 0.65s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@media (hover: hover) {
+  .hero-actions .btn-outline:hover {
+    background-position: right center;
+    border-color: #2563eb;
+    color: #1e40af;
+  }
+}
+
+/* =========================================
+   6. MOBILE OPTIMIZATION
+========================================= */
+
+@media (max-width: 600px) {
+  .hero-card::before {
+    animation-duration: 7s;
+  }
+
+  .hero .eyebrow {
+    animation-duration: 9s;
+  }
+}
+
+/* =========================================
+   7. ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .eyebrow,
+  .hero-card::before {
+    animation: none !important;
+  }
+
+  .hero-image::after,
+  .trust-row > div::after,
+  .trust-row strong,
+  .hero-actions .btn-outline {
+    transition: none !important;
+  }
+}
+
+/* =========================================
+   SP INTERNATIONAL
+   HERO - PREMIUM ANIMATION ENHANCEMENTS
+========================================= */
+
+/* =========================================
+   1. MOVING BLUE GRID BACKGROUND
+========================================= */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(37, 99, 235, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(37, 99, 235, 0.045) 1px,
+      transparent 1px
+    );
+
+  background-size: 52px 52px;
+
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 30%,
+    #000 70%,
+    transparent
+  );
+
+  pointer-events: none;
+
+  animation: heroGridMove 20s linear infinite;
+}
+
+@keyframes heroGridMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 52px 52px;
+  }
+}
+
+/* Keep all content above the decorative grid */
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================
+   2. ANIMATED HEADING UNDERLINE
+========================================= */
+
+.hero-copy h1::after {
+  content: "";
+
+  display: block;
+
+  width: 105px;
+  height: 5px;
+
+  margin-top: 22px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa,
+    #bfdbfe
+  );
+
+  transform-origin: left center;
+
+  animation: heroUnderlineDraw 1.2s ease-out 0.7s both;
+}
+
+@keyframes heroUnderlineDraw {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+
+/* =========================================
+   3. PREMIUM IMAGE HOVER DEPTH
+========================================= */
+
+.hero-card {
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  .hero-card:hover {
+    transform:
+      perspective(1200px)
+      translateY(-7px)
+      rotateY(-2deg)
+      rotateX(1deg);
+
+    box-shadow:
+      0 28px 65px rgba(29, 78, 216, 0.17);
+  }
+}
+
+/* =========================================
+   4. RESPONSIVE OPTIMIZATION
+========================================= */
+
+@media (max-width: 600px) {
+
+  .hero::after {
+    background-size: 40px 40px;
+    animation: none;
+  }
+
+  .hero-copy h1::after {
+    width: 75px;
+    height: 4px;
+    margin-top: 16px;
+  }
+
+  .hero-card {
+    transform-style: flat;
+  }
+}
+
+/* =========================================
+   5. ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero::after,
+  .hero-copy h1::after {
+    animation: none !important;
+  }
+
+  .hero-copy h1::after {
+    transform: none;
+    opacity: 1;
+  }
+
+  .hero-card {
+    transition: none;
+  }
+}
+
+/* =========================================
+   HERO - PREMIUM MICRO ANIMATIONS
+========================================= */
+
+/* 1. PULSING BLUE BADGE INDICATOR */
+
+.hero .eyebrow::after {
+  content: "";
+
+  display: inline-block;
+  vertical-align: middle;
+
+  width: 7px;
+  height: 7px;
+
+  margin-left: 9px;
+
+  border-radius: 50%;
+  background: #2563eb;
+
+  animation: heroBadgePulse 2.8s ease-in-out infinite;
+}
+
+@keyframes heroBadgePulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.25);
+  }
+
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
+  }
+}
+
+/* =========================================
+   2. SOFT LIGHT SCAN OVER PORT IMAGE
+========================================= */
+
+.hero-image {
+  position: relative;
+}
+
+.hero-image::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    rgba(219, 234, 254, 0.13) 48%,
+    rgba(255, 255, 255, 0.20) 50%,
+    transparent 65%
+  );
+
+  transform: translateY(-120%);
+  pointer-events: none;
+
+  animation: heroPortScan 12s ease-in-out infinite;
+}
+
+@keyframes heroPortScan {
+  0%, 55% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 0.8;
+  }
+
+  90%, 100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   3. GLOWING STATISTIC NUMBERS
+========================================= */
+
+.trust-row strong {
+  animation: heroNumberGlow 5s ease-in-out infinite;
+}
+
+.trust-row > div:nth-child(2) strong {
+  animation-delay: -1.5s;
+}
+
+.trust-row > div:nth-child(3) strong {
+  animation-delay: -3s;
+}
+
+@keyframes heroNumberGlow {
+  0%, 100% {
+    text-shadow: 0 0 0 rgba(37, 99, 235, 0);
+  }
+
+  50% {
+    text-shadow: 0 0 14px rgba(37, 99, 235, 0.22);
+  }
+}
+
+/* =========================================
+   4. BUTTON PRESS INTERACTION
+========================================= */
+
+.hero-actions .btn:active {
+  transform: scale(0.97);
+  transition-duration: 0.12s;
+}
+
+/* =========================================
+   MOBILE PERFORMANCE
+========================================= */
+
+@media (max-width: 600px) {
+
+  /* Keep the photo still for smoother mobile scrolling */
+
+  .hero-image::before {
+    animation: none;
+    display: none;
+  }
+
+  .trust-row strong {
+    animation-duration: 7s;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero .eyebrow::after,
+  .hero-image::before,
+  .trust-row strong {
+    animation: none !important;
+  }
+
+  .hero-actions .btn:active {
+    transform: none;
+  }
+}
+
+/* =========================================
+   HERO HEADING - SLIDE IN ELLIPTIC RIGHT
+========================================= */
+
+/* Stationary hover area */
+
+.hero-slide-hover-area {
+  perspective: 1000px;
+}
+
+/* No animation on page load */
+
+.hero-slide-hover-area > h1 {
+  -webkit-animation: none;
+  animation: none;
+}
+
+/* Animate when mouse enters the heading */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .hero-slide-hover-area:hover > h1 {
+    -webkit-animation:
+      slide-in-elliptic-right-fwd
+      0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+      both;
+
+    animation:
+      slide-in-elliptic-right-fwd
+      0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+      both;
+  }
+
+}
+
+/* =========================================
+   ANIMISTA - SLIDE IN ELLIPTIC RIGHT FWD
+========================================= */
+
+@-webkit-keyframes slide-in-elliptic-right-fwd {
+  0% {
+    -webkit-transform:
+      translateX(120px)
+      rotateY(-30deg)
+      scale(0.65);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform:
+      translateX(0)
+      rotateY(0)
+      scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-elliptic-right-fwd {
+  0% {
+    transform:
+      translateX(120px)
+      rotateY(-30deg)
+      scale(0.65);
+    opacity: 0;
+  }
+
+  100% {
+    transform:
+      translateX(0)
+      rotateY(0)
+      scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   MOBILE SAFETY
+========================================= */
+
+@media (max-width: 600px) {
+  .hero-slide-hover-area > h1 {
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-hover-area > h1,
+  .hero-slide-hover-area:hover > h1 {
+    animation: none !important;
+    -webkit-animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

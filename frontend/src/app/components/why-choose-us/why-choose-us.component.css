@@ -1,32 +1,97 @@
+
 /* =========================================
    SP INTERNATIONAL - WHY CHOOSE US
+   PREMIUM ROYAL BLUE + WHITE
 ========================================= */
 
 :host {
   display: block;
   width: 100%;
+
+  --why-blue: #1d4ed8;
+  --why-blue-dark: #1e40af;
+  --why-light: #eff6ff;
+  --why-border: #dbeafe;
+  --why-heading: #0f172a;
+  --why-text: #475569;
 }
 
-/* MAIN SECTION */
+/* =========================================
+   MAIN SECTION
+========================================= */
 
 .sp-why {
   position: relative;
-  padding: 80px 0;
+  isolation: isolate;
+  overflow: clip;
 
-  background: #081522;
-  color: #ffffff;
+  padding: 90px 0;
 
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(59, 130, 246, 0.10),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8fbff 55%,
+      #eff6ff 100%
+    );
+
+  color: var(--why-heading);
   scroll-margin-top: 85px;
 }
 
-/* CONTAINER */
+/* SOFT MOVING BLUE BACKGROUND */
+
+.sp-why::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  top: -120px;
+  right: -100px;
+
+  width: 380px;
+  height: 380px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(96, 165, 250, 0.18),
+    transparent 70%
+  );
+
+  pointer-events: none;
+
+  animation: whyBackgroundFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes whyBackgroundFloat {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-35px, 25px, 0);
+  }
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
 
 .sp-why-container {
+  box-sizing: border-box;
+
   width: calc(100% - 40px);
   max-width: 1200px;
 
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 /* =========================================
@@ -40,8 +105,12 @@
     minmax(0, 1fr)
     minmax(0, 1fr);
 
-  gap: 55px;
   align-items: center;
+  gap: 55px;
+}
+
+.sp-why-layout > * {
+  min-width: 0;
 }
 
 /* =========================================
@@ -52,40 +121,150 @@
   min-width: 0;
 }
 
+/* BLUE SHIMMER LABEL */
+
 .sp-why-eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  padding: 9px 15px;
 
-  color: #6ee7b7;
+  color: var(--why-blue);
+
+  background-image: linear-gradient(
+    110deg,
+    #eff6ff 10%,
+    #dbeafe 35%,
+    #bfdbfe 50%,
+    #dbeafe 65%,
+    #eff6ff 90%
+  );
+
+  background-size: 240% 100%;
+
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
 
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-weight: 800;
 
+  letter-spacing: 1.3px;
   text-transform: uppercase;
+
+  animation: whyBadgeShimmer 6s ease-in-out infinite;
 }
+
+@keyframes whyBadgeShimmer {
+  from {
+    background-position: 100% center;
+  }
+
+  to {
+    background-position: -100% center;
+  }
+}
+
+/* PULSING BLUE DOT */
+
+.sp-why-eyebrow::before {
+  content: "";
+
+  flex: 0 0 7px;
+
+  width: 7px;
+  height: 7px;
+
+  background: #2563eb;
+  border-radius: 50%;
+
+  animation: whyDotPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes whyDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
+  }
+}
+
+/* =========================================
+   MAIN HEADING
+========================================= */
 
 .sp-why-content h2 {
-  margin: 0 0 22px;
+  position: relative;
 
-  color: #ffffff;
+  margin: 0 0 25px;
+  padding-bottom: 24px;
 
-  font-size: clamp(28px, 3.5vw, 42px);
+  color: var(--why-heading);
+
+  font-size: clamp(32px, 3.7vw, 46px);
   font-weight: 800;
-  line-height: 1.25;
 
-  letter-spacing: -0.03em;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+
+  overflow-wrap: break-word;
 }
 
-.sp-why-content p {
+/* ANIMATED BLUE UNDERLINE */
+
+.sp-why-content h2::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 90px;
+  height: 4px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa,
+    #bfdbfe
+  );
+
+  transform-origin: left;
+
+  animation: whyUnderline 1.2s ease-out both;
+}
+
+@keyframes whyUnderline {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.sp-why-content > p {
   max-width: 550px;
   margin: 0;
 
-  color: #a8b8ca;
+  color: var(--why-text);
 
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.9;
+
+  overflow-wrap: break-word;
 }
 
 /* =========================================
@@ -98,29 +277,38 @@
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 
-  gap: 16px;
+  gap: 18px;
 }
 
-/* BENEFIT CARD */
+/* =========================================
+   BENEFIT CARD
+========================================= */
 
 .sp-why-card {
+  position: relative;
+  isolation: isolate;
+
   display: flex;
   flex-direction: column;
 
-  min-width: 0;
-  min-height: 175px;
-
-  padding: 22px;
   box-sizing: border-box;
 
-  background: linear-gradient(
-    145deg,
-    #122337,
-    #0b1929
-  );
+  min-width: 0;
+  min-height: 205px;
 
-  border: 1px solid rgba(148, 163, 184, 0.17);
-  border-radius: 16px;
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--why-border);
+  border-radius: 17px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 5px 20px rgba(29, 78, 216, 0.06);
+
+  /* Preserve the previous card lift */
 
   transition:
     transform 0.3s ease,
@@ -128,104 +316,311 @@
     box-shadow 0.3s ease;
 }
 
-/* CARD NUMBER */
+/* BLUE TOP ACCENT */
+
+.sp-why-card::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+  z-index: 2;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 0.45s ease;
+}
+
+/* MOVING LIGHT SWEEP */
+
+.sp-why-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(147, 197, 253, 0.23) 48%,
+    transparent 75%
+  );
+
+  transform: translateX(-130%);
+
+  pointer-events: none;
+}
+
+/* Keep text above decorative effects */
+
+.sp-why-card span,
+.sp-why-card h3,
+.sp-why-card p {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   CARD NUMBERS
+========================================= */
 
 .sp-why-card span {
-  margin-bottom: 16px;
+  display: inline-block;
+  align-self: flex-start;
 
-  color: #6ee7b7;
+  margin-bottom: 20px;
 
-  font-size: 14px;
-  font-weight: 800;
+  color: var(--why-blue);
+
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  animation: whyNumberGlow 4s ease-in-out infinite;
 }
 
-/* CARD TITLE */
+.sp-why-card:nth-child(2) span {
+  animation-delay: -1s;
+}
+
+.sp-why-card:nth-child(3) span {
+  animation-delay: -2s;
+}
+
+.sp-why-card:nth-child(4) span {
+  animation-delay: -3s;
+}
+
+@keyframes whyNumberGlow {
+  0%, 100% {
+    text-shadow: 0 0 0 rgba(37, 99, 235, 0);
+  }
+
+  50% {
+    text-shadow: 0 0 13px rgba(37, 99, 235, 0.3);
+  }
+}
+
+/* =========================================
+   CARD TITLES
+========================================= */
 
 .sp-why-card h3 {
-  margin: 0 0 10px;
+  align-self: flex-start;
 
-  color: #ffffff;
+  margin: 0 0 14px;
+  padding-bottom: 6px;
 
-  font-size: 16px;
-  font-weight: 700;
+  color: #172554;
+
+  font-size: 18px;
+  font-weight: 800;
   line-height: 1.4;
+
+  background-image: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa
+  );
+
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 3px;
+
+  transition:
+    color 0.3s ease,
+    background-size 0.4s ease;
 }
 
-/* CARD DESCRIPTION */
+/* =========================================
+   CARD DESCRIPTION
+========================================= */
 
 .sp-why-card p {
   margin: 0;
 
-  color: #a8b8ca;
+  color: var(--why-text);
 
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.75;
 
   overflow-wrap: break-word;
 }
 
 /* =========================================
-   HOVER EFFECTS
+   PREMIUM HOVER EFFECTS
 ========================================= */
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
+
+  /* Existing 6px card lift */
 
   .sp-why-card:hover {
     transform: translateY(-6px);
 
-    border-color: rgba(16, 185, 129, 0.5);
+    border-color: #93c5fd;
 
     box-shadow:
-      0 15px 30px rgba(0, 0, 0, 0.22);
+      0 18px 38px rgba(29, 78, 216, 0.15);
+  }
+
+  .sp-why-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .sp-why-card:hover::after {
+    animation: whyCardShine 0.85s ease-out;
+  }
+
+  .sp-why-card:hover h3 {
+    color: var(--why-blue);
+    background-size: 100% 3px;
   }
 
   .sp-why-card:hover span {
-    color: #a7f3d0;
+    color: var(--why-blue-dark);
+  }
+}
+
+@keyframes whyCardShine {
+  from {
+    transform: translateX(-130%);
   }
 
+  to {
+    transform: translateX(130%);
+  }
 }
 
 /* =========================================
-   TABLET
+   CSS SCROLL REVEAL ANIMATIONS
+========================================= */
+
+@keyframes whyTextReveal {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes whyTrackingExpand {
+  from {
+    opacity: 0;
+    letter-spacing: -0.12em;
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: -0.035em;
+    filter: blur(0);
+  }
+}
+
+/* Scroll animations in supported browsers.
+   Avoid double animations on elements using AOS. */
+
+@supports (animation-timeline: view()) {
+
+  .sp-why-content h2:not([data-aos]) {
+    animation: whyTrackingExpand linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 35%;
+  }
+
+  .sp-why-content > p:not([data-aos]) {
+    animation: whyTextReveal linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 30%;
+  }
+
+  .sp-why-card:not([data-aos]) {
+    animation: whyTextReveal linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 28%;
+  }
+
+  .sp-why-card:nth-child(2):not([data-aos]) {
+    animation-range: entry 0% cover 32%;
+  }
+
+  .sp-why-card:nth-child(3):not([data-aos]) {
+    animation-range: entry 0% cover 36%;
+  }
+
+  .sp-why-card:nth-child(4):not([data-aos]) {
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+/* =========================================
+   TABLET RESPONSIVE
 ========================================= */
 
 @media (max-width: 980px) {
 
   .sp-why {
-    padding: 65px 0;
+    padding: 70px 0;
   }
 
   .sp-why-layout {
     grid-template-columns: minmax(0, 1fr);
-    gap: 35px;
+    gap: 36px;
   }
 
   .sp-why-grid {
     gap: 16px;
   }
 
+  .sp-why-card {
+    min-height: 185px;
+  }
 }
 
 /* =========================================
-   MOBILE
+   MOBILE RESPONSIVE
 ========================================= */
 
 @media (max-width: 600px) {
 
   .sp-why {
-    padding: 55px 0;
+    padding: 58px 0;
   }
 
   .sp-why-container {
     width: calc(100% - 32px);
   }
 
-  .sp-why-content h2 {
-    font-size: 28px;
+  .sp-why-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    padding: 8px 12px;
   }
 
-  .sp-why-content p {
+  .sp-why-content h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.22;
+  }
+
+  .sp-why-content > p {
     font-size: 14px;
+    line-height: 1.8;
   }
 
   .sp-why-grid {
@@ -235,21 +630,293 @@
 
   .sp-why-card {
     min-height: 0;
-    padding: 20px;
+    padding: 22px;
   }
 
   .sp-why-card h3 {
-    font-size: 16px;
+    font-size: 17px;
   }
 
+  .sp-why-card p {
+    font-size: 13px;
+  }
+
+  /* Reduce continuous background movement */
+
+  .sp-why::before {
+    animation: none;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+  .sp-why-container {
+    width: calc(100% - 28px);
+  }
+
+  .sp-why-card {
+    padding: 19px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-why::before,
+  .sp-why-eyebrow,
+  .sp-why-eyebrow::before,
+  .sp-why-content h2,
+  .sp-why-content h2::after,
+  .sp-why-content > p,
+  .sp-why-card,
+  .sp-why-card span,
+  .sp-why-card::after {
+    animation: none !important;
+  }
+
+  .sp-why-content h2,
+  .sp-why-content > p,
+  .sp-why-card {
+    opacity: 1;
+    translate: none;
+    filter: none;
+  }
+
+  .sp-why-content h2::after {
+    transform: none;
+    opacity: 1;
+  }
+
+  .sp-why-card,
+  .sp-why-card::before,
+  .sp-why-card h3 {
+    transition: none !important;
+  }
+
+  .sp-why-card:hover {
+    transform: none;
+  }
+}
+
+/* =========================================
+   WHY CHOOSE US
+   TRACKING IN CONTRACT BCK BOTTOM
+========================================= */
+
+/* Normal heading appearance */
+
+.sp-why-content h2.tracking-in-contract-bck-bottom {
+  transform-origin: center bottom;
+}
+
+/* Before entering viewport */
+
+.sp-why-content
+h2.tracking-in-contract-bck-bottom.aos-init:not(.aos-animate) {
+  opacity: 0;
+}
+
+/* Start animation when scrolled into view */
+
+
+.sp-why-content
+h2.tracking-in-contract-bck-bottom.aos-animate {
+  -webkit-animation: tracking-in-contract-bck-bottom 6s cubic-bezier(.215, .61, .355, 1) both;
+  animation: tracking-in-contract-bck-bottom 6s cubic-bezier(.215, .61, .355, 1) both;
+}
+
+
+/* Contract letters and move text upward */
+
+@keyframes tracking-in-contract-bck-bottom {
+  0% {
+    letter-spacing: 0.18em;
+    transform:
+      perspective(850px)
+      translate3d(0, 40px, -140px);
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    letter-spacing: -0.035em;
+    transform:
+      perspective(850px)
+      translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+/* Responsive text */
+
+@media (max-width: 600px) {
+  .sp-why-content h2.tracking-in-contract-bck-bottom {
+    overflow-wrap: break-word;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-why-content
+  h2.tracking-in-contract-bck-bottom {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* =========================================
+   WHY CHOOSE US - KEN BURNS BOTTOM RIGHT
+========================================= */
+
+.kenburns-bottom-right {
+  display: inline-block;
+  max-width: 100%;
+  transform-origin: right bottom;
+}
+
+/* Start when the heading enters the screen */
+
+.sp-why-content h2.aos-animate .kenburns-bottom-right {
+  -webkit-animation: kenburns-bottom-right 5s ease-out both;
+  animation: kenburns-bottom-right 5s ease-out both;
+}
+
+/* Smooth zoom toward bottom-right */
+
+@-webkit-keyframes kenburns-bottom-right {
+  0% {
+    -webkit-transform: scale(1) translate(0, 0);
+  }
+
+  100% {
+    -webkit-transform: scale(1.05) translate(4px, 4px);
+  }
+}
+
+@keyframes kenburns-bottom-right {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+
+  100% {
+    transform: scale(1.05) translate(4px, 4px);
+  }
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+  .sp-why-content h2.aos-animate .kenburns-bottom-right {
+    animation-name: kenburns-bottom-right;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .kenburns-bottom-right {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* =========================================
+   WHY CHOOSE US - HEARTBEAT ANIMATION
+========================================= */
+
+.animate__heartBeat {
+  display: inline-block;
+  max-width: 100%;
+  transform-origin: center center;
+}
+
+
+/* =========================================
+   WHY CHOOSE US - CONTINUOUS HEARTBEAT
+   ONLY WHEN MOUSE IS ON THE HEADING
+========================================= */
+
+.animate__heartBeat {
+  display: inline-block;
+  max-width: 100%;
+  transform-origin: center center;
+  animation: none;
+}
+
+/* Keep repeating while mouse is on text */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-why-content h2:hover .animate__heartBeat {
+    animation: whyHeartBeat 1.3s ease-in-out infinite;
+  }
+
+}
+
+/* Keep your existing @keyframes whyHeartBeat */
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-why-content h2:hover .animate__heartBeat {
+    animation: none !important;
+  }
+}
+
+
+/* HEARTBEAT KEYFRAMES */
+
+@keyframes whyHeartBeat {
+  0%,
+  28%,
+  70%,
+  100% {
+    transform: scale(1);
+  }
+
+  14%,
+  42% {
+    transform: scale(1.055);
+  }
+}
+
+/* MOBILE - GENTLER HEARTBEAT */
+
+@media (max-width: 600px) {
+  @keyframes whyHeartBeat {
+    0%,
+    28%,
+    70%,
+    100% {
+      transform: scale(1);
+    }
+
+    14%,
+    42% {
+      transform: scale(1.025);
+    }
+  }
 }
 
 /* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
-
-  .sp-why-card {
-    transition: none;
+  .animate__heartBeat {
+    animation: none !important;
+    transform: none !important;
   }
-
 }
+

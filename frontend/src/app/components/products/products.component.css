@@ -1,79 +1,192 @@
+
 /* =========================================
-   SP INTERNATIONAL - PRODUCTS COMPONENT
+   SP INTERNATIONAL - PRODUCTS
+   PREMIUM ROYAL BLUE + WHITE
 ========================================= */
 
 :host {
   display: block;
   width: 100%;
-}
 
-.sp-products {
-  padding: 75px 0;
-  background: #07111f;
-  color: #ffffff;
-}
-
-.sp-products-container {
-  width: calc(100% - 40px);
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* SECTION HEADING */
-
-.sp-products-heading {
-  margin-bottom: 38px;
-  text-align: center;
-}
-
-.sp-products-eyebrow {
-  color: #6ee7b7;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.sp-products-heading h2 {
-  margin: 12px 0;
-  font-size: clamp(25px, 3vw, 36px);
-  line-height: 1.25;
-  font-weight: 800;
-}
-
-.sp-products-heading p {
-  color: #94a3b8;
-  font-size: 14px;
+  --product-blue: #1d4ed8;
+  --product-blue-dark: #1e40af;
+  --product-light: #eff6ff;
+  --product-border: #dbeafe;
+  --product-heading: #0f172a;
+  --product-text: #475569;
 }
 
 /* =========================================
-   COMPACT RESPONSIVE PRODUCT GRID
+   PRODUCTS SECTION
+========================================= */
+
+.sp-products {
+  position: relative;
+  overflow: hidden;
+
+  padding: 85px 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(59, 130, 246, 0.07),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(147, 197, 253, 0.12),
+      transparent 35%
+    ),
+    #ffffff;
+
+  color: var(--product-heading);
+}
+
+/* CONTAINER */
+
+.sp-products-container {
+  position: relative;
+  z-index: 1;
+
+  box-sizing: border-box;
+
+  width: calc(100% - 40px);
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.sp-products-heading {
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+/* SMALL BLUE LABEL */
+
+.sp-products-eyebrow {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  background: var(--product-light);
+  color: var(--product-blue);
+
+  border: 1px solid #bfdbfe;
+  border-radius: 50px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+/* MAIN HEADING */
+
+.sp-products-heading h2 {
+  position: relative;
+
+  margin: 20px 0 14px;
+  padding-bottom: 20px;
+
+  color: var(--product-heading);
+
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 800;
+
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+/* ANIMATED BLUE UNDERLINE */
+
+.sp-products-heading h2::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  width: 90px;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa
+  );
+
+  border-radius: 999px;
+
+  transform: translateX(-50%) scaleX(0);
+
+  animation: productLineReveal 1.1s ease-out forwards;
+}
+
+@keyframes productLineReveal {
+  to {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+/* DESCRIPTION */
+
+.sp-products-heading p {
+  max-width: 650px;
+
+  margin: 18px auto 0;
+
+  color: var(--product-text);
+
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* =========================================
+   PRODUCT GRID
 ========================================= */
 
 .sp-products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(185px, 190px));
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(185px, 190px));
+
   justify-content: center;
   align-items: stretch;
-  gap: 18px;
+
+  gap: 20px;
 }
 
-/* PRODUCT CARD */
+/* =========================================
+   PRODUCT CARD
+========================================= */
 
 .sp-product-card {
+  position: relative;
+
   display: flex;
   flex-direction: column;
 
+  box-sizing: border-box;
   min-width: 0;
   height: 100%;
-  box-sizing: border-box;
 
-  background: linear-gradient(180deg, #111d2c, #0b1625);
-
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  border-radius: 15px;
   overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid var(--product-border);
+  border-radius: 16px;
+
+  box-shadow:
+    0 5px 20px rgba(29, 78, 216, 0.06);
+
+  /* Original smooth hover animation preserved */
 
   transition:
     transform 0.3s ease,
@@ -81,60 +194,117 @@
     box-shadow 0.3s ease;
 }
 
-/* PRODUCT IMAGE */
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
 
 .sp-product-image {
   position: relative;
+
   height: 145px;
+
   overflow: hidden;
+  background: #dbeafe;
 }
 
 .sp-product-image img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
+  /* Original image zoom animation preserved */
+
   transition: transform 0.4s ease;
 }
 
+/* PRODUCT IMAGE LABEL */
+
 .sp-product-image span {
   position: absolute;
+  z-index: 2;
+
   bottom: 10px;
   left: 10px;
 
-  padding: 6px 9px;
+  padding: 7px 10px;
+
+  background: rgba(29, 78, 216, 0.94);
+  color: #ffffff;
+
   border-radius: 7px;
 
-  background: #07111f;
-  color: #ffffff;
   font-size: 11px;
+  font-weight: 700;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.15);
 }
 
-/* PRODUCT DETAILS */
+/* =========================================
+   IMAGE LIGHT SWEEP
+========================================= */
+
+.sp-product-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.32) 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-130%);
+
+  transition: transform 0.8s ease;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   PRODUCT DETAILS
+========================================= */
 
 .sp-product-body {
   display: flex;
   flex-direction: column;
+
   flex: 1;
+
+  box-sizing: border-box;
   min-width: 0;
-  padding: 14px;
+
+  padding: 15px;
 }
 
 .sp-product-body h3 {
   margin: 0 0 12px;
 
-  color: #ffffff;
+  color: var(--product-heading);
+
   font-size: 15px;
-  font-weight: 700;
-  line-height: 1.4;
+  font-weight: 800;
+
+  line-height: 1.45;
+
+  transition: color 0.3s ease;
 }
 
 .sp-product-body > p {
   margin: 0;
 
-  color: #a8b8ca;
+  color: var(--product-text);
+
   font-size: 12px;
-  line-height: 1.65;
+  line-height: 1.7;
+
   overflow-wrap: break-word;
 }
 
@@ -145,7 +315,8 @@
 .sp-product-actions {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+
+  gap: 9px;
 
   margin-top: auto;
   padding-top: 20px;
@@ -157,57 +328,159 @@
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  min-height: 36px;
-  padding: 8px 5px;
-
   box-sizing: border-box;
-  border-radius: 7px;
+
+  width: 100%;
+  min-height: 38px;
+
+  padding: 9px 6px;
+
+  border-radius: 8px;
 
   font-size: 11px;
   font-weight: 700;
   line-height: 1.4;
+
   text-align: center;
   text-decoration: none;
 }
 
-/* REQUEST DETAILS */
+.sp-product-actions > a {
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================================
+   REQUEST DETAILS BUTTON
+========================================= */
 
 .sp-request-button {
-  color: #6ee7b7;
-  background: transparent;
-  border: 1px solid #10b981;
+  color: var(--product-blue);
+
+  background: #ffffff;
+
+  border: 1px solid #93c5fd;
 }
 
-/* EXPLORE PRODUCTS */
+/* =========================================
+   EXPLORE PRODUCTS BUTTON
+========================================= */
 
 .sp-explore-button {
-  color: #062016;
-  background: #10b981;
-  border: 1px solid #10b981;
+  position: relative;
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background: var(--product-blue);
+
+  border: 1px solid var(--product-blue);
+
+  box-shadow:
+    0 4px 12px rgba(29, 78, 216, 0.12);
 }
 
-/* DISABLED EXPLORE BUTTON */
+/* DISABLED BUTTON */
 
 .sp-explore-disabled {
-  color: #6ee7b7;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  opacity: 0.65;
+  color: #64748b;
+
+  background: #f1f5f9;
+
+  border: 1px solid #e2e8f0;
+
+  opacity: 0.75;
   cursor: default;
 }
 
-/* HOVER EFFECTS */
+/* =========================================
+   HOVER ANIMATIONS
+========================================= */
 
 @media (hover: hover) {
+
+  /* Original card lift preserved */
+
   .sp-product-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(16, 185, 129, 0.45);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+
+    border-color: #93c5fd;
+
+    box-shadow:
+      0 16px 35px rgba(29, 78, 216, 0.15);
   }
+
+  /* Original image zoom preserved */
 
   .sp-product-card:hover img {
     transform: scale(1.05);
+  }
+
+  /* New image light effect */
+
+  .sp-product-card:hover .sp-product-image::after {
+    transform: translateX(130%);
+  }
+
+  /* Blue product title */
+
+  .sp-product-card:hover h3 {
+    color: var(--product-blue);
+  }
+
+  /* Button animations */
+
+  .sp-product-actions > a:hover {
+    transform: translateY(-2px);
+  }
+
+  .sp-request-button:hover {
+    background: var(--product-light);
+    border-color: var(--product-blue);
+
+    box-shadow:
+      0 5px 12px rgba(29, 78, 216, 0.1);
+  }
+
+  .sp-explore-button:hover {
+    background: var(--product-blue-dark);
+    border-color: var(--product-blue-dark);
+
+    box-shadow:
+      0 7px 18px rgba(29, 78, 216, 0.22);
+  }
+}
+
+/* =========================================
+   BUTTON PRESS EFFECT
+========================================= */
+
+.sp-product-actions > a:active {
+  transform: scale(0.98);
+}
+
+/* KEYBOARD ACCESSIBILITY */
+
+.sp-product-actions > a:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 980px) {
+
+  .sp-products {
+    padding: 70px 0;
+  }
+
+  .sp-products-heading {
+    margin-bottom: 35px;
   }
 }
 
@@ -218,11 +491,19 @@
 @media (max-width: 600px) {
 
   .sp-products {
-    padding: 55px 0;
+    padding: 58px 0;
   }
 
   .sp-products-container {
     width: calc(100% - 32px);
+  }
+
+  .sp-products-heading h2 {
+    font-size: clamp(27px, 7vw, 34px);
+  }
+
+  .sp-products-heading p {
+    font-size: 14px;
   }
 
   .sp-products-grid {
@@ -248,14 +529,463 @@
 
   .sp-product-actions > a,
   .sp-product-actions > span {
-    min-height: 42px;
+    min-height: 44px;
     font-size: 12px;
   }
 }
 
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
+
   .sp-product-card,
-  .sp-product-image img {
+  .sp-product-image img,
+  .sp-product-image::after,
+  .sp-product-body h3,
+  .sp-product-actions > a {
     transition: none;
+  }
+
+  .sp-products-heading h2::after {
+    animation: none;
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+/* =========================================
+   SP INTERNATIONAL
+   PRODUCTS - EXTRA PREMIUM ANIMATIONS
+========================================= */
+
+/* =========================================
+   1. MOVING BLUE EYEBROW SHIMMER
+========================================= */
+
+.sp-products-eyebrow {
+  background-image: linear-gradient(
+    110deg,
+    #eff6ff 10%,
+    #dbeafe 35%,
+    #bfdbfe 50%,
+    #dbeafe 65%,
+    #eff6ff 90%
+  );
+
+  background-size: 240% 100%;
+
+  animation: productBadgeShimmer 6s ease-in-out infinite;
+}
+
+@keyframes productBadgeShimmer {
+  0% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: -100% center;
+  }
+}
+
+/* =========================================
+   2. ANIMATED BLUE TOP BORDER ON CARDS
+========================================= */
+
+.sp-product-card::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+  z-index: 3;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa,
+    #2563eb
+  );
+
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  transition: transform 0.45s ease;
+
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .sp-product-card:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+/* =========================================
+   3. EXPLORE BUTTON LIGHT SHINE
+========================================= */
+
+.sp-explore-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.sp-explore-button::after {
+  content: "";
+
+  position: absolute;
+  top: -50%;
+  left: -85%;
+
+  width: 35%;
+  height: 200%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .sp-explore-button:hover::after {
+    animation: productButtonShine 0.8s ease-out;
+  }
+}
+
+@keyframes productButtonShine {
+  from {
+    left: -85%;
+  }
+
+  to {
+    left: 160%;
+  }
+}
+
+/* =========================================
+   4. ANIMATED BLUE PRODUCT TITLE
+========================================= */
+
+@media (hover: hover) {
+
+  .sp-product-card:hover .sp-product-body h3 {
+    background: linear-gradient(
+      110deg,
+      #1d4ed8,
+      #60a5fa,
+      #1e40af,
+      #2563eb
+    );
+
+    background-size: 220% 100%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    animation: productTitleGlow 3s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes productTitleGlow {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 100% center;
+  }
+}
+
+/* =========================================
+   5. MOBILE OPTIMIZATION
+========================================= */
+
+@media (max-width: 600px) {
+
+  .sp-products-eyebrow {
+    animation-duration: 9s;
+  }
+
+  /* Reduce continuous animation work on phones */
+
+  .sp-product-card::before {
+    transition-duration: 0.3s;
+  }
+}
+
+/* =========================================
+   6. ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-products-eyebrow,
+  .sp-explore-button::after,
+  .sp-product-body h3 {
+    animation: none !important;
+  }
+
+  .sp-product-card::before {
+    transition: none;
+  }
+}
+
+/* =========================================
+   OUR PRODUCTS - FADE IN LEFT + FLIP
+========================================= */
+
+/* FIRST: FADE IN FROM LEFT */
+
+.product-fade-left {
+  display: block;
+  width: 100%;
+
+  animation: productFadeInLeft 0.9s ease-out both;
+}
+
+@keyframes productFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-55px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* SECOND: 3D FLIP */
+
+.product-flip {
+  display: block;
+  width: 100%;
+
+  transform-origin: center center;
+  backface-visibility: hidden;
+
+  animation: productHeadingFlip 1.1s ease-in-out 0.9s both;
+}
+
+@keyframes productHeadingFlip {
+  0% {
+    transform: perspective(700px) rotateY(0deg);
+  }
+
+  40% {
+    transform: perspective(700px) rotateY(-190deg);
+  }
+
+  70% {
+    transform: perspective(700px) rotateY(-345deg);
+  }
+
+  100% {
+    transform: perspective(700px) rotateY(-360deg);
+  }
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+  .product-fade-left,
+  .product-flip {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .product-fade-left,
+  .product-flip {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================================
+   PRODUCTS - FLIP IN X ON MOUSE HOVER
+========================================= */
+
+.sp-products-heading h2 {
+  animation: none;
+  transform: none;
+}
+
+/* Stable mouse hover area */
+
+.product-hover-zone {
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* Heading text */
+
+.animate__flipInX {
+  display: inline-block;
+  max-width: 100%;
+  backface-visibility: visible;
+  transform-origin: center;
+  overflow-wrap: break-word;
+}
+
+/* Play ONCE on mouse hover */
+
+@media (hover: hover) and (pointer: fine) {
+  .product-hover-zone:hover .animate__flipInX {
+    animation: flipInX 0.9s ease-in-out 1 both;
+  }
+}
+
+/* Animate.css-style Flip In X */
+
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotateX(-20deg);
+  }
+
+  60% {
+    transform: perspective(400px) rotateX(10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotateX(-5deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate__flipInX {
+    animation: none !important;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   OUR PRODUCTS - ROLL IN LEFT ANIMATION
+========================================= */
+
+/* Keep the existing blue shimmer animation */
+
+.sp-products-eyebrow {
+  display: inline-block;
+  transform-origin: center;
+
+  animation:
+    productBadgeShimmer 6s ease-in-out infinite,
+    roll-in-left 0.6s ease-out both;
+}
+
+/* Original Animista-style roll-in-left */
+
+@keyframes roll-in-left {
+  0% {
+    transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Trigger the roll when scrolling into view */
+
+@supports (animation-timeline: view()) {
+  .sp-products-eyebrow {
+    animation-timeline: auto, view(block);
+    animation-range: normal, entry 0% cover 35%;
+  }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-products-eyebrow {
+    animation: none !important;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   OUR PRODUCTS - ROLL IN RIGHT
+========================================= */
+
+/* Wait for the label to enter the screen */
+
+.sp-products-eyebrow.roll-in-right {
+  animation: none;
+  -webkit-animation: none;
+}
+
+/* Start rolling when AOS detects the label */
+
+.sp-products-eyebrow.roll-in-right.aos-animate {
+  -webkit-animation: roll-in-right 0.6s ease-out both;
+  animation: roll-in-right 0.6s ease-out both;
+}
+
+/* ORIGINAL ANIMISTA ROLL IN RIGHT */
+
+@-webkit-keyframes roll-in-right {
+  0% {
+    -webkit-transform: translateX(800px) rotate(540deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes roll-in-right {
+  0% {
+    transform: translateX(800px) rotate(540deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-products-eyebrow.roll-in-right.aos-animate {
+    animation: none !important;
+    -webkit-animation: none !important;
   }
 }

@@ -1,228 +1,712 @@
+
 /* =========================================
-   SP INTERNATIONAL - CONTACT COMPONENT
+   SP INTERNATIONAL - CONTACT SECTION
+   PREMIUM ROYAL BLUE + WHITE
 ========================================= */
 
 :host {
   display: block;
   width: 100%;
+
+  --contact-blue: #1d4ed8;
+  --contact-blue-dark: #1e40af;
+  --contact-blue-light: #60a5fa;
+  --contact-heading: #0f172a;
+  --contact-text: #475569;
+  --contact-border: #dbeafe;
+  --contact-surface: #ffffff;
 }
+
+/* =========================================
+   MAIN SECTION
+========================================= */
 
 .sp-contact {
-  padding: 80px 0;
-  background: linear-gradient(180deg, #081522, #07111f);
-  color: #ffffff;
-  scroll-margin-top: 80px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding: 90px 0;
+
+  background:
+    radial-gradient(
+      circle at 8% 20%,
+      rgba(59, 130, 246, 0.10),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(96, 165, 250, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8fbff 45%,
+      #eff6ff 100%
+    );
+
+  color: var(--contact-heading);
+  scroll-margin-top: 85px;
 }
 
+/* SOFT FLOATING BACKGROUND GLOW */
+
+.sp-contact::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  width: 420px;
+  height: 420px;
+
+  top: -170px;
+  right: -130px;
+
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.13),
+    transparent 70%
+  );
+
+  border-radius: 50%;
+  pointer-events: none;
+
+  animation: contactGlowFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes contactGlowFloat {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-35px, 35px);
+  }
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
 .sp-contact-container {
+  position: relative;
+  z-index: 1;
+
   width: calc(100% - 40px);
   max-width: 1200px;
+
   margin: 0 auto;
   box-sizing: border-box;
 }
 
-/* TWO COLUMN LAYOUT */
+/* =========================================
+   TWO COLUMN LAYOUT
+========================================= */
 
 .sp-contact-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1.08fr);
+
   align-items: start;
-  gap: 55px;
+  gap: clamp(35px, 5vw, 70px);
 }
 
-/* CONTACT INFORMATION */
+.sp-contact-grid > * {
+  min-width: 0;
+}
+
+/* =========================================
+   LEFT - CONTACT INFORMATION
+========================================= */
+
+.sp-contact-info {
+  min-width: 0;
+  padding-top: 22px;
+}
+
+/* ANIMATED EYEBROW LABEL */
 
 .sp-contact-eyebrow {
-  display: inline-block;
-  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 
-  color: #6ee7b7;
+  margin-bottom: 22px;
+  padding: 9px 15px;
+
+  background: linear-gradient(
+    110deg,
+    #eff6ff,
+    #dbeafe,
+    #bfdbfe,
+    #eff6ff
+  );
+
+  background-size: 240% 100%;
+
+  color: var(--contact-blue);
+
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
   text-transform: uppercase;
+
+  animation: contactBadgeShimmer 6s ease-in-out infinite;
 }
+
+@keyframes contactBadgeShimmer {
+  from {
+    background-position: 100% center;
+  }
+
+  to {
+    background-position: -100% center;
+  }
+}
+
+/* BLUE PULSE DOT */
+
+.sp-contact-eyebrow::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+
+  border-radius: 50%;
+  background: #2563eb;
+
+  animation: contactDotPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes contactDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.30);
+  }
+
+  50% {
+    box-shadow: 0 0 0 7px rgba(37, 99, 235, 0);
+  }
+}
+
+/* =========================================
+   MAIN HEADING
+========================================= */
 
 .sp-contact-info h2 {
-  margin: 0 0 22px;
-  font-size: clamp(28px, 3.5vw, 42px);
+  position: relative;
+
+  margin: 0 0 26px;
+  padding-bottom: 23px;
+
+  color: var(--contact-heading);
+
+  font-size: clamp(32px, 3.7vw, 46px);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+
+  overflow-wrap: break-word;
 }
 
-.sp-contact-description {
-  margin: 0;
-  color: #a8b8ca;
-  font-size: 15px;
-  line-height: 1.9;
+/* BLUE UNDERLINE */
+
+.sp-contact-info h2::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 90px;
+  height: 4px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #60a5fa,
+    #bfdbfe
+  );
+
+  transform-origin: left;
+  animation: contactUnderlineIn 1.3s ease-out both;
 }
+
+@keyframes contactUnderlineIn {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* DESCRIPTION */
+
+.sp-contact-description {
+  max-width: 510px;
+  margin: 0;
+
+  color: var(--contact-text);
+
+  font-size: 16px;
+  line-height: 1.9;
+
+  overflow-wrap: break-word;
+}
+
+/* =========================================
+   CONTACT DETAIL CARDS
+========================================= */
 
 .sp-contact-details {
   display: grid;
-  gap: 20px;
-  margin-top: 32px;
+  gap: 14px;
+
+  margin-top: 36px;
 }
 
 .sp-contact-detail {
+  position: relative;
   min-width: 0;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+
+  padding: 18px 20px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  border: 1px solid var(--contact-border);
+  border-left: 4px solid var(--contact-blue);
+  border-radius: 13px;
+
+  box-shadow:
+    0 5px 18px rgba(29, 78, 216, 0.045);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .sp-contact-detail small {
   display: block;
-  margin-bottom: 7px;
-  color: #94a3b8;
+
+  margin-bottom: 8px;
+
+  color: #64748b;
+
   font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
 }
 
 .sp-contact-detail a,
 .sp-contact-detail strong {
-  color: #ffffff;
+  color: #172554;
+
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
+
+  line-height: 1.6;
   text-decoration: none;
+
   overflow-wrap: anywhere;
+
+  transition: color 0.25s ease;
 }
 
 .sp-contact-detail a:hover {
-  color: #6ee7b7;
+  color: var(--contact-blue);
+}
+
+.sp-contact-detail a:focus-visible {
+  outline: 2px solid var(--contact-blue);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* CONTACT DETAIL HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-contact-detail:hover {
+    transform: translateX(6px);
+
+    background: #ffffff;
+    border-color: #93c5fd;
+    border-left-color: var(--contact-blue);
+
+    box-shadow:
+      0 12px 28px rgba(29, 78, 216, 0.11);
+  }
+
 }
 
 /* =========================================
-   QUOTATION FORM
+   RIGHT - QUOTATION FORM
 ========================================= */
 
 .sp-contact-form {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 
   min-width: 0;
-  padding: 28px;
+  padding: 32px;
+
   box-sizing: border-box;
 
-  background: linear-gradient(145deg, #122337, #0b1929);
-  border: 1px solid rgba(148, 163, 184, 0.17);
-  border-radius: 18px;
+  background: #ffffff;
+
+  border: 1px solid #dbeafe;
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 55px rgba(29, 78, 216, 0.09),
+    0 5px 15px rgba(15, 23, 42, 0.035);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+/* GRADIENT TOP BORDER */
+
+.sp-contact-form::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 5px;
+
+  background: linear-gradient(
+    90deg,
+    #1e40af,
+    #3b82f6,
+    #93c5fd,
+    #1d4ed8
+  );
+
+  background-size: 200% 100%;
+
+  animation: contactBorderFlow 7s linear infinite;
+}
+
+@keyframes contactBorderFlow {
+  from {
+    background-position: 100% center;
+  }
+
+  to {
+    background-position: -100% center;
+  }
+}
+
+/* FORM HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-contact-form:hover {
+    border-color: #bfdbfe;
+
+    box-shadow:
+      0 24px 65px rgba(29, 78, 216, 0.12);
+  }
+
+}
+
+/* FORM TITLE */
 
 .sp-contact-form h3 {
   margin: 0;
-  color: #ffffff;
-  font-size: 22px;
+
+  color: #0f172a;
+
+  font-size: clamp(21px, 2.2vw, 25px);
+  font-weight: 800;
+
+  letter-spacing: -0.025em;
+  line-height: 1.3;
 }
+
+/* SUBTITLE */
 
 .sp-form-subtitle {
   margin: 0 0 6px;
-  color: #a8b8ca;
+
+  color: #64748b;
+
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.75;
 }
+
+/* =========================================
+   FORM GRID
+========================================= */
 
 .sp-form-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 17px;
 }
+
+/* FIELD GROUP */
 
 .sp-form-field {
   display: flex;
   flex-direction: column;
   gap: 8px;
+
   min-width: 0;
 }
+
+/* LABELS */
 
 .sp-form-field label {
-  color: #dce5ee;
+  color: #334155;
+
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
+
+  line-height: 1.5;
 }
 
-.sp-form-field input,
-.sp-form-field textarea {
+/* =========================================
+   INPUTS & TEXTAREA
+========================================= */
+
+.sp-contact-form .sp-form-field input,
+.sp-contact-form .sp-form-field textarea {
   display: block;
+
   width: 100%;
   min-width: 0;
+
   box-sizing: border-box;
 
-  padding: 13px 14px;
+  padding: 13px 15px;
 
-  background: #081522;
-  color: #ffffff;
+  background: #f8fbff;
+  color: #0f172a;
 
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid #cbd5e1;
   border-radius: 10px;
+
   outline: none;
 
   font-family: inherit;
   font-size: 14px;
+  line-height: 1.5;
 
   transition:
+    background 0.25s ease,
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
-.sp-form-field input::placeholder,
-.sp-form-field textarea::placeholder {
-  color: #8293a7;
+/* PLACEHOLDER */
+
+.sp-contact-form .sp-form-field input::placeholder,
+.sp-contact-form .sp-form-field textarea::placeholder {
+  color: #94a3b8;
+  opacity: 1;
 }
 
-.sp-form-field input:focus,
-.sp-form-field textarea:focus {
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+/* HOVER INPUT */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-contact-form .sp-form-field input:hover:not(:focus),
+  .sp-contact-form .sp-form-field textarea:hover:not(:focus) {
+    border-color: #93c5fd;
+    background: #ffffff;
+  }
+
 }
-
-.sp-form-field textarea {
-  resize: vertical;
-  min-height: 125px;
-}
-
-/* VALIDATION */
-
-.sp-error {
-  color: #fb7185;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
 
 /* =========================================
-   CONTACT FORM - CLEAN INPUT STATES
+   VALIDATION STATES
 ========================================= */
 
-/* NORMAL / EMPTY FIELDS */
+/* VALID FIELD - GREEN */
 
-.sp-contact-form .sp-form-field input,
-.sp-contact-form .sp-form-field textarea {
-  border: 1px solid #334155;
-  outline: none;
+.sp-contact-form .sp-form-field input.ng-valid.ng-dirty:not(:focus):not(:placeholder-shown),
+.sp-contact-form .sp-form-field textarea.ng-valid.ng-dirty:not(:focus):not(:placeholder-shown) {
+  border-color: #16a34a;
+  background: #f0fdf4;
 }
 
-/* GREEN WHEN FIELD IS SELECTED */
+/* INVALID FIELD AFTER TOUCH - RED */
+
+.sp-contact-form .sp-form-field input.ng-invalid.ng-touched:not(:focus),
+.sp-contact-form .sp-form-field textarea.ng-invalid.ng-touched:not(:focus) {
+  border-color: #ef4444;
+}
+
+/* FOCUS FIELD - ROYAL BLUE */
 
 .sp-contact-form .sp-form-field input:focus,
 .sp-contact-form .sp-form-field textarea:focus {
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.14);
+  border-color: var(--contact-blue);
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
-/* GREEN AFTER VALID DETAILS ARE ENTERED */
+/* TEXTAREA */
 
-.sp-contact-form .sp-form-field input.ng-valid.ng-dirty:not(:placeholder-shown),
-.sp-contact-form .sp-form-field textarea.ng-valid.ng-dirty:not(:placeholder-shown) {
-  border-color: #10b981;
+.sp-contact-form .sp-form-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* VALIDATION ERROR TEXT */
+
+.sp-error {
+  color: #dc2626;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 /* =========================================
-   SMALL SUCCESS TOAST
+   SUBMIT BUTTON
+========================================= */
+
+.sp-submit-button {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 50px;
+
+  margin-top: 5px;
+  padding: 13px 20px;
+
+  background: linear-gradient(
+    110deg,
+    #1d4ed8 0%,
+    #2563eb 30%,
+    #60a5fa 50%,
+    #2563eb 70%,
+    #1d4ed8 100%
+  );
+
+  background-size: 250% 100%;
+  background-position: 0% center;
+
+  color: #ffffff;
+
+  border: 0;
+  border-radius: 11px;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(29, 78, 216, 0.19);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-position 0.65s ease;
+}
+
+/* BUTTON HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-submit-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+
+    background-position: 100% center;
+
+    box-shadow:
+      0 13px 27px rgba(29, 78, 216, 0.28);
+  }
+
+  .sp-submit-button:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+}
+
+/* KEYBOARD FOCUS */
+
+.sp-submit-button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 4px;
+}
+
+/* DISABLED BUTTON */
+
+.sp-submit-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+
+  box-shadow: none;
+  transform: none;
+}
+
+/* =========================================
+   FORM SUCCESS MESSAGE
+========================================= */
+
+.sp-form-message {
+  margin: 0;
+
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+/* =========================================
+   FIXED TOAST NOTIFICATION
 ========================================= */
 
 .sp-quote-toast {
   position: fixed;
-  bottom: 24px;
   right: 20px;
+  bottom: 24px;
+
   z-index: 11000;
 
   display: flex;
@@ -230,68 +714,128 @@
   gap: 10px;
 
   width: max-content;
-  max-width: min(370px, calc(100vw - 32px));
-  padding: 13px 15px;
+  max-width: min(390px, calc(100vw - 32px));
 
-  background: #065f46;
+  box-sizing: border-box;
+  padding: 14px 16px;
+
+  background: #166534;
   color: #ffffff;
 
-  border: 1px solid #34d399;
-  border-radius: 12px;
+  border: 1px solid #4ade80;
+  border-radius: 13px;
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.25);
 
   font-size: 13px;
   font-weight: 600;
   line-height: 1.5;
 
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-
-  animation: quoteToastIn 0.3s ease-out;
+  animation: quoteToastIn 0.35s ease-out both;
 }
 
-/* GREEN CHECKMARK */
+/* TOAST ERROR STATE */
+
+.sp-quote-toast-error {
+  background: #991b1b;
+  border-color: #f87171;
+}
+
+/* =========================================
+   INLINE TOAST ABOVE FORM
+========================================= */
+
+.sp-inline-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+
+  margin: 4px 0 2px;
+  padding: 13px 14px;
+
+  background: #166534;
+  color: #ffffff;
+
+  border: 1px solid #4ade80;
+  border-radius: 11px;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  animation: quoteToastIn 0.35s ease-out both;
+}
+
+.sp-inline-toast-error {
+  background: #991b1b;
+  border-color: #f87171;
+}
+
+/* =========================================
+   SHARED TOAST ICON & CLOSE BUTTON
+========================================= */
 
 .sp-toast-icon {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   flex: 0 0 26px;
+
+  width: 26px;
   height: 26px;
 
   border-radius: 50%;
 
-  background: #10b981;
-  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
+}
+
+.sp-toast-text {
+  flex: 1;
+  min-width: 0;
+
+  overflow-wrap: anywhere;
 }
 
 /* CLOSE BUTTON */
 
 .sp-toast-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin-left: auto;
-  padding: 0 4px;
+  padding: 2px 4px;
 
   background: transparent;
-  border: 0;
-
   color: #ffffff;
-  font-size: 22px;
+
+  border: none;
+
+  font-family: inherit;
+  font-size: 21px;
+  line-height: 1;
+
   cursor: pointer;
 }
 
-/* ERROR TOAST */
-
-.sp-quote-toast-error {
-  background: #7f1d1d;
-  border-color: #f87171;
+.sp-toast-close:hover {
+  opacity: 0.75;
 }
 
-.sp-quote-toast-error .sp-toast-icon {
-  background: #dc2626;
+.sp-toast-close:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-/* ANIMATION */
+/* TOAST ENTRY ANIMATION */
 
 @keyframes quoteToastIn {
   from {
@@ -305,66 +849,37 @@
   }
 }
 
-/* MOBILE */
+/* =========================================
+   OPTIONAL SCROLL REVEAL EFFECTS
+   SUPPORTED BROWSERS ONLY
+========================================= */
 
-@media (max-width: 600px) {
-  .sp-quote-toast {
-    right: 12px;
-    bottom: 16px;
-    font-size: 12px;
+@keyframes contactFadeUp {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .sp-quote-toast {
-    animation: none;
+@supports (animation-timeline: view()) {
+
+  .sp-contact-info h2:not([data-aos]),
+  .sp-contact-description:not([data-aos]) {
+    animation: contactFadeUp linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 30%;
   }
-}
 
-
-/* SUBMIT BUTTON */
-
-.sp-submit-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  min-height: 46px;
-  margin-top: 4px;
-  padding: 12px 20px;
-
-  background: #10b981;
-  color: #062016;
-
-  border: 0;
-  border-radius: 10px;
-
-  font: inherit;
-  font-size: 14px;
-  font-weight: 800;
-
-  cursor: pointer;
-  transition:
-    background 0.3s ease,
-    transform 0.3s ease;
-}
-
-.sp-submit-button:hover:not(:disabled) {
-  background: #34d399;
-  transform: translateY(-2px);
-}
-
-.sp-submit-button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.sp-form-message {
-  margin: 0;
-  color: #6ee7b7;
-  font-size: 13px;
-  line-height: 1.6;
+  .sp-contact-detail:not([data-aos]) {
+    animation: contactFadeUp linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 26%;
+  }
 }
 
 /* =========================================
@@ -374,12 +889,24 @@
 @media (max-width: 980px) {
 
   .sp-contact {
-    padding: 65px 0;
+    padding: 70px 0;
   }
 
   .sp-contact-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 35px;
+  }
+
+  .sp-contact-info {
+    padding-top: 0;
+  }
+
+  .sp-contact-description {
+    max-width: 680px;
+  }
+
+  .sp-contact-form {
+    padding: 28px;
   }
 
 }
@@ -398,93 +925,609 @@
     width: calc(100% - 32px);
   }
 
+  .sp-contact-grid {
+    gap: 28px;
+  }
+
+  .sp-contact-eyebrow {
+    padding: 8px 12px;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
   .sp-contact-info h2 {
-    font-size: 28px;
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.22;
   }
 
   .sp-contact-description {
     font-size: 14px;
+    line-height: 1.8;
   }
 
+  .sp-contact-details {
+    margin-top: 25px;
+    gap: 12px;
+  }
+
+  .sp-contact-detail {
+    padding: 15px 16px;
+  }
+
+  .sp-contact-detail a,
+  .sp-contact-detail strong {
+    font-size: 14px;
+  }
+
+  /* FORM MOBILE */
+
   .sp-contact-form {
-    padding: 20px;
+    padding: 22px 18px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+
+  .sp-contact-form h3 {
+    font-size: 21px;
   }
 
   .sp-form-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
+    gap: 15px;
   }
 
-  .sp-contact-form h3 {
-    font-size: 20px;
+  .sp-contact-form .sp-form-field input,
+  .sp-contact-form .sp-form-field textarea {
+    font-size: 16px;
+    padding: 12px 13px;
+  }
+
+  .sp-contact-form .sp-form-field textarea {
+    min-height: 125px;
+  }
+
+  .sp-submit-button {
+    min-height: 49px;
+  }
+
+  /* TOAST MOBILE */
+
+  .sp-quote-toast {
+    right: 12px;
+    bottom: 16px;
+    font-size: 12px;
+  }
+
+  .sp-inline-toast {
+    font-size: 12px;
   }
 
 }
 
+/* =========================================
+   VERY SMALL DEVICES
+========================================= */
+
+@media (max-width: 380px) {
+
+  .sp-contact-container {
+    width: calc(100% - 28px);
+  }
+
+  .sp-contact-form {
+    padding: 20px 14px;
+  }
+
+  .sp-contact-detail {
+    padding: 14px;
+  }
+
+}
+
+/* =========================================
+   ACCESSIBILITY - REDUCED MOTION
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
 
+  .sp-contact::before,
+  .sp-contact-eyebrow,
+  .sp-contact-eyebrow::before,
+  .sp-contact-info h2,
+  .sp-contact-info h2::after,
+  .sp-contact-description,
+  .sp-contact-detail,
+  .sp-contact-form::before,
+  .sp-quote-toast,
+  .sp-inline-toast {
+    animation: none !important;
+  }
+
+  .sp-contact-info h2,
+  .sp-contact-description,
+  .sp-contact-detail {
+    opacity: 1 !important;
+    translate: none !important;
+  }
+
+  .sp-contact-info h2::after {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sp-contact-detail,
+  .sp-contact-form,
   .sp-submit-button,
   .sp-form-field input,
   .sp-form-field textarea {
+    transition: none !important;
+  }
+
+  .sp-contact-detail:hover,
+  .sp-submit-button:hover {
+    transform: none !important;
+  }
+
+}
+
+/* =========================================
+   CONTACT FORM - NEW ANIMISTA ANIMATIONS
+========================================= */
+
+/* RUBBER BAND - FORM HEADING */
+
+.sp-contact-form h3 {
+  transform-origin: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-contact-form h3:hover {
+    animation: contactRubberBand 1.5s ease-in-out infinite;
+  }
+
+}
+
+@keyframes contactRubberBand {
+  0%,
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  40% {
+    transform: scale3d(0.88, 1.12, 1);
+  }
+
+  50% {
+    transform: scale3d(1.10, 0.90, 1);
+  }
+
+  65% {
+    transform: scale3d(0.96, 1.04, 1);
+  }
+
+  75% {
+    transform: scale3d(1.03, 0.97, 1);
+  }
+}
+
+/* =========================================
+   TEXT BLUR OUT - FORM SUBTITLE
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-contact-form .sp-form-subtitle:hover {
+    -webkit-animation:
+      text-blur-out 1.2s
+      cubic-bezier(0.550, 0.085, 0.680, 0.530)
+      infinite alternate;
+
+    animation:
+      text-blur-out 1.2s
+      cubic-bezier(0.550, 0.085, 0.680, 0.530)
+      infinite alternate;
+  }
+
+}
+
+@-webkit-keyframes text-blur-out {
+  0% {
+    -webkit-filter: blur(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-filter: blur(12px);
+    opacity: 0;
+  }
+}
+
+@keyframes text-blur-out {
+  0% {
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  100% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-contact-form h3:hover,
+  .sp-contact-form .sp-form-subtitle:hover {
+    animation: none !important;
+    -webkit-animation: none !important;
+
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+}
+
+/* =========================================
+   CONTACT FORM - SWIRL FIELD ANIMATION
+   NAME, EMAIL, PHONE AND ALL OTHER FIELDS
+========================================= */
+
+/* Prepare all form fields */
+
+.sp-contact-form .sp-form-field {
+  transform-origin: center top;
+  backface-visibility: hidden;
+}
+
+/* Animate each field when hovered */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-contact-form
+  .sp-form-field:hover:not(:focus-within) {
+    -webkit-animation:
+      contactSwirlHover 0.6s ease-in-out both;
+
+    animation:
+      contactSwirlHover 0.6s ease-in-out both;
+  }
+
+}
+
+/* SWIRL OUT AND RETURN */
+
+@-webkit-keyframes contactSwirlHover {
+  0% {
+    -webkit-transform:
+      perspective(600px)
+      rotateY(0deg)
+      translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    -webkit-transform:
+      perspective(600px)
+      rotateY(-12deg)
+      translateY(-4px);
+    opacity: 0.85;
+  }
+
+  100% {
+    -webkit-transform:
+      perspective(600px)
+      rotateY(0deg)
+      translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes contactSwirlHover {
+  0% {
+    transform:
+      perspective(600px)
+      rotateY(0deg)
+      translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform:
+      perspective(600px)
+      rotateY(-12deg)
+      translateY(-4px);
+    opacity: 0.85;
+  }
+
+  100% {
+    transform:
+      perspective(600px)
+      rotateY(0deg)
+      translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-contact-form
+  .sp-form-field:hover:not(:focus-within) {
+    animation: none !important;
+    -webkit-animation: none !important;
+
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+}
+
+/* =========================================
+   CONTACT HEADING - SWIRL + HEARTBEAT
+========================================= */
+
+.sp-contact-info h2 .swirl-out-left-bck {
+  display: inline-block;
+  max-width: 100%;
+  transform-origin: left center;
+}
+
+.sp-contact-info h2 .contact-heartbeat {
+  display: inline-block;
+  max-width: 100%;
+  transform-origin: center;
+}
+
+/* =========================================
+   HOVER ANIMATIONS
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  /* Swirl out, then return to original position */
+
+  .sp-contact-info h2:hover .swirl-out-left-bck {
+    -webkit-animation:
+      swirl-out-left-bck 0.6s ease-in 2 alternate both;
+
+    animation:
+      swirl-out-left-bck 0.6s ease-in 2 alternate both;
+  }
+
+  /* Continuous heartbeat while hovered */
+
+  .sp-contact-info h2:hover .contact-heartbeat {
+    animation:
+      contactHeadingHeartBeat 1.5s ease-in-out infinite;
+  }
+}
+
+/* =========================================
+   SWIRL OUT LEFT BACK
+========================================= */
+
+@-webkit-keyframes swirl-out-left-bck {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: rotate(-540deg) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes swirl-out-left-bck {
+  0% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(-540deg) scale(0);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   HEARTBEAT ANIMATION
+========================================= */
+
+@keyframes contactHeadingHeartBeat {
+  0%,
+  28%,
+  70%,
+  100% {
+    transform: scale(1);
+  }
+
+  14%,
+  42% {
+    transform: scale(1.08);
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-contact-info h2:hover .swirl-out-left-bck,
+  .sp-contact-info h2:hover .contact-heartbeat {
+    animation: none !important;
+    -webkit-animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* =========================================
+   CONTACT FORM - PREMIUM SOFT BLUE FIELDS
+========================================= */
+
+/* DARK NAVY-BLUE FIELD LABELS */
+
+.sp-contact-form .sp-form-field label {
+  color: #1e3a8a;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.15px;
+}
+
+/* SOFT BLUE INPUT BACKGROUND */
+
+.sp-contact-form .sp-form-field input,
+.sp-contact-form .sp-form-field textarea {
+  background: #e5eeff;
+  color: #172554;
+
+  border: 1px solid #a9bfea;
+
+  box-shadow:
+    inset 0 1px 3px rgba(30, 64, 175, 0.05);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* CLEAR, READABLE PLACEHOLDER TEXT */
+
+.sp-contact-form .sp-form-field input::placeholder,
+.sp-contact-form .sp-form-field textarea::placeholder {
+  color: #5b7196;
+  opacity: 1;
+}
+
+/* SLIGHTLY BRIGHTER ON HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .sp-contact-form .sp-form-field input:hover:not(:focus),
+  .sp-contact-form .sp-form-field textarea:hover:not(:focus) {
+    background: #d8e7ff;
+    border-color: #7da4ed;
+  }
+
+}
+
+/* ROYAL BLUE FOCUS EFFECT */
+
+.sp-contact-form .sp-form-field input:focus,
+.sp-contact-form .sp-form-field textarea:focus {
+  background: #f8fbff;
+
+  border-color: #1d4ed8;
+
+  box-shadow:
+    0 0 0 4px rgba(29, 78, 216, 0.13);
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-contact-form .sp-form-field input,
+  .sp-contact-form .sp-form-field textarea {
     transition: none;
   }
 
 }
+
 /* =========================================
-   INLINE TOAST ABOVE FORM FIELDS
+   REQUEST A QUOTE - DARK BLUE BADGE
 ========================================= */
 
-.sp-inline-toast {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.sp-contact-eyebrow {
+  background: linear-gradient(
+    110deg,
+    #0f172a,
+    #1e3a8a,
+    #1d4ed8,
+    #0f172a
+  );
 
-  margin: 4px 0 2px;
-  padding: 12px 14px;
+  background-size: 240% 100%;
 
-  background: #065f46;
   color: #ffffff;
 
-  border: 1px solid #34d399;
-  border-radius: 10px;
+  border: 1px solid #3b82f6;
 
-  font-size: 13px;
-  line-height: 1.5;
+  box-shadow: 0 5px 18px rgba(29, 78, 216, 0.18);
+
+  animation: contactBadgeShimmer 6s ease-in-out infinite;
 }
 
-.sp-inline-toast-error {
-  background: #7f1d1d;
-  border-color: #f87171;
+/* LIGHT BLUE PULSING DOT */
+
+.sp-contact-eyebrow::before {
+  background: #93c5fd;
 }
 
-.sp-toast-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* =========================================
+   CONTACT SECTION - SOFT DARK GRAY BACKGROUND
+========================================= */
 
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
-
-  font-size: 13px;
-  font-weight: 800;
+.sp-contact {
+  background: linear-gradient(
+    135deg,
+    #5890d0 0%,
+    #babec5 50%,
+    #283d5d 100%
+  );
 }
 
-.sp-toast-text {
-  flex: 1;
-  min-width: 0;
+/* =========================================
+   CONTACT FORM - BLACK TEXT
+========================================= */
+
+/* FORM HEADING AND SUBTITLE */
+
+.sp-contact-form h3,
+.sp-contact-form .sp-form-subtitle {
+  color: #111111;
 }
 
-.sp-toast-close {
-  background: transparent;
-  border: 0;
+/* NAME, COMPANY, EMAIL, PHONE, PRODUCT LABELS */
+
+.sp-contact-form .sp-form-field label {
+  color: #111111;
+  font-weight: 700;
+}
+
+/* TEXT ENTERED BY CUSTOMER */
+
+.sp-contact-form .sp-form-field input,
+.sp-contact-form .sp-form-field textarea {
+  color: #111111;
+}
+
+/* PLACEHOLDER TEXT */
+
+.sp-contact-form .sp-form-field input::placeholder,
+.sp-contact-form .sp-form-field textarea::placeholder {
+  color: #333333;
+  opacity: 1;
+}
+
+/* KEEP BUTTON TEXT WHITE FOR CONTRAST */
+
+.sp-contact-form .sp-submit-button {
   color: #ffffff;
-
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0 2px;
 }
