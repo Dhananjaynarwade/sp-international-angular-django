@@ -985,3 +985,69 @@
   }
 
 }
+/* =========================================
+   SOCIAL MEDIA ORIGINAL BRAND COLORS
+========================================= */
+
+/* Facebook */
+footer a[href*="facebook.com"] {
+  background: #1877f2;
+  color: #ffffff;
+}
+
+/* LinkedIn */
+footer a[href*="linkedin.com"] {
+  background: #0a66c2;
+  color: #ffffff;
+}
+
+/* X / Twitter */
+footer a[href*="//x.com/"],
+footer a[href*="twitter.com"] {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* YouTube */
+footer a[href*="youtube.com"],
+footer a[href*="youtu.be"] {
+  background: #ff0000;
+  color: #ffffff;
+}
+
+/* Instagram */
+footer a[href*="instagram.com"] {
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+  color: #ffffff;
+}
+
+/* =========================================
+   CLICK TO CALL PHONE NUMBER
+========================================= */
+
+.contact-phone-link {
+  color: #102968;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+}
+
+.contact-phone-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.contact-phone-link:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 3px;
+}
+

@@ -13,36 +13,5 @@ export class FooterComponent {
 
   constructor(private router: Router) {}
 
-  // BACK TO TOP
-  backToTop(): void {
-
-    const path = this.router.url.split(/[?#]/)[0];
-
-    if (path === '/') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    } else {
-      this.router.navigateByUrl('/');
-    }
-
-  }
-
-  // EXPLORE PRODUCTS
-  exploreProducts(): void {
-
-    const path = this.router.url.split(/[?#]/)[0];
-
-    if (path === '/products') {
-      document.getElementById('products')?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    } else {
-      this.router.navigateByUrl('/products');
-    }
-
-  }
 
 }

@@ -1531,3 +1531,332 @@
 .sp-contact-form .sp-submit-button {
   color: #ffffff;
 }
+
+/* =========================================
+   FOOTER QUICK NAVIGATION
+   ROYAL BLUE + WHITE THEME
+========================================= */
+
+.sp-footer-quick-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  width: 100%;
+  padding: 35px 20px;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #eff6ff 100%
+  );
+}
+
+/* SHARED BUTTON STYLES */
+
+.sp-footer-quick-nav .sp-back-to-top,
+.sp-footer-quick-nav .sp-explore-products {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 48px;
+  padding: 13px 24px;
+
+  border-radius: 10px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* =========================================
+   BACK TO TOP - WHITE BUTTON
+========================================= */
+
+.sp-footer-quick-nav .sp-back-to-top {
+  background: #ffffff;
+  color: #1d4ed8;
+
+  border: 2px solid #1d4ed8;
+
+  box-shadow:
+    0 5px 15px rgba(29, 78, 216, 0.08);
+}
+
+.sp-footer-quick-nav .sp-back-to-top:hover {
+  background: #1d4ed8;
+  color: #ffffff;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 24px rgba(29, 78, 216, 0.18);
+}
+
+/* =========================================
+   EXPLORE PRODUCTS - ROYAL BLUE BUTTON
+========================================= */
+
+.sp-footer-quick-nav .sp-explore-products {
+  background: linear-gradient(
+    135deg,
+    #1d4ed8,
+    #3b82f6
+  );
+
+  color: #ffffff;
+
+  border: 2px solid #1d4ed8;
+
+  box-shadow:
+    0 6px 18px rgba(29, 78, 216, 0.18);
+}
+
+.sp-footer-quick-nav .sp-explore-products:hover {
+  background: linear-gradient(
+    135deg,
+    #1e40af,
+    #2563eb
+  );
+
+  color: #ffffff;
+
+  border-color: #1e40af;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 28px rgba(29, 78, 216, 0.25);
+}
+
+/* =========================================
+   KEYBOARD ACCESSIBILITY
+========================================= */
+
+.sp-footer-quick-nav button:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 600px) {
+
+  .sp-footer-quick-nav {
+    flex-direction: column;
+    gap: 12px;
+    padding: 25px 16px;
+  }
+
+  .sp-footer-quick-nav .sp-back-to-top,
+  .sp-footer-quick-nav .sp-explore-products {
+    width: 100%;
+    max-width: 330px;
+  }
+
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-footer-quick-nav button {
+    transition: none;
+  }
+
+  .sp-footer-quick-nav button:hover {
+    transform: none;
+  }
+
+}
+
+/* =========================================
+   CONTACT - BOTTOM NAVIGATION
+   ROYAL BLUE + WHITE THEME
+========================================= */
+
+.sp-footer-quick-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  grid-column: 1 / -1;
+
+  width: 100%;
+  gap: 16px;
+
+  margin: 28px auto 0;
+  padding: 15px 20px 35px;
+
+  background: transparent;
+  box-sizing: border-box;
+}
+
+/* BOTH BUTTONS */
+
+.sp-footer-quick-nav .sp-back-to-top,
+.sp-footer-quick-nav .sp-explore-products {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 48px;
+  padding: 12px 26px;
+
+  border-radius: 10px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* BACK TO TOP */
+
+.sp-footer-quick-nav .sp-back-to-top {
+  background: #ffffff;
+  color: #1d4ed8;
+
+  border: 2px solid #1d4ed8;
+
+  box-shadow:
+    0 6px 20px rgba(29, 78, 216, 0.12);
+}
+
+/* BACK TO TOP HOVER */
+
+.sp-footer-quick-nav .sp-back-to-top:hover {
+  background: #1d4ed8;
+  color: #ffffff;
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 28px rgba(29, 78, 216, 0.24);
+}
+
+/* EXPLORE PRODUCTS */
+
+.sp-footer-quick-nav .sp-explore-products {
+  background: linear-gradient(
+    135deg,
+    #1d4ed8,
+    #3b82f6
+  );
+
+  color: #ffffff;
+
+  border: 2px solid #1d4ed8;
+
+  box-shadow:
+    0 6px 20px rgba(29, 78, 216, 0.2);
+}
+
+/* EXPLORE PRODUCTS HOVER */
+
+.sp-footer-quick-nav .sp-explore-products:hover {
+  background: linear-gradient(
+    135deg,
+    #1e40af,
+    #2563eb
+  );
+
+  color: #ffffff;
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 28px rgba(29, 78, 216, 0.28);
+}
+
+/* KEYBOARD ACCESSIBILITY */
+
+.sp-footer-quick-nav button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 4px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+
+  .sp-footer-quick-nav {
+    flex-direction: column;
+
+    gap: 12px;
+    margin-top: 20px;
+    padding: 15px 16px 30px;
+  }
+
+  .sp-footer-quick-nav .sp-back-to-top,
+  .sp-footer-quick-nav .sp-explore-products {
+    width: 100%;
+    max-width: 330px;
+  }
+
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sp-footer-quick-nav button {
+    transition: none;
+  }
+
+  .sp-footer-quick-nav button:hover {
+    transform: none;
+  }
+
+}
+
+/* =========================================
+   CLICK TO CALL PHONE NUMBER
+========================================= */
+
+.contact-phone-link {
+  color: #102968;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+}
+
+.contact-phone-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.contact-phone-link:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 3px;
+}

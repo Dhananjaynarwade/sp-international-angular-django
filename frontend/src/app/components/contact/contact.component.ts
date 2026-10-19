@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +12,48 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
+
+  private readonly router = inject(Router);
+
+  // =========================================
+  // BACK TO TOP
+  // =========================================
+
+  backToTop(): void {
+
+    const path = this.router.url.split(/[?#]/)[0];
+
+    if (path === '/') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      this.router.navigateByUrl('/');
+    }
+
+  }
+
+  // =========================================
+  // EXPLORE PRODUCTS
+  // =========================================
+
+  exploreProducts(): void {
+
+    const path = this.router.url.split(/[?#]/)[0];
+
+    if (path === '/products') {
+      document.getElementById('products')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      this.router.navigateByUrl('/products');
+    }
+
+  }
+
+  // KEEP YOUR EXISTING API CODE BELOW
 
   private readonly api =
     window.location.hostname === 'localhost' ||
@@ -30,7 +74,9 @@ export class ContactComponent {
   sentMessage = '';
   toastType: 'success' | 'error' | '' = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    
+  }
 
   submitQuote(form: NgForm): void {
     if (this.sending || form.invalid) {
@@ -83,4 +129,6 @@ export class ContactComponent {
     this.sentMessage = '';
     this.toastType = '';
   }
+  
+  
 }

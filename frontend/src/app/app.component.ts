@@ -22,7 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FoodIngredientsComponent } from './pages/food-ingredients/food-ingredients.component';
 import { BoatAnimationComponent } from './pages/boat-animation/boat-animation.component';
 
-
+import { ProcessComponent } from './components/process/process.component';
 /* =========================================
    PRODUCT INTERFACE
 ========================================= */
@@ -50,11 +50,12 @@ interface Product {
     BoatAnimationComponent,
     AboutComponent,
     WhyChooseUsComponent,
+     ProcessComponent,
     ContactComponent,
     FooterComponent,
     FoodIngredientsComponent,
     ProductsComponent,
-    IndustriesComponent
+    IndustriesComponent,
 ],
     templateUrl: './app.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
