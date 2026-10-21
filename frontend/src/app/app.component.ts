@@ -127,14 +127,23 @@ const resetToBoat =
   !this.initialNavigationComplete &&
   !this.isProductDetailsPage;
 
-const sectionId = resetToBoat
-  ? 'home'
-  : path === '/' &&
-    fragment &&
-    validSections.includes(fragment)
-      ? fragment
-      : sectionRoutes[path];
+// const sectionId = resetToBoat
+//   ? 'home'
+//   : path === '/' &&
+//     fragment &&
+//     validSections.includes(fragment)
+//       ? fragment
+//       : sectionRoutes[path];
+// Always show the correct section based on the current URL.
+// Refreshing /about, /products, /industries or /contact
+// keeps the visitor on the corresponding section.
 
+const sectionId =
+  path === '/' &&
+  fragment &&
+  validSections.includes(fragment)
+    ? fragment
+    : sectionRoutes[path];
 
 
   if (!sectionId) {

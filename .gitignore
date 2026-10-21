@@ -34,3 +34,12 @@ Thumbs.db
 .vscode/
 # Django collected static files
 staticfiles/
+# Local Docker database backups
+docker-backups/
+
+# SQLite databases
+*.sqlite3
+
+# Environment secrets
+.env
+.env.*
