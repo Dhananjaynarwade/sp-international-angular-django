@@ -1,39 +1,47 @@
-
 <!-- NAVBAR - ALL PAGES -->
 <app-navbar></app-navbar>
-
-
 
 <!-- ANGULAR ROUTED PAGES -->
 <router-outlet></router-outlet>
 
-<!-- HOMEPAGE SECTIONS -->
-@if (!isProductDetailsPage) {
+<!-- EXISTING WEBSITE SECTIONS -->
+@if (!isProductDetailsPage && !isComingSoonPage) {
+
   <div>
     <main>
-      <!-- BOAT ANIMATION - HOME PAGE ONLY -->
+
+      <!-- BOAT ANIMATION -->
       @if (showBoatAnimation) {
         <app-boat-animation></app-boat-animation>
       }
+
       <!-- HOME -->
       <app-hero id="home"></app-hero>
+
       <!-- ABOUT -->
       <app-about id="about"></app-about>
+
       <!-- PRODUCTS -->
       <app-products
         id="products"
         [products]="products">
       </app-products>
+
       <!-- INDUSTRIES -->
       <app-industries id="industries"></app-industries>
+
       <!-- PROCESS -->
       <app-process></app-process>
+
       <!-- WHY CHOOSE US -->
       <app-why-choose-us></app-why-choose-us>
+
       <!-- CONTACT -->
       <app-contact id="contact"></app-contact>
+
     </main>
   </div>
+
 }
 
 <!-- FOOTER - ALL PAGES -->

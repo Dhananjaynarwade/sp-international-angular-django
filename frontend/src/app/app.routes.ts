@@ -10,6 +10,7 @@ import { PharmaceuticalIndustriesComponent } from './pages/pharmaceutical-indust
 import { PackagingMaterialsComponent } from './pages/packaging-materials/packaging-materials.component';
 import { BoatAnimationComponent } from './pages/boat-animation/boat-animation.component';
 
+
 // Empty route component.
 // Your homepage sections are already displayed by AppComponent.
 @Component({

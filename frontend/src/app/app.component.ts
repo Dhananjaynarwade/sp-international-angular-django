@@ -64,7 +64,7 @@ interface Product {
 
 export class AppComponent implements OnInit {
   
-
+isComingSoonPage = false;
 private readonly wasPageReloaded =
   (performance.getEntriesByType('navigation')[0] as
     PerformanceNavigationTiming | undefined)?.type === 'reload';

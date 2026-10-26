@@ -29,37 +29,50 @@
       ☰
     </button>
 
-    <!-- NAVIGATION LINKS -->
-    <nav
-      id="navbar-links"
-      class="nav-links"
-      [class.mobile-open]="mobileMenuOpen"
-    >
+  <!-- NAVIGATION LINKS -->
+<nav
+  id="navbar-links"
+  class="nav-links"
+  [class.mobile-open]="mobileMenuOpen"
+>
 
-      <a routerLink="/"(click)="scrollToSection('home')">
-        Home
-      </a>
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="scrollToSection('home')">
+    Home
+  </a>
 
-      <a routerLink="/about"(click)="scrollToSection('about')">
-        About
-      </a>
+  <a
+    routerLink="/about"
+    routerLinkActive="active"
+    (click)="scrollToSection('about')">
+    About
+  </a>
 
-      <a routerLink="/products"
-         (click)="scrollToSection('products')">
-        Products
-      </a>
+  <a
+    routerLink="/products"
+    routerLinkActive="active"
+    (click)="scrollToSection('products')">
+    Products
+  </a>
 
-      <a routerLink="/industries"
-         (click)="scrollToSection('industries')">
-        Industries
-      </a>
+  <a
+    routerLink="/industries"
+    routerLinkActive="active"
+    (click)="scrollToSection('industries')">
+    Industries
+  </a>
 
-      <a routerLink="/contact"
-         (click)="scrollToSection('contact')">
-        Contact
-      </a>
+  <a
+    routerLink="/contact"
+    routerLinkActive="active"
+    (click)="scrollToSection('contact')">
+    Contact
+  </a>
 
-    </nav>
+</nav>
 
     <!-- QUOTE BUTTON -->
     <a

@@ -1,0 +1,235 @@
+/* ==========================================
+   SP INTERNATIONAL — COMING SOON PAGE
+========================================== */
+
+:host {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* MAIN SECTION */
+
+.coming-soon {
+  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 110px 24px 50px;
+  box-sizing: border-box;
+
+  background: #f8faff;
+}
+
+/* BLUE CONTAINER */
+
+.coming-soon-content {
+  width: 100%;
+  max-width: 950px;
+
+  padding: 45px 40px;
+
+  background: linear-gradient(
+    135deg,
+    #5266f5 0%,
+    #465df0 100%
+  );
+
+  border-radius: 20px;
+  text-align: center;
+  color: #ffffff;
+
+  box-shadow: 0 15px 40px rgba(70, 93, 240, 0.18);
+}
+
+/* ROCKET ICON */
+
+.rocket-icon {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+
+/* HEADING */
+
+.coming-soon-content h1 {
+  margin: 0 0 15px;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+/* DESCRIPTION */
+
+.coming-soon-content p {
+  margin: 0 0 30px;
+  font-size: 15px;
+  color: #e6eaff;
+  line-height: 1.6;
+}
+
+/* COUNTDOWN TIMER */
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+/* TIMER BOX */
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 95px;
+  padding: 15px 10px;
+
+  background: #3044bd;
+  border-radius: 13px;
+}
+
+/* TIMER NUMBER */
+
+.time-box strong {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+/* TIMER LABEL */
+
+.time-box span {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #dce4ff;
+}
+
+/* NOTIFY ME BUTTON */
+
+.notify-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 13px 32px;
+
+  border: none;
+  border-radius: 50px;
+
+  background: #ffffff;
+  color: #3044bd;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.notify-btn:hover {
+  background: #edf2ff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.notify-btn:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   TABLET RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+  .coming-soon {
+    min-height: calc(100dvh - 68px);
+    padding: 90px 16px 35px;
+  }
+
+  .coming-soon-content {
+    padding: 35px 22px;
+    border-radius: 18px;
+  }
+
+  .countdown {
+    gap: 10px;
+  }
+
+  .time-box {
+    min-height: 85px;
+    padding: 12px 6px;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 480px) {
+  .coming-soon {
+    padding: 85px 12px 25px;
+  }
+
+  .coming-soon-content {
+    padding: 30px 15px;
+    border-radius: 16px;
+  }
+
+  .rocket-icon {
+    font-size: 28px;
+  }
+
+  .coming-soon-content h1 {
+    font-size: 25px;
+  }
+
+  .coming-soon-content p {
+    font-size: 13px;
+  }
+
+  .countdown {
+    gap: 7px;
+  }
+
+  .time-box {
+    min-height: 75px;
+    padding: 10px 4px;
+    border-radius: 9px;
+  }
+
+  .time-box strong {
+    font-size: 21px;
+  }
+
+  .time-box span {
+    font-size: 10px;
+  }
+
+  .notify-btn {
+    padding: 12px 26px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .notify-btn {
+    transition: none;
+  }
+}
